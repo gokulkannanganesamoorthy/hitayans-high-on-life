@@ -142,22 +142,23 @@ export function HeroVariant4({ onOpenTickets }: HeroProps) {
         scrollTrigger: {
           trigger: heroRef.current,
           start: 'top top',
-          end: '+=200%',
+          end: '+=100%',
           scrub: 1,
           pin: true
         }
       });
       
       tl.to('.v4-svg-text', {
-        scale: 100,
+        scale: 15,
+        opacity: 0,
         transformOrigin: '50% 50%',
         ease: 'power2.inOut',
-        duration: 1
+        duration: 0.8
       }, 0)
       .to('.v4-svg-overlay', {
         opacity: 0,
-        duration: 0.2
-      }, 0.8)
+        duration: 0.4
+      }, 0.4)
       .to('.v4-footer', {
         opacity: 0,
         duration: 0.2

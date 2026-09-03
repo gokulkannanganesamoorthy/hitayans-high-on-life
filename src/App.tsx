@@ -13,7 +13,6 @@ import TicketsPage from './pages/Tickets';
 
 import Cursor from './components/Cursor';
 import Navigation from './components/Navigation';
-import Soundscape from './components/Soundscape';
 import ScrollToTop from './components/ScrollToTop';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -50,7 +49,6 @@ function App() {
       <div className="grain-overlay" aria-hidden="true" />
       <Cursor />
       <Navigation />
-      <Soundscape />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

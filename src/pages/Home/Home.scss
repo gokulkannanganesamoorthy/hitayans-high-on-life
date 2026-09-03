@@ -132,8 +132,17 @@
     width: 100%;
     height: 100%;
     z-index: 2;
-    background: radial-gradient(circle at center, rgba(10, 14, 12, 0.3) 0%, rgba(10, 14, 12, 0.85) 100%),
-                linear-gradient(to bottom, rgba(10, 14, 12, 0.4) 0%, rgba(10, 14, 12, 0.95) 95%);
+    background:
+      radial-gradient(
+        circle at center,
+        rgba(10, 14, 12, 0.3) 0%,
+        rgba(10, 14, 12, 0.85) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(10, 14, 12, 0.4) 0%,
+        rgba(10, 14, 12, 0.95) 95%
+      );
   }
 
   .hero-inner {
@@ -250,7 +259,9 @@
       box-shadow: 6px 6px 0px var(--color-dark);
       display: flex;
       flex-direction: column;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 
       &:hover {
         transform: translate(-3px, -3px);
@@ -415,11 +426,21 @@
         flex-wrap: wrap;
         gap: 0.8rem;
 
-        .row-col-num { width: 10%; }
-        .row-col-main { width: 85%; }
-        .row-col-tag { width: 60%; }
-        .row-col-action { width: 35%; }
-        .space-hover-thumb { display: none; }
+        .row-col-num {
+          width: 10%;
+        }
+        .row-col-main {
+          width: 85%;
+        }
+        .row-col-tag {
+          width: 60%;
+        }
+        .row-col-action {
+          width: 35%;
+        }
+        .space-hover-thumb {
+          display: none;
+        }
       }
     }
   }
@@ -473,7 +494,9 @@
       box-shadow: 5px 5px 0px var(--color-dark);
       display: flex;
       flex-direction: column;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 
       &:hover {
         transform: translate(-3px, -3px);
@@ -674,16 +697,25 @@
     }
 
     .phase-column-card {
-      background: var(--color-dark);
+      background: var(--color-bg);
       border: 3px solid var(--color-lime);
       box-shadow: 6px 6px 0px #000;
       padding: 2.2rem;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 10px 10px 0px var(--color-lime);
+      }
 
       .phase-card-header {
         margin-bottom: 2rem;
-        border-bottom: 2px dashed rgba(255, 255, 255, 0.2);
+        border-bottom: 2px dashed rgba(7, 29, 24, 0.2);
         padding-bottom: 1.5rem;
 
         .phase-badge {
@@ -696,17 +728,20 @@
           color: var(--color-dark);
           padding: 0.3rem 0.8rem;
           margin-bottom: 0.8rem;
+          border: 1px solid var(--color-dark);
         }
 
         .phase-title {
+          font-family: var(--font-display);
           font-size: 2.2rem;
-          color: #fff;
+          color: var(--color-dark);
           margin-bottom: 0.3rem;
         }
 
         .phase-note {
           font-size: 0.85rem;
-          color: rgba(255, 255, 255, 0.7);
+          color: var(--color-dark);
+          opacity: 0.8;
         }
       }
 
@@ -716,8 +751,8 @@
         gap: 1rem;
 
         .tier-ticket-row {
-          background: #141B18;
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          background: rgba(7, 29, 24, 0.05);
+          border: 1px solid rgba(7, 29, 24, 0.2);
           padding: 1.2rem;
           display: flex;
           justify-content: space-between;
@@ -726,7 +761,7 @@
           transition: all 0.15s ease;
 
           &:hover {
-            background: #1C2622;
+            background: rgba(7, 29, 24, 0.1);
             border-color: var(--color-lime);
             transform: translateX(4px);
 
@@ -743,11 +778,12 @@
             .tier-name {
               font-size: 1.05rem;
               font-weight: 700;
+              color: var(--color-dark);
             }
 
             .tier-limit {
               font-size: 0.75rem;
-              color: rgba(255, 255, 255, 0.65);
+              color: rgba(7, 29, 24, 0.65);
             }
           }
 
@@ -760,14 +796,14 @@
             .tier-price {
               font-family: var(--font-display);
               font-size: 1.6rem;
-              color: var(--color-lime);
+              color: var(--color-dark);
             }
 
             .tier-select-action {
               font-size: 0.75rem;
               font-weight: 800;
               letter-spacing: 0.1em;
-              color: rgba(255, 255, 255, 0.8);
+              color: rgba(7, 29, 24, 0.8);
               transition: color 0.15s ease;
             }
           }
@@ -775,32 +811,32 @@
       }
     }
   }
+}
 
-  .festival-guarantee-strip {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    border-top: 2px dashed rgba(255, 255, 255, 0.2);
-    padding-top: 3rem;
+.festival-guarantee-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  border-top: 2px dashed rgba(255, 255, 255, 0.2);
+  padding-top: 3rem;
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .guarantee-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .g-icon {
+      font-size: 1.8rem;
     }
 
-    .guarantee-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-
-      .g-icon {
-        font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        color: rgba(255, 255, 255, 0.9);
-      }
+    p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
     }
   }
 }
@@ -810,8 +846,8 @@
    ========================================================================== */
 .main-footer {
   padding: 10vh 0 4vh;
-  background-color: var(--color-dark);
-  color: var(--color-text-light);
+  background-color: var(--color-bg);
+  color: var(--color-dark);
 
   .footer-top {
     display: grid;
@@ -829,13 +865,14 @@
       .footer-logo-text {
         font-size: clamp(2.8rem, 5vw, 4.5rem);
         margin-bottom: 1.2rem;
-        color: var(--color-lime);
+        color: var(--color-dark);
       }
 
       .footer-manifesto-text {
         font-size: 1.05rem;
         line-height: 1.65;
-        color: rgba(255, 255, 255, 0.75);
+        color: var(--color-dark);
+        opacity: 0.85;
         max-width: 480px;
         margin-bottom: 2rem;
       }
@@ -851,7 +888,7 @@
           font-weight: 700;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: #fff;
+          color: var(--color-dark);
           border-bottom: 2px solid transparent;
           transition: all 0.2s ease;
 
@@ -879,14 +916,15 @@
           font-size: 0.75rem;
           font-weight: 800;
           letter-spacing: 0.15em;
-          color: var(--color-lime);
+          color: var(--color-dark);
           margin-bottom: 0.8rem;
         }
 
         p {
           font-size: 0.95rem;
           line-height: 1.6;
-          color: rgba(255, 255, 255, 0.85);
+          color: var(--color-dark);
+          opacity: 0.9;
 
           a {
             color: inherit;
@@ -911,8 +949,13 @@
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.45);
-    flex-wrap: wrap;
-    gap: 1rem;
+    color: var(--color-dark);
+    opacity: 0.6;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
   }
 }

@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { content } from '../../data/content';
-import TicketModal from '../../components/TicketModal';
 import { HeroVariant4 } from '../../components/HeroVariants';
+import { SpacesVariant1, SpacesVariant2, SpacesVariant3, SpacesVariant4 } from '../../components/SpacesVariants';
+import TicketModal from '../../components/TicketModal';
 import './Home.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,7 @@ export default function Home() {
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
   const [activeWorkshopFilter, setActiveWorkshopFilter] = useState<string>('ALL');
+  const [spacesVariant, setSpacesVariant] = useState<number>(1);
 
   const openTickets = (tierId?: string) => {
     setSelectedTierId(tierId || null);
@@ -69,31 +71,32 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="spaces-directory">
-            {content.spaces.slice(0, 6).map((space, idx) => (
-              <Link 
-                to={`/space/${space.id}`} 
-                key={space.id} 
-                className="space-row"
-                data-cursor-view="EXPLORE"
-              >
-                <div className="row-col-num">0{idx + 1}</div>
-                <div className="row-col-main">
-                  <h3 className="space-name">{space.name}</h3>
-                  <span className="space-subtitle">{space.subtitle}</span>
-                </div>
-                <div className="row-col-tag">
-                  <span className="tag-pill">{space.energyLevel}</span>
-                </div>
-                <div className="row-col-action">
-                  <span className="action-text">EXPLORE LAB</span>
-                  <span className="action-arrow">→</span>
-                </div>
-                <div className="space-hover-thumb">
-                  <img src={space.image} alt={space.name} loading="lazy" />
-                </div>
-              </Link>
-            ))}
+          {spacesVariant === 1 && <SpacesVariant1 spaces={content.spaces} />}
+          {spacesVariant === 2 && <SpacesVariant2 spaces={content.spaces} />}
+          {spacesVariant === 3 && <SpacesVariant3 spaces={content.spaces} />}
+          {spacesVariant === 4 && <SpacesVariant4 spaces={content.spaces} />}
+          
+          {/* SPACES VARIANT SWITCHER */}
+          <div className="spaces-variant-switcher-home" style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+            <span className="switcher-label" style={{ fontWeight: 'bold', alignSelf: 'center', color: 'var(--color-dark)' }}>SANCTUARY CONCEPT:</span>
+            <div className="switcher-buttons" style={{ display: 'flex', gap: '0.5rem' }}>
+              {[1, 2, 3, 4].map(v => (
+                <button 
+                  key={v}
+                  style={{
+                    padding: '0.5rem 1rem',
+                    background: spacesVariant === v ? 'var(--color-lime)' : 'transparent',
+                    border: '2px solid var(--color-dark)',
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
+                    color: 'var(--color-dark)'
+                  }}
+                  onClick={() => setSpacesVariant(v)}
+                >
+                  0{v}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="section-bottom-action">
