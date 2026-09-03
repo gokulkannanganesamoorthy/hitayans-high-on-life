@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -14,6 +14,31 @@ export default function Home() {
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
   const [activeWorkshopFilter, setActiveWorkshopFilter] = useState<string>('ALL');
+  
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = () => {
+    if (sliderRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth);
+    }
+  };
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
+
+  const scrollSlider = (direction: 'left' | 'right') => {
+    if (sliderRef.current) {
+      const amount = direction === 'left' ? -400 : 400;
+      sliderRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+  };
 
   const openTickets = (tierId?: string) => {
     setSelectedTierId(tierId || null);
@@ -181,22 +206,26 @@ export default function Home() {
             <div className="slider-nav-btns" style={{ display: 'flex', gap: '1rem' }}>
               <button 
                 className="brutal-btn-icon" 
-                onClick={() => document.querySelector('.brutal-testimonials-grid')?.scrollBy({ left: -400, behavior: 'smooth' })}
+                onClick={() => scrollSlider('left')}
                 aria-label="Previous testimonial"
+                disabled={!canScrollLeft}
+                style={{ opacity: canScrollLeft ? 1 : 0.3, cursor: canScrollLeft ? 'pointer' : 'not-allowed' }}
               >
                 ←
               </button>
               <button 
                 className="brutal-btn-icon" 
-                onClick={() => document.querySelector('.brutal-testimonials-grid')?.scrollBy({ left: 400, behavior: 'smooth' })}
+                onClick={() => scrollSlider('right')}
                 aria-label="Next testimonial"
+                disabled={!canScrollRight}
+                style={{ opacity: canScrollRight ? 1 : 0.3, cursor: canScrollRight ? 'pointer' : 'not-allowed' }}
               >
                 →
               </button>
             </div>
           </div>
 
-          <div className="brutal-testimonials-grid">
+          <div className="brutal-testimonials-grid" ref={sliderRef} onScroll={checkScroll}>
             <a href="https://www.instagram.com/p/DaSmK59hE8i/" target="_blank" rel="noreferrer" className="t-brutal-card" data-cursor-view="WATCH">
               <div className="t-media">
                 <img src="/assets/extracted/page001_04_e297f12d.jpg" alt="Testimonial" />
