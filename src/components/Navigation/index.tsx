@@ -150,8 +150,8 @@ export default function Navigation() {
             animate="open"
             exit="closed"
           >
-            <div className="menu-background-graphic" aria-hidden="true">
-              <img src="/svg/butterfly.svg" alt="" style={{ opacity: 0.08, width: '150vw', height: '150vh', objectFit: 'contain' }} />
+            <div className="menu-background-graphic" aria-hidden="true" style={{ position: 'absolute', bottom: '5%', right: '5%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', zIndex: 1 }}>
+              <img src="/svg/butterfly.svg" alt="" style={{ opacity: 0.15, width: '35vw', maxWidth: '400px', objectFit: 'contain' }} />
             </div>
 
             <nav className="nav-container">
