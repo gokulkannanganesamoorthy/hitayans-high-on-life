@@ -19,18 +19,6 @@ export default function Navigation() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    audioRef.current = new Audio('/audio/432hz-drone.mp3');
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.4;
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-    };
-  }, []);
-
   const toggleSound = () => {
     if (audioRef.current) {
       if (isPlaying) {
@@ -84,6 +72,7 @@ export default function Navigation() {
 
   return (
     <>
+      <audio ref={audioRef} src="/audio/432hz-drone.mp3" loop />
       <header className={`main-header ${isScrolled ? 'scrolled' : ''} ${isOpen ? 'menu-open' : ''}`}>
         <div className="header-inner">
           <div className="header-left">
@@ -104,19 +93,12 @@ export default function Navigation() {
           </div>
 
           <Link to="/" className="logo-link center-logo" data-cursor-view="HOL" aria-label="Home">
-            <svg className="dragonfly-svg" viewBox="0 0 40 40" fill="currentColor">
-              <ellipse cx="20" cy="18" rx="1.2" ry="12" />
-              <path d="M20 12 C10 4, 3 8, 1 12 C6 14, 14 14, 19 13.5 Z" />
-              <path d="M20 12 C30 4, 37 8, 39 12 C34 14, 26 14, 21 13.5 Z" />
-              <path d="M20 16 C12 12, 5 15, 3 19 C8 20, 15 18.5, 19 17 Z" />
-              <path d="M20 16 C28 12, 35 15, 37 19 C32 20, 25 18.5, 21 17 Z" />
-              <circle cx="20" cy="5" r="1.5" />
-            </svg>
+            <img src="/svg/butterfly.svg" alt="Butterfly Logo" className="butterfly-logo" />
           </Link>
 
           <div className="header-right">
             <button className="menu-toggle nav-text-link" onClick={toggleMenu} aria-label="Toggle Menu" data-cursor-view="MENU">
-              <span className="menu-text">{isOpen ? 'CLOSE' : 'INDEX'}</span>
+              <span className="menu-text hamburger-icon">{isOpen ? 'CLOSE' : '≡'}</span>
             </button>
           </div>
         </div>
