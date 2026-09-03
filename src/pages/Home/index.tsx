@@ -173,10 +173,26 @@ export default function Home() {
       {/* 06 TESTIMONIALS (Brutalist) */}
       <section className="section-testimonials" id="testimonials">
         <div className="container">
-          <div className="section-title-row">
+          <div className="section-title-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
             <div>
               <span className="brutal-badge">TESTIMONIALS</span>
               <h2 className="section-main-title light">TALES FROM OUR LAST HIGH</h2>
+            </div>
+            <div className="slider-nav-btns" style={{ display: 'flex', gap: '1rem' }}>
+              <button 
+                className="brutal-btn-icon" 
+                onClick={() => document.querySelector('.brutal-testimonials-grid')?.scrollBy({ left: -400, behavior: 'smooth' })}
+                aria-label="Previous testimonial"
+              >
+                ←
+              </button>
+              <button 
+                className="brutal-btn-icon" 
+                onClick={() => document.querySelector('.brutal-testimonials-grid')?.scrollBy({ left: 400, behavior: 'smooth' })}
+                aria-label="Next testimonial"
+              >
+                →
+              </button>
             </div>
           </div>
 
@@ -211,6 +227,17 @@ export default function Home() {
               <div className="t-content">
                 <h4>@highonlifefest</h4>
                 <p>Moments of pure joy and somatic release...</p>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com/p/DaSmK59hE8i/" target="_blank" rel="noreferrer" className="t-brutal-card" data-cursor-view="WATCH">
+              <div className="t-media">
+                <img src="/assets/extracted/page000_01_621e4905.jpg" alt="Testimonial" />
+                <div className="play-overlay"><span>PLAY</span></div>
+              </div>
+              <div className="t-content">
+                <h4>@highonlifefest</h4>
+                <p>An unforgettable conscious gathering.</p>
               </div>
             </a>
           </div>

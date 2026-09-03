@@ -1,0 +1,28 @@
+
+/* Brutalist Icon Button */
+.brutal-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--color-lime);
+  color: var(--color-dark);
+  border: 3px solid var(--color-dark);
+  box-shadow: 4px 4px 0px var(--color-dark);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brutal-btn-icon:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--color-dark);
+}
+
+.brutal-btn-icon:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--color-dark);
+}
