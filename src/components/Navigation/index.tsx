@@ -120,9 +120,9 @@ export default function Navigation() {
             aria-label="Home"
           >
             <img
-              src="/svg/butterfly.svg"
-              alt="Butterfly Logo"
-              className="butterfly-logo"
+              src="/assets/logo.png"
+              alt="High on Life Logo"
+              className="navbar-brand-logo"
             />
           </Link>
 
@@ -151,7 +151,7 @@ export default function Navigation() {
             exit="closed"
           >
             <div className="menu-background-graphic" aria-hidden="true">
-              <img src="/svg/butterfly.svg" alt="" style={{ opacity: 0.1, width: '100%', height: '100%', objectFit: 'contain' }} />
+              <img src="/svg/butterfly.svg" alt="" style={{ opacity: 0.08, width: '150vw', height: '150vh', objectFit: 'contain' }} />
             </div>
 
             <nav className="nav-container">

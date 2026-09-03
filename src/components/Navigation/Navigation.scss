@@ -98,13 +98,13 @@
     align-items: center;
     pointer-events: auto;
     
-    .butterfly-logo {
-      width: 44px;
-      height: 44px;
+    .navbar-brand-logo {
+      height: 40px;
+      width: auto;
       transition: transform 0.3s ease;
     }
     
-    &:hover .butterfly-logo {
+    &:hover .navbar-brand-logo {
       transform: scale(1.05);
     }
   }
