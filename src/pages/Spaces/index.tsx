@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { content } from '../../data/content';
-import { SpacesVariant1, SpacesVariant2, SpacesVariant3, SpacesVariant4 } from '../../components/SpacesVariants';
+import { SpacesVariant3 } from '../../components/SpacesVariants';
 import './Spaces.scss';
 
 export default function SpacesPage() {
   const [filter, setFilter] = useState('ALL');
-  const [spacesVariant, setSpacesVariant] = useState<number>(1);
 
   const filteredSpaces = filter === 'ALL'
     ? content.spaces
@@ -41,39 +40,10 @@ export default function SpacesPage() {
       </header>
 
       <main className="spaces-catalog-section">
-        {spacesVariant === 1 && (
-          <div className="container">
-            <SpacesVariant1 spaces={filteredSpaces} />
-          </div>
-        )}
-        {spacesVariant === 2 && <SpacesVariant2 spaces={filteredSpaces} />}
-        {spacesVariant === 3 && (
-          <div className="container">
-            <SpacesVariant3 spaces={filteredSpaces} />
-          </div>
-        )}
-        {spacesVariant === 4 && (
-          <div className="container">
-            <SpacesVariant4 spaces={filteredSpaces} />
-          </div>
-        )}
-      </main>
-
-      {/* SPACES VARIANT SWITCHER */}
-      <div className="spaces-variant-switcher">
-        <span className="switcher-label">SPACES CONCEPT</span>
-        <div className="switcher-buttons">
-          {[1, 2, 3, 4].map(v => (
-            <button 
-              key={v}
-              className={`variant-btn ${spacesVariant === v ? 'active' : ''}`}
-              onClick={() => setSpacesVariant(v)}
-            >
-              0{v}
-            </button>
-          ))}
+        <div className="container">
+          <SpacesVariant3 spaces={filteredSpaces} />
         </div>
-      </div>
+      </main>
     </div>
   );
 }

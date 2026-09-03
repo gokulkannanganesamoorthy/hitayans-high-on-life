@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { content } from '../../data/content';
 import { HeroVariant4 } from '../../components/HeroVariants';
-import { SpacesVariant1, SpacesVariant2, SpacesVariant3, SpacesVariant4 } from '../../components/SpacesVariants';
+import { SpacesVariant3 } from '../../components/SpacesVariants';
 import TicketModal from '../../components/TicketModal';
 import './Home.scss';
 
@@ -14,7 +14,6 @@ export default function Home() {
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
   const [activeWorkshopFilter, setActiveWorkshopFilter] = useState<string>('ALL');
-  const [spacesVariant, setSpacesVariant] = useState<number>(1);
 
   const openTickets = (tierId?: string) => {
     setSelectedTierId(tierId || null);
@@ -71,33 +70,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {spacesVariant === 1 && <SpacesVariant1 spaces={content.spaces} />}
-          {spacesVariant === 2 && <SpacesVariant2 spaces={content.spaces} />}
-          {spacesVariant === 3 && <SpacesVariant3 spaces={content.spaces} />}
-          {spacesVariant === 4 && <SpacesVariant4 spaces={content.spaces} />}
-          
-          {/* SPACES VARIANT SWITCHER */}
-          <div className="spaces-variant-switcher-home" style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            <span className="switcher-label" style={{ fontWeight: 'bold', alignSelf: 'center', color: 'var(--color-dark)' }}>SANCTUARY CONCEPT:</span>
-            <div className="switcher-buttons" style={{ display: 'flex', gap: '0.5rem' }}>
-              {[1, 2, 3, 4].map(v => (
-                <button 
-                  key={v}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    background: spacesVariant === v ? 'var(--color-lime)' : 'transparent',
-                    border: '2px solid var(--color-dark)',
-                    cursor: 'pointer',
-                    fontWeight: 'bold',
-                    color: 'var(--color-dark)'
-                  }}
-                  onClick={() => setSpacesVariant(v)}
-                >
-                  0{v}
-                </button>
-              ))}
-            </div>
-          </div>
+          <SpacesVariant3 spaces={content.spaces} />
 
           <div className="section-bottom-action">
             <Link to="/spaces" className="brutal-btn-primary" data-cursor-view="ALL">
