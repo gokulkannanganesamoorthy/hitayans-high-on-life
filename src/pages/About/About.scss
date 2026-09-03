@@ -26,9 +26,13 @@
     }
 
     .hero-title {
-      font-size: clamp(3rem, 7vw, 7rem);
+      font-family: var(--font-sans);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      font-size: clamp(2.5rem, 6vw, 6rem);
       margin-bottom: 1.5rem;
       color: var(--color-lime);
+      line-height: 1.1;
     }
 
     .hero-lead {
@@ -70,13 +74,12 @@
       }
 
       .letter-card {
-        background: #fff;
-        border: 3px solid var(--color-dark);
-        box-shadow: 6px 6px 0px var(--color-dark);
-        padding: 3rem;
+        background: transparent;
+        border-right: 1px solid rgba(0,0,0,0.1);
+        padding: 0 4rem 0 0;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 2rem;
         font-size: 1.05rem;
         line-height: 1.7;
 
@@ -118,11 +121,9 @@
         gap: 3rem;
 
         .founder-portrait-box {
-          border: 3px solid var(--color-dark);
-          box-shadow: 6px 6px 0px var(--color-dark);
-          background: #000;
           position: relative;
           overflow: hidden;
+          background: rgba(0,0,0,0.05);
 
           img {
             width: 100%;
@@ -146,14 +147,14 @@
         }
 
         .aanmaa-box {
-          background: var(--color-accent);
+          background: var(--color-dark);
           color: #fff;
-          border: 3px solid var(--color-dark);
-          box-shadow: 5px 5px 0px var(--color-dark);
-          padding: 2.5rem;
+          padding: 3.5rem;
 
           h3 {
-            font-size: 1.8rem;
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--color-lime);
           }
@@ -173,9 +174,7 @@
       .spirit-container-box {
         background: #0D1310;
         color: #fff;
-        border: 3px solid var(--color-dark);
-        box-shadow: 6px 6px 0px var(--color-dark);
-        padding: 4rem;
+        padding: 6rem 4rem;
 
         .spirit-badge {
           display: inline-block;
@@ -191,6 +190,9 @@
         }
 
         .spirit-title {
+          font-family: var(--font-sans);
+          font-weight: 900;
+          letter-spacing: -0.02em;
           font-size: clamp(2.5rem, 5vw, 4.5rem);
           color: #fff;
           margin-bottom: 2rem;
@@ -226,10 +228,9 @@
         }
 
         .rule-card {
-          background: #fff;
-          border: 3px solid var(--color-dark);
-          box-shadow: 5px 5px 0px var(--color-dark);
-          padding: 2.5rem 2rem;
+          background: transparent;
+          border-top: 1px solid rgba(0, 0, 0, 0.15);
+          padding: 2.5rem 0;
           display: flex;
           flex-direction: column;
 
@@ -242,7 +243,9 @@
           }
 
           h3 {
-            font-size: 1.6rem;
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--color-dark);
           }

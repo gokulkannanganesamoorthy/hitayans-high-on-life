@@ -42,19 +42,19 @@ export default function WorkshopsPage() {
 
       <main className="workshops-body-section">
         <div className="container">
-          <div className="workshops-brutal-grid">
+          <div className="workshops-editorial-grid">
             {filtered.map((item, idx) => (
-              <article key={idx} className="workshop-brutal-tile">
-                <div className="tile-index-bar">
-                  <span className="num">ACT // 0{idx + 1}</span>
-                  <span className="badge">{item.tag}</span>
-                </div>
-
+              <article key={idx} className="workshop-editorial-tile">
                 <div className="tile-thumb">
                   <img src={item.image} alt={item.name} loading="lazy" />
+                  <div className="hover-overlay"></div>
                 </div>
 
                 <div className="tile-content">
+                  <div className="tile-meta">
+                    <span className="num">0{idx + 1}</span>
+                    <span className="badge">{item.tag}</span>
+                  </div>
                   <h2 className="title">{item.name}</h2>
                   <p className="description">{item.description}</p>
                 </div>
