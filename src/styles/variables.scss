@@ -1,0 +1,19 @@
+// typography
+$font-display: 'Pokinca', serif;
+$font-sans: 'Caliburn-Bold', sans-serif;
+
+// colors
+$color-bg: #EAE6DF; // Warm stone/off-white
+$color-bg-dark: #121212; // Charcoal/near-black
+$color-text: #1A1A1A; // Dark text for light mode
+$color-text-light: #F4F4F4; // Light text for dark mode
+$color-accent: #2E5642; // Dragonfly muted green
+
+// grid
+$grid-columns: 12;
+$grid-gap: 2rem;
+$grid-margin: 4vw;
+
+// transitions
+$transition-smooth: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-fast: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
