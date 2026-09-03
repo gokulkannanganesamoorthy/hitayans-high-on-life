@@ -184,7 +184,7 @@ export function HeroVariant4({ onOpenTickets }: HeroProps) {
               dominantBaseline="middle" 
               fill="black"
             >
-              ALIVENESS
+              HIGH ON LIFE
             </text>
           </mask>
         </defs>
@@ -193,10 +193,10 @@ export function HeroVariant4({ onOpenTickets }: HeroProps) {
 
       <div className="v4-content-wrap">
         <div className="v4-header">
-          <span className="brutal-badge">2ND EDITION</span>
+          <span className="brutal-badge">NIL ON SUBSTANCE!</span>
         </div>
         <div className="v4-footer">
-          <p>{content.hero.tagline}</p>
+          <p>A Substance-Free Conscious Celebration of Life With a ton of Music, Movement, Art & Play!!</p>
           <button className="brutal-btn-primary" onClick={onOpenTickets} data-cursor-view="JOIN">JOIN THE MOVEMENT</button>
         </div>
       </div>

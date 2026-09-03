@@ -1,148 +1,229 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { content } from '../../data/content';
+import { HeroVariant4 } from '../../components/HeroVariants';
+import { SpacesVariant3 } from '../../components/SpacesVariants';
+import TicketModal from '../../components/TicketModal';
 import './Home.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  
+  const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
+  const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
+  const [activeWorkshopFilter, setActiveWorkshopFilter] = useState<string>('ALL');
+
+  const openTickets = (tierId?: string) => {
+    setSelectedTierId(tierId || null);
+    setIsTicketModalOpen(true);
+  };
+
+  const workshopFilters = ['ALL', 'MOVEMENT', 'STRENGTH', 'PLAY', 'CRAFT', 'SOUND', 'COMMUNITY'];
+
+  const filteredWorkshops = activeWorkshopFilter === 'ALL'
+    ? content.workshops
+    : content.workshops.filter((w) => w.tag.toUpperCase() === activeWorkshopFilter);
+
   useEffect(() => {
-    // Parallax or reveal animations can be added here
+    // Other setup logic could go here if needed in the future
   }, []);
 
-  const galleryImages = [
-    '/assets/extracted/page000_01_621e4905.jpg',
-    '/assets/extracted/page001_02_c3d3982b.jpg',
-    '/assets/extracted/page002_01_8a72eb07.jpg',
-    '/assets/extracted/page002_03_3a12adfa.jpg',
-    '/assets/extracted/page000_02_1ab2115f.jpg',
-    '/assets/extracted/page001_03_36191630.jpg'
-  ];
-
   return (
-    <div className="page-home-new">
-      
+    <div className="page-home">
       {/* 01 HERO SECTION */}
-      <section className="home-hero-new">
-        <div className="hero-bg-media">
-          <img src="/assets/audience-hero-DaZlGUU3.jpg" alt="Hero background" />
-          <div className="hero-overlay"></div>
-        </div>
-        <div className="container hero-content">
-          <h1 className="main-title">HIGH ON LIFE</h1>
-          <h2 className="sub-title">NIL ON SUBSTANCE!</h2>
-          <p className="hero-desc">
-            A Substance-Free Conscious Celebration of Life With a ton of Music, Movement, Art & Play!!
-          </p>
+      <HeroVariant4 onOpenTickets={openTickets} />
+
+      {/* 02 CURRENT EVENTS (Brutalist) */}
+      <section className="section-current-event" id="current-event">
+        <div className="container">
+          <div className="event-marquee-wrap">
+            <div className="event-marquee-inner">
+              <span>THE NEXT HIGH ON LIFE IS COMING...</span>
+              <span>THE NEXT HIGH ON LIFE IS COMING...</span>
+              <span>THE NEXT HIGH ON LIFE IS COMING...</span>
+            </div>
+          </div>
+
+          <div className="event-brutal-card">
+            <div className="event-brutal-meta">
+              <div className="meta-block">
+                <span className="brutal-badge">LOCATION</span>
+                <p>CocoNest Eco Village, Pollachi</p>
+              </div>
+              <div className="meta-block">
+                <span className="brutal-badge">DATES</span>
+                <p>23 — 25 October 2026</p>
+              </div>
+              <div className="meta-block">
+                <span className="brutal-badge">VIBE</span>
+                <p>More Aliveness, Zero Substance!</p>
+              </div>
+            </div>
+            
+            <div className="event-brutal-footer">
+              <h3 className="event-brutal-tagline">Get HIGH with 25+ Life-altering events in 3 days!</h3>
+              <button className="brutal-btn-primary" onClick={() => openTickets()} data-cursor-view="BOOK">
+                EXPLORE CURRENT EVENT →
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 02 CURRENT EVENTS */}
-      <section className="home-current-event">
+      {/* 03 09 EXPERIENCE SPACES PREVIEW */}
+      <section className="section-spaces" id="spaces">
         <div className="container">
-          <span className="section-badge">CURRENT EVENTS</span>
-          <h2 className="event-title">THE NEXT HIGH ON LIFE IS COMING…</h2>
-          
-          <div className="event-details-card">
-            <div className="event-meta">
-              <span className="meta-item">AT ON WITH CocoNest Eco Village, Pollachi.</span>
-              <span className="meta-divider">|</span>
-              <span className="meta-item">23 - 25 October 2026.</span>
-              <span className="meta-divider">|</span>
-              <span className="meta-item accent">More Aliveness, Zero Substance!</span>
+          <div className="section-title-row">
+            <div>
+              <span className="brutal-badge">SANCTUARIES</span>
+              <h2 className="section-main-title light">09 EXPERIENCE SPACES</h2>
             </div>
-            <p className="event-highlight">Get HIGH with 25+ Life-altering events in 3 days!</p>
-            <Link to="/tickets" className="brutal-btn-primary" data-cursor-view="BOOK">
-              EXPLORE CURRENT EVENT →
+            <Link to="/spaces" className="brutal-btn-secondary" data-cursor-view="ALL">
+              VIEW ALL 09 SPACES →
+            </Link>
+          </div>
+
+          <SpacesVariant3 spaces={content.spaces} />
+
+          <div className="section-bottom-action">
+            <Link to="/spaces" className="brutal-btn-primary" data-cursor-view="ALL">
+              VIEW ALL 09 EXPERIENCE SPACES →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 03 GALLERY */}
-      <section className="home-gallery">
+      {/* 04 WORKSHOPS HIGHLIGHT */}
+      <section className="section-workshops" id="workshops">
         <div className="container">
-          <div className="section-header-centered">
-            <span className="section-badge">MEMORIES</span>
-            <h2 className="section-title">A GLIMPSE OF OUR LAST HIGH</h2>
+          <div className="section-title-row">
+            <div>
+              <span className="brutal-badge">ACTIVATIONS</span>
+              <h2 className="section-main-title">25+ CONSCIOUS WORKSHOPS</h2>
+            </div>
+            <div className="workshop-filter-pills">
+              {workshopFilters.map(filter => (
+                <button
+                  key={filter}
+                  className={`filter-btn ${activeWorkshopFilter === filter ? 'active' : ''}`}
+                  onClick={() => setActiveWorkshopFilter(filter)}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
-          
-          <div className="gallery-masonry">
-            {galleryImages.map((src, i) => (
-              <div key={i} className="gallery-item" data-cursor-view="VIEW">
-                <img src={src} alt={`Gallery ${i}`} loading="lazy" />
+
+          <div className="workshops-grid">
+            {filteredWorkshops.slice(0, 6).map((workshop, idx: number) => (
+              <div key={idx} className="workshop-card" data-cursor-view="WORKSHOP">
+                <div className="workshop-image-box">
+                  <img src={workshop.image} alt={workshop.name} loading="lazy" />
+                  <span className="workshop-badge">{workshop.tag}</span>
+                </div>
+                <div className="workshop-info">
+                  <h4 className="workshop-title">{workshop.name}</h4>
+                  <p className="workshop-desc">{workshop.description}</p>
+                </div>
               </div>
             ))}
           </div>
+
+          <div className="section-bottom-action">
+            <Link to="/workshops" className="brutal-btn-primary" data-cursor-view="CATALOG">
+              VIEW FULL WORKSHOPS CATALOG →
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 04 TESTIMONIALS (IG MOCKUPS) */}
-      <section className="home-testimonials">
+      {/* 05 ABOUT SUMMARY */}
+      {/* 05 GALLERY (Brutalist) */}
+      <section className="section-gallery" id="gallery">
         <div className="container">
-          <div className="section-header-centered">
-            <span className="section-badge">TESTIMONIALS</span>
-            <h2 className="section-title">TALES FROM OUR LAST HIGH</h2>
+          <div className="section-title-row">
+            <div>
+              <span className="brutal-badge">MEMORIES</span>
+              <h2 className="section-main-title">A GLIMPSE OF OUR LAST HIGH</h2>
+            </div>
+          </div>
+          
+          <div className="brutal-gallery-grid">
+            <div className="b-gallery-item large" data-cursor-view="VIEW">
+              <img src="/assets/extracted/page000_01_621e4905.jpg" alt="Gallery" loading="lazy" />
+            </div>
+            <div className="b-gallery-item" data-cursor-view="VIEW">
+              <img src="/assets/extracted/page001_02_c3d3982b.jpg" alt="Gallery" loading="lazy" />
+            </div>
+            <div className="b-gallery-item" data-cursor-view="VIEW">
+              <img src="/assets/extracted/page002_01_8a72eb07.jpg" alt="Gallery" loading="lazy" />
+            </div>
+            <div className="b-gallery-item" data-cursor-view="VIEW">
+              <img src="/assets/extracted/page002_03_3a12adfa.jpg" alt="Gallery" loading="lazy" />
+            </div>
+            <div className="b-gallery-item wide" data-cursor-view="VIEW">
+              <img src="/assets/extracted/page000_02_1ab2115f.jpg" alt="Gallery" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 06 TESTIMONIALS (Brutalist) */}
+      <section className="section-testimonials" id="testimonials">
+        <div className="container">
+          <div className="section-title-row">
+            <div>
+              <span className="brutal-badge">TESTIMONIALS</span>
+              <h2 className="section-main-title light">TALES FROM OUR LAST HIGH</h2>
+            </div>
           </div>
 
-          <div className="ig-grid">
-            {/* IG Mockup 1 */}
-            <a href="https://www.instagram.com/p/DaSmK59hE8i/" target="_blank" rel="noreferrer" className="ig-card" data-cursor-view="WATCH">
-              <div className="ig-media">
-                <img src="/assets/extracted/page001_04_e297f12d.jpg" alt="IG 1" />
-                <div className="ig-play-icon">▶</div>
+          <div className="brutal-testimonials-grid">
+            <a href="https://www.instagram.com/p/DaSmK59hE8i/" target="_blank" rel="noreferrer" className="t-brutal-card" data-cursor-view="WATCH">
+              <div className="t-media">
+                <img src="/assets/extracted/page001_04_e297f12d.jpg" alt="Testimonial" />
+                <div className="play-overlay"><span>PLAY</span></div>
               </div>
-              <div className="ig-footer">
-                <span className="ig-username">@highonlifefest</span>
-                <p>Listen to what our community says about their experience... #HighOnLife</p>
+              <div className="t-content">
+                <h4>@highonlifefest</h4>
+                <p>Listen to what our community says about their experience...</p>
+              </div>
+            </a>
+            
+            <a href="https://www.instagram.com/p/Da2thh8MoTm/" target="_blank" rel="noreferrer" className="t-brutal-card" data-cursor-view="WATCH">
+              <div className="t-media">
+                <img src="/assets/extracted/page002_02_519cbbfa.jpg" alt="Testimonial" />
+                <div className="play-overlay"><span>PLAY</span></div>
+              </div>
+              <div className="t-content">
+                <h4>@highonlifefest</h4>
+                <p>Total aliveness without substances.</p>
               </div>
             </a>
 
-            {/* IG Mockup 2 */}
-            <a href="https://www.instagram.com/p/Da2thh8MoTm/" target="_blank" rel="noreferrer" className="ig-card" data-cursor-view="WATCH">
-              <div className="ig-media">
-                <img src="/assets/extracted/page002_02_519cbbfa.jpg" alt="IG 2" />
-                <div className="ig-play-icon">▶</div>
+            <a href="https://www.instagram.com/p/Da735MPJp5F/" target="_blank" rel="noreferrer" className="t-brutal-card" data-cursor-view="WATCH">
+              <div className="t-media">
+                <img src="/assets/extracted/page000_03_27a30763.jpg" alt="Testimonial" />
+                <div className="play-overlay"><span>PLAY</span></div>
               </div>
-              <div className="ig-footer">
-                <span className="ig-username">@highonlifefest</span>
-                <p>Total aliveness without substances. #HighOnLife</p>
-              </div>
-            </a>
-
-            {/* IG Mockup 3 */}
-            <a href="https://www.instagram.com/p/Da735MPJp5F/" target="_blank" rel="noreferrer" className="ig-card" data-cursor-view="WATCH">
-              <div className="ig-media">
-                <img src="/assets/extracted/page000_03_27a30763.jpg" alt="IG 3" />
-                <div className="ig-play-icon">▶</div>
-              </div>
-              <div className="ig-footer">
-                <span className="ig-username">@highonlifefest</span>
-                <p>Moments of pure joy and somatic release... #HighOnLife</p>
-              </div>
-            </a>
-
-            {/* IG Mockup 4 */}
-            <a href="https://www.instagram.com/p/DbgExE3t4cJ/" target="_blank" rel="noreferrer" className="ig-card" data-cursor-view="WATCH">
-              <div className="ig-media">
-                <img src="/assets/extracted/page001_01_4675ae4d.jpg" alt="IG 4" />
-                <div className="ig-play-icon">▶</div>
-              </div>
-              <div className="ig-footer">
-                <span className="ig-username">@highonlifefest</span>
-                <p>The magic of connecting in nature. #HighOnLife</p>
+              <div className="t-content">
+                <h4>@highonlifefest</h4>
+                <p>Moments of pure joy and somatic release...</p>
               </div>
             </a>
           </div>
         </div>
       </section>
 
-      {/* 05 EXIT INTENT TRIGGER (Invisible) */}
-      <div 
-        className="exit-intent-trigger" 
-        onMouseLeave={() => console.log('Exit intent triggered (to be implemented)')}
+
+
+      {/* TICKET RESERVATION MODAL */}
+      <TicketModal 
+        isOpen={isTicketModalOpen} 
+        onClose={() => setIsTicketModalOpen(false)}
+        selectedTierId={selectedTierId}
       />
     </div>
   );
