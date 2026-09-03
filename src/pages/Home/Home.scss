@@ -44,6 +44,8 @@
     justify-content: center;
   }
 
+
+
   .hero-variant-switcher {
     position: fixed;
     bottom: 2rem;
@@ -299,6 +301,16 @@
   padding: 12vh 0;
   background-color: var(--color-bg-alt);
   border-bottom: 3px solid var(--color-dark);
+
+  .brutal-btn-secondary {
+    border-color: rgba(235, 229, 206, 0.4);
+    color: var(--color-bg);
+
+    &:hover {
+      background: var(--color-bg);
+      color: var(--color-dark);
+    }
+  }
 
   .spaces-directory {
     border-top: 3px solid var(--color-dark);
@@ -584,19 +596,23 @@
         margin-top: 0.8rem;
         margin-bottom: 2rem;
         color: var(--color-dark);
+
+        &.light {
+          color: var(--color-bg);
+        }
       }
 
       .quote-box {
-        background: #fff;
-        padding: 2.8rem;
-        border: 3px solid var(--color-dark);
-        box-shadow: 6px 6px 0px var(--color-dark);
+        background: transparent;
+        padding: 0;
+        border: none;
+        box-shadow: none;
         margin-bottom: 2rem;
 
         .founder-quote-text {
           font-size: 1.15rem;
           line-height: 1.7;
-          color: #222;
+          color: var(--color-bg);
           margin-bottom: 1.5rem;
         }
 
@@ -604,8 +620,9 @@
           display: flex;
           flex-direction: column;
           gap: 0.2rem;
-          border-top: 2px dashed rgba(10, 14, 12, 0.2);
+          border-top: 2px dashed rgba(235, 229, 206, 0.4);
           padding-top: 1rem;
+          color: var(--color-bg);
 
           strong {
             font-family: var(--font-display);
@@ -614,22 +631,31 @@
 
           span {
             font-size: 0.85rem;
-            color: #555;
+            color: rgba(235, 229, 206, 0.8);
+          }
+        }
+        .brutal-btn-secondary {
+          border-color: rgba(235, 229, 206, 0.4);
+          color: var(--color-bg);
+
+          &:hover {
+            background: var(--color-bg);
+            color: var(--color-dark);
           }
         }
       }
     }
 
-    .about-portrait-col {
-      .portrait-frame {
-        width: 100%;
-        max-width: 480px;
-        aspect-ratio: 4/5;
-        overflow: hidden;
-        border: 3px solid var(--color-dark);
-        box-shadow: 7px 7px 0px var(--color-dark);
-        background: #111;
-        position: relative;
+      .about-portrait-col {
+        .portrait-frame {
+          width: 100%;
+          max-width: 480px;
+          aspect-ratio: 4/5;
+          overflow: hidden;
+          border: 3px solid var(--color-dark);
+          box-shadow: 7px 7px 0px var(--color-dark);
+          background: #111;
+          position: relative;
 
         img {
           width: 100%;

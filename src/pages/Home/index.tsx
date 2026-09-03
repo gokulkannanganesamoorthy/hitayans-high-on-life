@@ -63,7 +63,7 @@ export default function Home() {
           <div className="section-title-row">
             <div>
               <span className="brutal-badge">SANCTUARIES</span>
-              <h2 className="section-main-title">09 EXPERIENCE SPACES</h2>
+              <h2 className="section-main-title light">09 EXPERIENCE SPACES</h2>
             </div>
             <Link to="/spaces" className="brutal-btn-secondary" data-cursor-view="ALL">
               VIEW ALL 09 SPACES →
@@ -130,7 +130,7 @@ export default function Home() {
           <div className="about-editorial-wrap">
             <div className="about-narrative-col">
               <span className="brutal-badge">GENESIS</span>
-              <h2 className="about-heading">
+              <h2 className="about-heading light">
                 HOW HIGH ON LIFE WAS BORN
               </h2>
               
