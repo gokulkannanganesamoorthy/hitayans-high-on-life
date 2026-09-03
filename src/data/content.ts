@@ -12,30 +12,40 @@ export interface SpaceDetail {
   image: string;
 }
 
+export interface WorkshopItem {
+  name: string;
+  tag: string;
+  image: string;
+  description: string;
+}
+
 export const content = {
   hero: {
     est: "EST. 2026 — POLLACHI",
     title: "ALIVENESS IS THE ULTIMATE HIGH",
-    subtitle: "A Zero Substance Festival",
-    dates: "23 - 25 Oct 2026",
-    location: "CocoNest Eco Village, Pollachi",
-    videoBg: null,
+    tagline: "A Zero Substance Celebration of Life, Movement & Art",
+    dates: "23 — 25 OCTOBER 2026",
+    location: "CocoNest Eco Village, Pollachi, Tamil Nadu",
     imageBg: "/assets/audience-hero-DaZlGUU3.jpg"
   },
   philosophy: {
-    statement: "WE CREATE SPACES THAT HELP US RECONNECT WITH OUR BODIES, EXPRESS OURSELVES FREELY, AND DISCOVER THE JOY OF SIMPLY BEING ALIVE.",
+    lead: "A CONSCIOUS SANCTUARY",
+    statement: "We create spaces that help us reconnect with our bodies, express ourselves freely, and discover the joy of simply being alive.",
     points: [
       {
-        title: "MOVEMENT",
-        description: "Move, fight, flow, balance and discover what your body can do when you stop overthinking every move."
+        number: "01",
+        title: "Movement & Flow",
+        description: "Move, balance, and discover what your physical body can accomplish when you drop self-judgment and inhabit every breath."
       },
       {
-        title: "EXPRESSION",
-        description: "Listen deeply, move freely, use your voice and let out the things you usually keep inside."
+        number: "02",
+        title: "Voice & Catharsis",
+        description: "Listen deeply, vocalize without fear, and release the tension and unspoken stories stored in your nervous system."
       },
       {
-        title: "COMMUNITY",
-        description: "Meet strangers. Start conversations. Share a little more. Leave with people who no longer feel like strangers."
+        number: "03",
+        title: "Authentic Kinship",
+        description: "Bypass casual small talk. Meet strangers in vulnerability and leave with lifelong friends who see you for who you are."
       }
     ]
   },
@@ -43,13 +53,13 @@ export const content = {
     {
       id: "breathing-zone",
       name: "Breathing Zone",
-      subtitle: "Stillness within the landscape",
-      description: "The place you step into when you need a pause. Slow down, step away from everything and just breathe.",
-      concept: "In an overstimulated world, doing nothing is the most radical act of self-reclamation. The Breathing Zone is crafted as an organic sanctuary cushioned by Pollachi's palm groves. Here, time decelerates. Without substances or synthetic stimulants, our breath becomes the sole rhythm anchoring consciousness to the present moment.",
+      subtitle: "Stillness within the canopy",
+      description: "The sanctuary you step into when you need a pause. Slow down, step away from everything and just breathe.",
+      concept: "In an overstimulated world, pausing is the most radical act of self-reclamation. The Breathing Zone is crafted as an organic sanctuary cushioned by Pollachi's palm groves. Without alcohol or synthetic stimulants, our breath becomes the sole rhythm anchoring consciousness to the present moment.",
       experience: [
-        "Guided conscious pranayama & cyclical breathing",
-        "Somatic grounding mats on natural earth",
-        "Ambient sound bathing with singing bowls and flutes",
+        "Guided conscious pranayama & cyclical somatic breathing",
+        "Grounding mats laid directly on raw forest soil",
+        "Acoustic sound bathing with singing bowls and flutes",
         "Silent contemplation circles throughout sunrise and twilight"
       ],
       energyLevel: "Restorative / Meditative",
@@ -61,9 +71,9 @@ export const content = {
     {
       id: "screaming-zone",
       name: "Screaming Zone",
-      subtitle: "Primal catharsis unleashed",
-      description: "Sometimes you just need to let something out. Here, you can use your full voice and leave some of that built-up tension behind.",
-      concept: "Civilized life commands us to modulate our volume, swallow our anger, and tuck away grief. The Screaming Zone provides an acoustic clearing in nature where decorum is shattered. Here, vocal cords are instruments of total liberation, releasing years of accumulated somatic armor.",
+      subtitle: "Primal acoustic release",
+      description: "Sometimes you just need to let something out. Here, you can use your full voice and leave accumulated tension behind.",
+      concept: "Civilized life commands us to modulate our volume, swallow our anger, and tuck away grief. The Screaming Zone provides an acoustic clearing in nature where decorum is shattered. Here, vocal cords are instruments of total liberation, releasing somatic armor.",
       experience: [
         "Acoustically isolated forest clearing for raw vocal release",
         "Full-body primal shakeout rituals",
@@ -81,7 +91,7 @@ export const content = {
       name: "The Rage Circle",
       subtitle: "Transforming fire into flow",
       description: "A space to drop the mask, move through what you're holding inside and finally let the emotion out.",
-      concept: "Anger is suppressed passion; rage is unexpressed boundary. In the Rage Circle, aggression is neither demonized nor destructive—it is transmuted. Through dynamic somatic movement and heavy resistance interaction, we honor the fire in our belly and convert it into clarity and vitality.",
+      concept: "Anger is suppressed passion; rage is unexpressed boundary. In the Rage Circle, aggression is neither demonized nor destructive—it is transmuted. Through dynamic somatic movement, we honor the fire in our belly and convert it into clarity and vitality.",
       experience: [
         "Padded strike totems and heavy earth cushions",
         "Guided emotional alchemy facilitators",
@@ -99,7 +109,7 @@ export const content = {
       name: "Connection Bench Area",
       subtitle: "Unscripted human resonance",
       description: "Sit next to someone you don't know. Start a conversation. You might walk away with a new friend.",
-      concept: "Modern loneliness thrives in crowded rooms where eye contact is avoided. The Connection Benches are scattered under canopy trees, accompanied by thoughtful inquiry prompts that bypass trivial small talk and dive directly into human vulnerability and wonder.",
+      concept: "Modern loneliness thrives in crowded rooms where eye contact is avoided. The Connection Benches are scattered under canopy trees, accompanied by thoughtful inquiry prompts that bypass trivial small talk and dive directly into human vulnerability.",
       experience: [
         "Two-person wooden benches built into natural landscape",
         "Inquiry prompt stones for meaningful dialogue",
@@ -135,7 +145,7 @@ export const content = {
       name: "Combat Zone",
       subtitle: "Playful martial dialogue",
       description: "A safe, playful space to test your strength, challenge yourself and engage with others through controlled movement.",
-      concept: "Physical dialogue is an ancient language. By pairing traditional South Indian martial arts like Kalaripayattu and Silambam with modern movement drills, the Combat Zone cultivates sharp reflexes, profound spatial awareness, and deep respect for your sparring partner.",
+      concept: "Physical dialogue is an ancient language. By pairing traditional South Indian martial arts like Kalaripayattu and Silambam with modern movement drills, the Combat Zone cultivates sharp reflexes, profound spatial awareness, and deep respect for your partner.",
       experience: [
         "Traditional Kalaripayattu body postures and animal forms",
         "Silambam bamboo staff handling basics",
@@ -151,7 +161,7 @@ export const content = {
     {
       id: "painting-zone",
       name: "Painting Zone",
-      subtitle: "Unrestricted color & imagination",
+      subtitle: "Unrestricted pigment & imagination",
       description: "Take what's inside your head and put it on paper. No rules, no perfect final result, just your imagination taking over.",
       concept: "Too often art is judged by technique and market value. Here, creation is an instinctive physical gesture. Fingers, branches, pigments made from turmeric, charcoal, and clay turn large outdoor canvases into collective dreamscapes.",
       experience: [
@@ -164,7 +174,7 @@ export const content = {
       atmosphere: "Vibrant, messy, liberated, collaborative",
       capacity: "40 artists simultaneously",
       whatToBring: "Clothes that love getting stained",
-      image: "/assets/exp-poetry2-BV8X__Dd.jpg"
+      image: "/assets/space-poem-DDk02g7q.jpg"
     },
     {
       id: "balance-board",
@@ -203,98 +213,157 @@ export const content = {
       image: "/assets/space-playground-C8CHyBpq.jpg"
     }
   ] as SpaceDetail[],
-  workshops: {
-    title: "25+ New Workshops",
-    categories: [
-      {
-        name: "Movement & Dance",
-        items: [
-          { name: "Bachata Dance", image: "/assets/activities-hero-DIU5kdcR.jpg" },
-          { name: "Calisthenics", image: "/assets/activities-bg-C6GXll-p.jpg" },
-          { name: "Movement Exploration", image: "/assets/exp-expressive-movement-DzXY4kLX.jpg" },
-          { name: "Movement Lab", image: "/assets/exp-movement-games-D8fA85pM.jpg" }
-        ]
-      },
-      {
-        name: "Play & Challenge",
-        items: [
-          { name: "Mixed Martial Arts", image: "/assets/exp-kalaripayattu-C7Qe6AxD.jpg" },
-          { name: "Silambam", image: "/assets/exp-kalaripayattu-C7Qe6AxD.jpg" }
-        ]
-      },
-      {
-        name: "Art & Creation",
-        items: [
-          { name: "Paper Making", image: "/assets/exp-nature-dyeing-DfH3LHgu.jpg" },
-          { name: "Trinet Weaving", image: "/assets/exp-poetry2-BV8X__Dd.jpg" },
-          { name: "Dappo Star Craft", image: "/assets/exp-soap2-D9Vp9Q7O.jpg" },
-          { name: "Art Of Origami", image: "/assets/exp-poetry2-BV8X__Dd.jpg" },
-          { name: "Art Meditation", image: "/assets/exp-nature-dyeing-DfH3LHgu.jpg" },
-          { name: "Upcycling Workshop", image: "/assets/exp-poetry2-BV8X__Dd.jpg" },
-          { name: "Kolam Craft", image: "/assets/exp-soap2-D9Vp9Q7O.jpg" },
-          { name: "Clay Modelling", image: "/assets/exp-nature-dyeing-DfH3LHgu.jpg" },
-          { name: "Mask Making", image: "/assets/exp-soap2-D9Vp9Q7O.jpg" }
-        ]
-      },
-      {
-        name: "Sound & Expression",
-        items: [
-          { name: "Sound Journey", image: "/assets/exp-soundhealing-bh_dbDly.jpg" },
-          { name: "Haiku Writing", image: "/assets/space-poem-DDk02g7q.jpg" }
-        ]
-      },
-      {
-        name: "Connection",
-        items: [
-          { name: "Heart-To-Heart", image: "/assets/exp-womenscircle2-C34OYNr0.jpg" },
-          { name: "Men's & Women's Circle", image: "/assets/exp-womenscircle2-C34OYNr0.jpg" },
-          { name: "Internal Branding", image: "/assets/exp-womenscircle2-C34OYNr0.jpg" }
-        ]
-      }
-    ]
-  },
+
+  workshops: [
+    {
+      name: "Bachata Sensual & Flow",
+      tag: "Movement",
+      image: "/assets/activities-hero-DIU5kdcR.jpg",
+      description: "Rhythm, partner connection, and hip motion without performance anxiety."
+    },
+    {
+      name: "Natural Body Calisthenics",
+      tag: "Strength",
+      image: "/assets/activities-bg-C6GXll-p.jpg",
+      description: "Explore strength, suspension, and mobility using your body as the sole apparatus."
+    },
+    {
+      name: "Expressive Somatic Movement",
+      tag: "Movement",
+      image: "/assets/exp-expressive-movement-DzXY4kLX.jpg",
+      description: "Listen to spontaneous muscle impulses and express emotion through uncensored form."
+    },
+    {
+      name: "Play & Movement Lab",
+      tag: "Play",
+      image: "/assets/exp-movement-games-D8fA85pM.jpg",
+      description: "Childlike agility games, animal crawls, and spatial awareness challenges."
+    },
+    {
+      name: "Kalaripayattu Basics",
+      tag: "Martial Arts",
+      image: "/assets/exp-kalaripayattu-C7Qe6AxD.jpg",
+      description: "Ancient Kerala warrior training, animal stances, and sacred salutations."
+    },
+    {
+      name: "Instinctive Archery",
+      tag: "Focus",
+      image: "/assets/exp-archery2-0hoNlSIX.jpg",
+      description: "Aiming with somatic intuition and breath instead of mechanical sights."
+    },
+    {
+      name: "Botanical Fabric Dyeing",
+      tag: "Craft",
+      image: "/assets/exp-nature-dyeing-DfH3LHgu.jpg",
+      description: "Extracting pigments from marigold petals, madder roots, and indigo leaves."
+    },
+    {
+      name: "Haiku & Forest Writing",
+      tag: "Expression",
+      image: "/assets/exp-poetry2-BV8X__Dd.jpg",
+      description: "Capturing fleeting natural phenomena in three precise, observant lines."
+    },
+    {
+      name: "Organic Soap Crafting",
+      tag: "Craft",
+      image: "/assets/exp-soap2-D9Vp9Q7O.jpg",
+      description: "Cold-pressed coconut oils, essential eucalyptus, and raw botanical botanics."
+    },
+    {
+      name: "Flow Arts & Poi Spinning",
+      tag: "Flow",
+      image: "/assets/exp-poi-Bptx27wk.jpg",
+      description: "Geometric momentum patterns and bilateral brain integration."
+    },
+    {
+      name: "Physical Theatre & Mask",
+      tag: "Play",
+      image: "/assets/exp-theatre-BilO6iDM.jpg",
+      description: "Exploring hidden archetypes through wooden masks and exaggerated physicality."
+    },
+    {
+      name: "Acoustic Sound Bathing",
+      tag: "Sound",
+      image: "/assets/exp-soundhealing-bh_dbDly.jpg",
+      description: "Deep frequency entrainment using Tibetan gongs, chimes, and tribal flutes."
+    },
+    {
+      name: "Women's Sacred Circle",
+      tag: "Community",
+      image: "/assets/exp-womenscircle2-C34OYNr0.jpg",
+      description: "Unfiltered storytelling, womb resonance, and mutual sisterhood support."
+    },
+    {
+      name: "Men's Fire Council",
+      tag: "Community",
+      image: "/assets/lineup-bg-DjELvPCs.jpg",
+      description: "Vulnerability without bravado. Honest accountability around the midnight embers."
+    },
+    {
+      name: "Parkour & Natural Agility",
+      tag: "Movement",
+      image: "/assets/exp-parkour-D8q-XmT6.jpg",
+      description: "Vaulting boulders, balancing on trunks, and fluent locomotion across earth."
+    },
+    {
+      name: "Heart-to-Heart Inquiry",
+      tag: "Community",
+      image: "/assets/exp-love-feels-safe-CIMGKwXK.jpg",
+      description: "Deep structured dyad inquiries that reveal our shared human condition."
+    }
+  ] as WorkshopItem[],
+
   about: {
     founder: {
       name: "Jijo",
-      title: "Founder, HIGH on Life & AANMAA Movement Collective",
-      story: "I’ve been to many festivals, teaching movement and watching people dance, laugh, and celebrate through the night. But I often noticed that people needed alcohol or substances to truly let go. Then there were retreats. Everything was quiet, structured and deeply spiritual. I always felt there was something beautiful missing in between. I wanted to create a space where you could dance like nobody is watching, play like a child, create freely, connect deeply and feel completely alive. A space where you don’t need anything outside of yourself to experience joy. That’s how the idea of HIGH on Life was born.",
+      role: "Movement Artist & Founder",
+      collective: "AANMAA Movement Collective",
+      story: "I’ve spent years traveling between loud festivals and quiet retreats. At festivals, people danced wildly, but almost everyone depended on alcohol or substances to let go. At retreats, the energy was peaceful, but everything was quiet, structured, and solemn. I realized something vital was missing in between: a sanctuary where you can dance without inhibitions, play like a child, shout at the top of your lungs, and connect intimately—without needing a single drop of alcohol or drugs to unlock that joy. Life itself is the ultimate high.",
       image: "/assets/founder-jijo-Bwk7A7Rz.png"
     },
     spiritAnimal: {
-      name: "The Magical Dragonfly",
-      story: "A dragonfly begins its life underwater, as a larva. Then, one day, it slowly crawls out of the water and encounters the sun for the very first time. Exposed to its warmth and intensity, it endures hours of transformation as its body slowly changes and its wings begin to emerge. And then, magically, it takes flight. Just like the dragonfly’s four wings work together in an infinite rhythm to create its magical flight without ever needing to learn how. When Movement, Nature, Art and Playfulness come together, they create the ALIVENESS we need to live life at its highest."
+      name: "The Dragonfly",
+      tagline: "Symbol of Transformation & Weightless Flight",
+      story: "A dragonfly spends the first stage of its life submerged underwater as a nymph. One dawn, it crawls into the sunlight and undergoes hours of rigorous transformation until iridescent wings unfold. It takes flight with four wings operating in harmonious counter-rhythm. When Movement, Nature, Art, and Community unite, our spirit takes flight in exactly the same way."
     }
   },
+
   tickets: {
     phases: [
       {
-        name: "Phase 1",
-        note: "Get in first. Get the best price.",
+        id: "phase-1",
+        name: "Phase 01",
+        badge: "EARLY INTAKE",
+        note: "Limited allocation for early seekers.",
         items: [
-          { id: "p1-tent", type: "Tent Stay", price: "₹13,333", rawPrice: 13333, limit: "First 50 participants" },
-          { id: "p1-shared", type: "Shared Stay in Villa", price: "₹16,666", rawPrice: 16666, limit: "First 50 participants" },
-          { id: "p1-double", type: "Double Occupancy Room", price: "₹18,888", rawPrice: 18888, limit: "First 20 participants" },
-          { id: "p1-single", type: "Single Occupancy Room", price: "₹24,999", rawPrice: 24999, limit: "Until August 31" }
+          { id: "p1-tent", type: "Tent Stay", price: "₹13,333", rawPrice: 13333, limit: "First 50 participants", features: ["Camping gear provided", "Access to all workshops", "Organic festival meals"] },
+          { id: "p1-shared", type: "Shared Stay in Villa", price: "₹16,666", rawPrice: 16666, limit: "First 50 participants", features: ["Shared luxury villa", "Ensuite bathroom", "All meals included"] },
+          { id: "p1-double", type: "Double Occupancy Room", price: "₹18,888", rawPrice: 18888, limit: "First 20 participants", features: ["Private room for two", "Eco-village garden view", "All inclusive pass"] },
+          { id: "p1-single", type: "Single Occupancy Room", price: "₹24,999", rawPrice: 24999, limit: "Until August 31", features: ["Exclusive private suite", "Dedicated concierge", "Full festival pass"] }
         ]
       },
       {
-        name: "Phase 2",
-        note: "Next allocation.",
+        id: "phase-2",
+        name: "Phase 02",
+        badge: "GENERAL RELEASE",
+        note: "Standard allocation tier.",
         items: [
-          { id: "p2-tent", type: "Tent Stay", price: "₹14,444", rawPrice: 14444, limit: "Next 50 participants" },
-          { id: "p2-shared", type: "Shared Stay in Villa", price: "₹17,777", rawPrice: 17777, limit: "Next 50 participants" },
-          { id: "p2-double", type: "Double Occupancy Room", price: "₹19,999", rawPrice: 19999, limit: "Final 20 participants" },
-          { id: "p2-single", type: "Single Occupancy Room", price: "₹25,999", rawPrice: 25999, limit: "Until September 23" }
+          { id: "p2-tent", type: "Tent Stay", price: "₹14,444", rawPrice: 14444, limit: "Next 50 participants", features: ["Camping gear provided", "Access to all workshops", "Organic festival meals"] },
+          { id: "p2-shared", type: "Shared Stay in Villa", price: "₹17,777", rawPrice: 17777, limit: "Next 50 participants", features: ["Shared luxury villa", "Ensuite bathroom", "All meals included"] },
+          { id: "p2-double", type: "Double Occupancy Room", price: "₹19,999", rawPrice: 19999, limit: "Final 20 participants", features: ["Private room for two", "Eco-village garden view", "All inclusive pass"] },
+          { id: "p2-single", type: "Single Occupancy Room", price: "₹25,999", rawPrice: 25999, limit: "Until September 23", features: ["Exclusive private suite", "Dedicated concierge", "Full festival pass"] }
         ]
       },
       {
-        name: "Phase 3",
-        note: "The last chance to come HIGH.",
+        id: "phase-3",
+        name: "Phase 03",
+        badge: "FINAL CALL",
+        note: "Last remaining passes before festival start.",
         items: [
-          { id: "p3-tent", type: "Tent Stay", price: "₹15,555", rawPrice: 15555, limit: "General Allocation" },
-          { id: "p3-shared", type: "Shared Stay in Villa", price: "₹18,888", rawPrice: 18888, limit: "General Allocation" },
-          { id: "p3-double", type: "Double Occupancy Room", price: "₹21,999", rawPrice: 21999, limit: "General Allocation" },
-          { id: "p3-single", type: "Single Occupancy Room", price: "₹26,999", rawPrice: 26999, limit: "After September 23" }
+          { id: "p3-tent", type: "Tent Stay", price: "₹15,555", rawPrice: 15555, limit: "Final remaining slots", features: ["Camping gear provided", "Access to all workshops", "Organic festival meals"] },
+          { id: "p3-shared", type: "Shared Stay in Villa", price: "₹18,888", rawPrice: 18888, limit: "Final remaining slots", features: ["Shared luxury villa", "Ensuite bathroom", "All meals included"] },
+          { id: "p3-double", type: "Double Occupancy Room", price: "₹21,999", rawPrice: 21999, limit: "Final remaining slots", features: ["Private room for two", "Eco-village garden view", "All inclusive pass"] },
+          { id: "p3-single", type: "Single Occupancy Room", price: "₹26,999", rawPrice: 26999, limit: "After September 23", features: ["Exclusive private suite", "Dedicated concierge", "Full festival pass"] }
         ]
       }
     ]

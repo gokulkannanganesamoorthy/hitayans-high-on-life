@@ -1,33 +1,30 @@
 @use './variables.scss' as *;
 
-@font-face {
-  font-family: 'Pokinca';
-  src: url('/fonts/Pokinca.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Caliburn-Bold';
-  src: url('/fonts/Caliburn-Bold.otf') format('opentype');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --color-bg: #{$color-bg};
+  --color-bg-dark: #{$color-bg-dark};
+  --color-card-dark: #{$color-card-dark};
   --color-text: #{$color-text};
+  --color-text-muted: #{$color-text-muted};
+  --color-text-light: #{$color-text-light};
   --color-accent: #{$color-accent};
+  --color-accent-vibrant: #{$color-accent-vibrant};
+  --color-gold: #{$color-gold};
   --font-display: #{$font-display};
+  --font-serif: #{$font-serif};
   --font-sans: #{$font-sans};
+  --grid-margin: #{$grid-margin};
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--color-bg);
 }
 
 body {
@@ -37,14 +34,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  cursor: none; // Using custom cursor
+  cursor: none;
+  line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: normal;
-  line-height: 0.9;
-  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: inherit;
+}
+
+.serif-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+p {
+  font-family: var(--font-sans);
 }
 
 a {
@@ -54,6 +63,10 @@ a {
 
 ul {
   list-style: none;
+}
+
+button {
+  font-family: var(--font-sans);
 }
 
 .lenis {
@@ -79,6 +92,6 @@ ul {
   height: 100vh;
   pointer-events: none;
   z-index: 9990;
-  opacity: 0.045;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }

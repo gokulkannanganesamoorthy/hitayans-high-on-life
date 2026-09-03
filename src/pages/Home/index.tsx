@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { content } from '../../data/content';
+import { content, type WorkshopItem } from '../../data/content';
 import TicketModal from '../../components/TicketModal';
 import './Home.scss';
 
@@ -10,62 +10,64 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
+  const heroTitleRef = useRef<HTMLHeadingElement>(null);
+  const heroImageRef = useRef<HTMLDivElement>(null);
 
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
+  const [activeWorkshopFilter, setActiveWorkshopFilter] = useState<string>('All');
 
   const openTickets = (tierId?: string) => {
     setSelectedTierId(tierId || null);
     setIsTicketModalOpen(true);
   };
 
+  const workshopFilters = ['All', 'Movement', 'Strength', 'Play', 'Craft', 'Sound', 'Community'];
+
+  const filteredWorkshops = activeWorkshopFilter === 'All'
+    ? content.workshops
+    : content.workshops.filter((w: WorkshopItem) => w.tag.toLowerCase() === activeWorkshopFilter.toLowerCase());
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero Load Animation
+      // Hero entrance
       const tl = gsap.timeline();
       
-      tl.from('.hero-meta', {
-        y: 20,
+      tl.from('.hero-badge-strip', {
+        y: -20,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        delay: 0.1
+      })
+      .from('.hero-line-item', {
+        y: 60,
         opacity: 0,
         duration: 1,
-        ease: 'power3.out',
-        delay: 0.2
-      })
-      .from('.title-line span', {
-        y: '100%',
-        duration: 1.2,
-        stagger: 0.1,
+        stagger: 0.12,
         ease: 'power4.out'
-      }, '-=0.8')
-      .from(imageRef.current, {
-        scale: 1.1,
+      }, '-=0.6')
+      .from('.hero-sub-block', {
+        y: 30,
         opacity: 0,
-        duration: 1.5,
+        duration: 0.8,
+        ease: 'power3.out'
+      }, '-=0.6')
+      .from(heroImageRef.current, {
+        scale: 1.12,
+        opacity: 0.3,
+        duration: 1.4,
         ease: 'power2.out'
-      }, '-=1');
+      }, '-=1.2');
 
-      // Parallax Image
-      gsap.to(imageRef.current, {
-        yPercent: 30,
+      // Parallax scroll on hero image
+      gsap.to(heroImageRef.current, {
+        yPercent: 20,
         ease: 'none',
         scrollTrigger: {
           trigger: heroRef.current,
           start: 'top top',
           end: 'bottom top',
-          scrub: true
-        }
-      });
-      
-      // Text Fade on Scroll
-      gsap.to(titleRef.current, {
-        opacity: 0,
-        y: -50,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'center top',
           scrub: true
         }
       });
@@ -76,81 +78,102 @@ export default function Home() {
 
   return (
     <div className="page-home">
+      {/* 01 HERO SECTION */}
       <section className="section-hero" ref={heroRef}>
-        <div className="hero-content">
-          <div className="hero-meta">
-            <span>{content.hero.est}</span>
-            <span>{content.hero.dates}</span>
+        <div className="hero-backdrop" ref={heroImageRef} style={{ backgroundImage: `url(${content.hero.imageBg})` }} />
+        <div className="hero-scrim" />
+
+        <div className="hero-inner">
+          <div className="hero-badge-strip">
+            <span className="badge-pill">{content.hero.est}</span>
+            <span className="badge-divider">•</span>
+            <span className="badge-pill">{content.hero.dates}</span>
+            <span className="badge-divider">•</span>
+            <span className="badge-pill">{content.hero.location}</span>
           </div>
-          
-          <h1 className="hero-title" ref={titleRef}>
-            <div className="title-line">
-              <span>ALIVENESS</span>
+
+          <div className="hero-main-title-wrap">
+            <h1 className="hero-title" ref={heroTitleRef}>
+              <span className="hero-line-item">ALIVENESS IS</span>
+              <span className="hero-line-item text-accent">THE ULTIMATE</span>
+              <span className="hero-line-item">HIGH</span>
+            </h1>
+          </div>
+
+          <div className="hero-sub-block">
+            <p className="hero-tagline">{content.hero.tagline}</p>
+            <div className="hero-cta-group">
+              <button 
+                className="hero-primary-btn" 
+                onClick={() => openTickets()} 
+                data-cursor-view="BOOK"
+              >
+                RESERVE FESTIVAL PASS →
+              </button>
+              <a href="#spaces" className="hero-secondary-btn" data-cursor-view="EXPLORE">
+                EXPLORE 09 SPACES ↓
+              </a>
             </div>
-            <div className="title-line indent">
-              <span>IS THE</span>
-            </div>
-            <div className="title-line">
-              <span>ULTIMATE</span>
-            </div>
-            <div className="title-line right">
-              <span>HIGH</span>
-            </div>
-          </h1>
-        </div>
-        
-        <div className="hero-image-wrapper">
-          <div 
-            className="hero-image" 
-            ref={imageRef}
-            style={{ backgroundImage: `url(${content.hero.imageBg})` }}
-          />
+          </div>
         </div>
       </section>
-      
-      {/* 01 Philosophy */}
-      <section className="section-philosophy">
+
+      {/* 02 PHILOSOPHY / MANIFESTO */}
+      <section className="section-philosophy" id="philosophy">
         <div className="container">
-          <h2 className="statement">{content.philosophy.statement}</h2>
-          
-          <div className="philosophy-grid">
-            {content.philosophy.points.map((point, idx) => (
-              <div key={idx} className="philosophy-item">
-                <span className="item-num">0{idx + 1}</span>
-                <h3>{point.title}</h3>
-                <p>{point.description}</p>
+          <div className="philosophy-header">
+            <span className="section-kicker">{content.philosophy.lead}</span>
+            <h2 className="manifesto-statement serif-title">
+              "{content.philosophy.statement}"
+            </h2>
+          </div>
+
+          <div className="philosophy-pillars-grid">
+            {content.philosophy.points.map((pt, i) => (
+              <div key={i} className="pillar-card">
+                <div className="pillar-num">{pt.number}</div>
+                <h3 className="pillar-title">{pt.title}</h3>
+                <p className="pillar-desc">{pt.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 02 Experience Spaces */}
+      {/* 03 09 EXPERIENCE SPACES */}
       <section className="section-spaces" id="spaces">
         <div className="container">
-          <div className="section-header-flex">
-            <h2 className="section-heading">09 EXPERIENCE SPACES</h2>
-            <span className="section-caption">CLICK TO EXPLORE ARCHITECTURE & SENSORY LABS</span>
+          <div className="section-title-row">
+            <div>
+              <span className="section-kicker">CURATED SANCTUARIES</span>
+              <h2 className="section-main-title">09 EXPERIENCE SPACES</h2>
+            </div>
+            <p className="section-lead-note">
+              Designed as sensory chambers across CocoNest Eco Village. Tap any space for full architectural details and activations.
+            </p>
           </div>
-          <div className="spaces-list">
+
+          <div className="spaces-directory">
             {content.spaces.map((space, idx) => (
               <Link 
                 to={`/space/${space.id}`} 
                 key={space.id} 
-                className="space-item" 
-                data-cursor-view="EXPLORE"
+                className="space-row"
+                data-cursor-view="VIEW"
               >
-                <div className="space-meta">
-                  <span>0{idx + 1}</span>
+                <div className="row-col-num">0{idx + 1}</div>
+                <div className="row-col-main">
+                  <h3 className="space-name">{space.name}</h3>
+                  <span className="space-subtitle">{space.subtitle}</span>
                 </div>
-                <div className="space-title">
-                  <h2>{space.name}</h2>
-                  <span className="space-subtitle-tag">{space.subtitle}</span>
+                <div className="row-col-tag">
+                  <span className="tag-pill">{space.energyLevel}</span>
                 </div>
-                <div className="space-action">
-                  <span className="arrow-text">VIEW SPACE →</span>
+                <div className="row-col-action">
+                  <span className="action-text">EXPLORE SPACE</span>
+                  <span className="action-arrow">→</span>
                 </div>
-                <div className="space-preview">
+                <div className="space-hover-thumb">
                   <img src={space.image} alt={space.name} loading="lazy" />
                 </div>
               </Link>
@@ -159,116 +182,193 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 03 Workshops */}
+      {/* 04 WORKSHOPS & ACTIVITIES */}
       <section className="section-workshops" id="workshops">
         <div className="container">
-          <h2 className="section-heading">{content.workshops.title}</h2>
-          
-          <div className="workshops-masonry">
-             {content.workshops.categories.flatMap(cat => cat.items).map((workshop, idx) => (
-                <div key={idx} className={`workshop-card layout-${idx % 3}`}>
-                  <div className="image-wrap">
-                    <img src={workshop.image} alt={workshop.name} loading="lazy" />
-                  </div>
-                  <h3>{workshop.name}</h3>
-                </div>
-             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 04 About & Collective Story */}
-      <section className="section-about" id="about">
-        <div className="container">
-          <div className="about-editorial-grid">
-            <div className="about-narrative">
-              <span className="section-heading">THE ORIGIN & FOUNDER</span>
-              <h2>THE GENESIS OF A SUBSTANCE-FREE FESTIVAL</h2>
-              <blockquote className="founder-quote">
-                "{content.about.founder.story}"
-              </blockquote>
-              <div className="founder-meta">
-                <strong>{content.about.founder.name}</strong>
-                <span>{content.about.founder.title}</span>
-              </div>
+          <div className="section-title-row">
+            <div>
+              <span className="section-kicker">DAILY IMMERSION</span>
+              <h2 className="section-main-title">25+ CONSCIOUS WORKSHOPS</h2>
             </div>
-
-            <div className="about-imagery">
-              <div className="founder-image-frame">
-                <img src={content.about.founder.image} alt={content.about.founder.name} />
-              </div>
-              <div className="spirit-animal-box">
-                <span className="spirit-tag">OFFICIAL SPIRIT ANIMAL</span>
-                <h3>{content.about.spiritAnimal.name}</h3>
-                <p>{content.about.spiritAnimal.story}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 05 Tickets & Accommodation */}
-      <section className="section-tickets" id="tickets">
-         <div className="container">
-            <div className="section-header-flex">
-              <h2 className="section-heading">TICKETS & ACCOMMODATION</h2>
-              <button 
-                className="reserve-hero-btn" 
-                onClick={() => openTickets()}
-                data-cursor-view="BOOK"
-              >
-                RESERVE FESTIVAL PASS →
-              </button>
-            </div>
-
-            <div className="phases-grid">
-              {content.tickets.phases.map((phase, idx) => (
-                <div key={idx} className="phase-card">
-                  <div className="phase-header">
-                    <h3>{phase.name}</h3>
-                    <p>{phase.note}</p>
-                  </div>
-                  <ul className="phase-pricing">
-                    {phase.items.map((item, i) => (
-                       <li 
-                         key={i} 
-                         className="pricing-row"
-                         onClick={() => openTickets(item.id)}
-                         data-cursor-view="RESERVE"
-                       >
-                         <div className="type-col">
-                           <span className="type">{item.type}</span>
-                           <span className="limit">{item.limit}</span>
-                         </div>
-                         <div className="price-col">
-                           <span className="price">{item.price}</span>
-                           <span className="book-link">SELECT →</span>
-                         </div>
-                       </li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="workshop-filter-pills">
+              {workshopFilters.map(filter => (
+                <button
+                  key={filter}
+                  className={`filter-btn ${activeWorkshopFilter === filter ? 'active' : ''}`}
+                  onClick={() => setActiveWorkshopFilter(filter)}
+                >
+                  {filter}
+                </button>
               ))}
             </div>
-         </div>
+          </div>
+
+          <div className="workshops-grid">
+            {filteredWorkshops.map((workshop: WorkshopItem, idx: number) => (
+              <div key={idx} className="workshop-card" data-cursor-view="WORKSHOP">
+                <div className="workshop-image-box">
+                  <img src={workshop.image} alt={workshop.name} loading="lazy" />
+                  <span className="workshop-badge">{workshop.tag}</span>
+                </div>
+                <div className="workshop-info">
+                  <h4 className="workshop-title">{workshop.name}</h4>
+                  <p className="workshop-desc">{workshop.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
-      
+
+      {/* 05 ABOUT / FOUNDER & SPIRIT ANIMAL */}
+      <section className="section-about" id="about">
+        <div className="container">
+          <div className="about-editorial-wrap">
+            <div className="about-narrative-col">
+              <span className="section-kicker">THE ORIGIN & FOUNDER</span>
+              <h2 className="about-heading serif-title">
+                The Genesis of a Substance-Free Festival
+              </h2>
+              
+              <div className="quote-box">
+                <p className="founder-quote-text">
+                  "{content.about.founder.story}"
+                </p>
+                <div className="founder-signature">
+                  <strong>{content.about.founder.name}</strong>
+                  <span>{content.about.founder.role} • {content.about.founder.collective}</span>
+                </div>
+              </div>
+
+              <div className="spirit-animal-card">
+                <div className="spirit-header">
+                  <span className="spirit-icon">🦋</span>
+                  <div>
+                    <h4>{content.about.spiritAnimal.name}</h4>
+                    <span className="spirit-sub">{content.about.spiritAnimal.tagline}</span>
+                  </div>
+                </div>
+                <p className="spirit-story">{content.about.spiritAnimal.story}</p>
+              </div>
+            </div>
+
+            <div className="about-portrait-col">
+              <div className="portrait-frame">
+                <img src={content.about.founder.image} alt={content.about.founder.name} />
+                <div className="portrait-caption">
+                  <span>JIJO — CO-CREATOR & MOVEMENT ARTIST</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 06 TICKETS & ACCOMMODATION */}
+      <section className="section-tickets" id="tickets">
+        <div className="container">
+          <div className="tickets-intro-row">
+            <div>
+              <span className="section-kicker light">JOIN THE SANCTUARY</span>
+              <h2 className="section-main-title light">PASSES & ACCOMMODATION</h2>
+              <p className="tickets-subtitle">
+                3 Full Days in Pollachi • All 25+ Workshops • Organic Village Meals • Sacred Spaces Access
+              </p>
+            </div>
+            <button 
+              className="quick-reserve-btn"
+              onClick={() => openTickets()}
+              data-cursor-view="RESERVE"
+            >
+              CUSTOM ALLOCATION PASS →
+            </button>
+          </div>
+
+          <div className="phases-columns-grid">
+            {content.tickets.phases.map(phase => (
+              <div key={phase.id} className="phase-column-card">
+                <div className="phase-card-header">
+                  <div className="phase-badge">{phase.badge}</div>
+                  <h3 className="phase-title">{phase.name}</h3>
+                  <p className="phase-note">{phase.note}</p>
+                </div>
+
+                <div className="phase-items-list">
+                  {phase.items.map(tier => (
+                    <div 
+                      key={tier.id} 
+                      className="tier-ticket-row"
+                      onClick={() => openTickets(tier.id)}
+                      data-cursor-view="BOOK"
+                    >
+                      <div className="tier-info">
+                        <span className="tier-name">{tier.type}</span>
+                        <span className="tier-limit">{tier.limit}</span>
+                      </div>
+                      <div className="tier-price-box">
+                        <span className="tier-price">{tier.price}</span>
+                        <span className="tier-select-action">RESERVE →</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="festival-guarantee-strip">
+            <div className="guarantee-item">
+              <span className="g-icon">🌿</span>
+              <p><strong>100% Substance Free</strong> — No alcohol, recreational drugs, or smoking.</p>
+            </div>
+            <div className="guarantee-item">
+              <span className="g-icon">🏡</span>
+              <p><strong>Eco-Village Stay</strong> — Nestled inside lush palm groves of Pollachi.</p>
+            </div>
+            <div className="guarantee-item">
+              <span className="g-icon">🎟️</span>
+              <p><strong>Transferable Passes</strong> — Passes can be transferred if plans shift.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 07 FOOTER */}
       <footer className="main-footer">
         <div className="container">
-          <div className="footer-content">
-             <h2>HIGH ON LIFE</h2>
-             <p>CocoNest Eco Village, Pollachi</p>
-             <p>23 - 25 Oct 2026</p>
-             <div className="footer-links">
-               <a href="tel:+917338821898">+91 733-8821898</a>
-               <span>•</span>
-               <a href="https://instagram.com/highonlifefest" target="_blank" rel="noopener noreferrer">@highonlifefest</a>
-             </div>
+          <div className="footer-top">
+            <div className="footer-brand">
+              <h2 className="footer-logo-text">HIGH ON LIFE</h2>
+              <p className="footer-manifesto-text">
+                A conscious 3-day festival celebrating movement, vocal release, creative craft, and human connection without substances.
+              </p>
+            </div>
+
+            <div className="footer-details-grid">
+              <div className="footer-detail-col">
+                <span className="detail-label">LOCATION</span>
+                <p>CocoNest Eco Village<br />Pollachi, Tamil Nadu, India</p>
+              </div>
+              <div className="footer-detail-col">
+                <span className="detail-label">DATES</span>
+                <p>23 — 25 October 2026<br />Friday Dawn — Sunday Twilight</p>
+              </div>
+              <div className="footer-detail-col">
+                <span className="detail-label">COMMUNICATION</span>
+                <p><a href="tel:+917338821898">+91 733-8821898</a></p>
+                <p><a href="https://instagram.com/highonlifefest" target="_blank" rel="noopener noreferrer">@highonlifefest</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <span>© 2026 HIGH ON LIFE FESTIVAL. ALL RIGHTS RESERVED.</span>
+            <span>ALIVENESS IS THE ULTIMATE HIGH</span>
           </div>
         </div>
       </footer>
 
-      {/* Interactive Reservation Drawer */}
+      {/* TICKET RESERVATION MODAL */}
       <TicketModal 
         isOpen={isTicketModalOpen} 
         onClose={() => setIsTicketModalOpen(false)}
