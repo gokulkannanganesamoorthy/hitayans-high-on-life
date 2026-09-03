@@ -5,8 +5,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Home from './pages/Home';
+import SpaceDetail from './pages/SpaceDetail';
 import Cursor from './components/Cursor';
 import Navigation from './components/Navigation';
+import Soundscape from './components/Soundscape';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,24 +25,29 @@ function App() {
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const tickerCallback = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
 
+    gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
       lenis.destroy();
+      gsap.ticker.remove(tickerCallback);
     };
   }, []);
 
   return (
     <Router>
+      <div className="grain-overlay" aria-hidden="true" />
       <Cursor />
       <Navigation />
+      <Soundscape />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/space/:id" element={<SpaceDetail />} />
         </Routes>
       </main>
     </Router>

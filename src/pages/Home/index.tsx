@@ -1,7 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { content } from '../../data/content';
+import TicketModal from '../../components/TicketModal';
 import './Home.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,6 +12,14 @@ export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+
+  const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
+  const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
+
+  const openTickets = (tierId?: string) => {
+    setSelectedTierId(tierId || null);
+    setIsTicketModalOpen(true);
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -98,6 +108,7 @@ export default function Home() {
         </div>
       </section>
       
+      {/* 01 Philosophy */}
       <section className="section-philosophy">
         <div className="container">
           <h2 className="statement">{content.philosophy.statement}</h2>
@@ -114,27 +125,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 02 Experience Spaces */}
       <section className="section-spaces" id="spaces">
         <div className="container">
-          <h2 className="section-heading">EXPERIENCE SPACES</h2>
+          <div className="section-header-flex">
+            <h2 className="section-heading">09 EXPERIENCE SPACES</h2>
+            <span className="section-caption">CLICK TO EXPLORE ARCHITECTURE & SENSORY LABS</span>
+          </div>
           <div className="spaces-list">
             {content.spaces.map((space, idx) => (
-              <div key={space.id} className="space-item" data-cursor-view="EXPLORE">
+              <Link 
+                to={`/space/${space.id}`} 
+                key={space.id} 
+                className="space-item" 
+                data-cursor-view="EXPLORE"
+              >
                 <div className="space-meta">
                   <span>0{idx + 1}</span>
                 </div>
                 <div className="space-title">
                   <h2>{space.name}</h2>
+                  <span className="space-subtitle-tag">{space.subtitle}</span>
+                </div>
+                <div className="space-action">
+                  <span className="arrow-text">VIEW SPACE →</span>
                 </div>
                 <div className="space-preview">
                   <img src={space.image} alt={space.name} loading="lazy" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
+      {/* 03 Workshops */}
       <section className="section-workshops" id="workshops">
         <div className="container">
           <h2 className="section-heading">{content.workshops.title}</h2>
@@ -152,9 +177,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 04 About & Collective Story */}
+      <section className="section-about" id="about">
+        <div className="container">
+          <div className="about-editorial-grid">
+            <div className="about-narrative">
+              <span className="section-heading">THE ORIGIN & FOUNDER</span>
+              <h2>THE GENESIS OF A SUBSTANCE-FREE FESTIVAL</h2>
+              <blockquote className="founder-quote">
+                "{content.about.founder.story}"
+              </blockquote>
+              <div className="founder-meta">
+                <strong>{content.about.founder.name}</strong>
+                <span>{content.about.founder.title}</span>
+              </div>
+            </div>
+
+            <div className="about-imagery">
+              <div className="founder-image-frame">
+                <img src={content.about.founder.image} alt={content.about.founder.name} />
+              </div>
+              <div className="spirit-animal-box">
+                <span className="spirit-tag">OFFICIAL SPIRIT ANIMAL</span>
+                <h3>{content.about.spiritAnimal.name}</h3>
+                <p>{content.about.spiritAnimal.story}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 05 Tickets & Accommodation */}
       <section className="section-tickets" id="tickets">
          <div className="container">
-            <h2 className="section-heading">TICKETS & ACCOMMODATION</h2>
+            <div className="section-header-flex">
+              <h2 className="section-heading">TICKETS & ACCOMMODATION</h2>
+              <button 
+                className="reserve-hero-btn" 
+                onClick={() => openTickets()}
+                data-cursor-view="BOOK"
+              >
+                RESERVE FESTIVAL PASS →
+              </button>
+            </div>
+
             <div className="phases-grid">
               {content.tickets.phases.map((phase, idx) => (
                 <div key={idx} className="phase-card">
@@ -164,9 +230,20 @@ export default function Home() {
                   </div>
                   <ul className="phase-pricing">
                     {phase.items.map((item, i) => (
-                       <li key={i}>
-                         <span className="type">{item.type}</span>
-                         <span className="price">{item.price}</span>
+                       <li 
+                         key={i} 
+                         className="pricing-row"
+                         onClick={() => openTickets(item.id)}
+                         data-cursor-view="RESERVE"
+                       >
+                         <div className="type-col">
+                           <span className="type">{item.type}</span>
+                           <span className="limit">{item.limit}</span>
+                         </div>
+                         <div className="price-col">
+                           <span className="price">{item.price}</span>
+                           <span className="book-link">SELECT →</span>
+                         </div>
                        </li>
                     ))}
                   </ul>
@@ -182,9 +259,21 @@ export default function Home() {
              <h2>HIGH ON LIFE</h2>
              <p>CocoNest Eco Village, Pollachi</p>
              <p>23 - 25 Oct 2026</p>
+             <div className="footer-links">
+               <a href="tel:+917338821898">+91 733-8821898</a>
+               <span>•</span>
+               <a href="https://instagram.com/highonlifefest" target="_blank" rel="noopener noreferrer">@highonlifefest</a>
+             </div>
           </div>
         </div>
       </footer>
+
+      {/* Interactive Reservation Drawer */}
+      <TicketModal 
+        isOpen={isTicketModalOpen} 
+        onClose={() => setIsTicketModalOpen(false)}
+        selectedTierId={selectedTierId}
+      />
     </div>
   );
 }
