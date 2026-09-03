@@ -15,6 +15,8 @@ import Cursor from './components/Cursor';
 import Navigation from './components/Navigation';
 import ScrollToTop from './components/ScrollToTop';
 
+import { Footer } from './components/Footer';
+
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
@@ -59,6 +61,7 @@ function App() {
           <Route path="/tickets" element={<TicketsPage />} />
         </Routes>
       </main>
+      <Footer />
     </Router>
   );
 }

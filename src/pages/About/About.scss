@@ -1,260 +1,335 @@
 @use '../../styles/variables.scss' as *;
 
-.page-about {
+.page-about-new {
   background-color: var(--color-bg);
   min-height: 100vh;
-  padding-top: 7rem;
+  padding-top: 5rem;
 
-  .about-hero-header {
+  /* 01 HERO SECTION */
+  .about-hero-new {
+    padding: 8rem 0;
+    text-align: center;
     background-color: var(--color-dark);
-    color: var(--color-text-light);
-    padding: 6rem 0 4.5rem;
-    border-bottom: 3px solid var(--color-dark);
+    color: var(--color-lime);
 
-    .badge-row {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-
-      .meta {
-        font-family: var(--font-sans);
-        font-size: 0.8rem;
-        letter-spacing: 0.15em;
-        opacity: 0.7;
-      }
-    }
-
-    .hero-title {
+    .hero-statement {
       font-family: var(--font-sans);
+      font-size: clamp(2rem, 5vw, 4rem);
       font-weight: 900;
+      line-height: 1.2;
+      max-width: 1000px;
+      margin: 0 auto 2rem;
       letter-spacing: -0.02em;
-      font-size: clamp(2.5rem, 6vw, 6rem);
-      margin-bottom: 1.5rem;
-      color: var(--color-lime);
-      line-height: 1.1;
     }
 
-    .hero-lead {
-      font-size: 1.2rem;
-      max-width: 720px;
-      line-height: 1.6;
-      opacity: 0.85;
+    .hero-substatement {
+      font-family: var(--font-sans);
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      font-weight: 500;
+      color: var(--color-bg);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.5;
+      opacity: 0.9;
     }
   }
 
-  .about-content-body {
-    padding: 8vh 0 12vh;
+  /* 02 SPIRIT ANIMAL */
+  .about-spirit-animal {
+    padding: 8rem 0;
+    background-color: var(--color-bg-alt); // Dark Teal
 
-    .chapter {
-      display: block;
-      font-family: var(--font-sans);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: var(--color-accent);
-      margin-bottom: 0.8rem;
+    .spirit-header {
+      text-align: center;
+      margin-bottom: 4rem;
+
+      .spirit-title {
+        font-family: var(--font-sans);
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: var(--color-lime);
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .spirit-subtitle {
+        font-family: var(--font-sans);
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 900;
+        color: var(--color-bg);
+        margin: 0;
+      }
     }
 
-    .subhead {
-      font-size: 2.8rem;
-      margin-bottom: 2.5rem;
-      color: var(--color-dark);
-    }
+    .spirit-video-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      
+      .video-placeholder {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #000;
+        border: 4px solid var(--color-lime);
+        cursor: pointer;
+        overflow: hidden;
 
-    .founder-story-split {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.7;
+          transition: transform 0.5s ease;
+        }
+
+        .play-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 4rem;
+          color: var(--color-lime);
+          text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+          transition: transform 0.2s ease;
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.05);
+          }
+          .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+          }
+        }
+      }
+    }
+  }
+
+  /* 03 FOUNDER STORY */
+  .about-founder-story {
+    padding: 8rem 0;
+    background-color: var(--color-bg);
+    border-bottom: 3px solid var(--color-dark);
+
+    .story-split {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 5rem;
-      margin-bottom: 8rem;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
 
       @media (max-width: 960px) {
         grid-template-columns: 1fr;
-        gap: 3.5rem;
       }
 
-      .letter-card {
-        background: transparent;
-        border-right: 1px solid rgba(0,0,0,0.1);
-        padding: 0 4rem 0 0;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        font-size: 1.05rem;
-        line-height: 1.7;
+      .story-visual {
+        .founder-img {
+          width: 100%;
+          height: auto;
+          border: 3px solid var(--color-dark);
+          box-shadow: 8px 8px 0px var(--color-dark);
+        }
+      }
 
-        .closing {
-          font-weight: 700;
-          color: var(--color-accent);
+      .story-content {
+        .story-title {
+          font-family: var(--font-sans);
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          color: var(--color-dark);
+          margin-bottom: 2.5rem;
+          line-height: 1.1;
         }
 
-        .signature-block {
-          border-top: 2px dashed rgba(10, 14, 12, 0.2);
-          padding-top: 1.5rem;
+        .letter-body {
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: #333;
           display: flex;
           flex-direction: column;
-          gap: 0.3rem;
+          gap: 1.2rem;
+
+          .highlight {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-card-dark);
+            margin: 1rem 0;
+          }
+        }
+
+        .signature {
+          margin-top: 3rem;
+          border-top: 2px dashed rgba(10, 14, 12, 0.2);
+          padding-top: 1.5rem;
 
           strong {
             font-family: var(--font-display);
-            font-size: 1.6rem;
-          }
-
-          span {
-            font-size: 0.85rem;
-            color: #555;
-          }
-
-          .social-tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--color-accent);
-            font-weight: 700;
-            margin-top: 0.4rem;
-          }
-        }
-      }
-
-      .visual-col {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-
-        .founder-portrait-box {
-          position: relative;
-          overflow: hidden;
-          background: rgba(0,0,0,0.05);
-
-          img {
-            width: 100%;
-            height: auto;
-            display: block;
-          }
-
-          .frame-tag {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--color-dark);
-            color: var(--color-lime);
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            padding: 0.8rem 1.2rem;
-          }
-        }
-
-        .aanmaa-box {
-          background: var(--color-dark);
-          color: #fff;
-          padding: 3.5rem;
-
-          h3 {
-            font-family: var(--font-sans);
-            font-weight: 800;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--color-lime);
-          }
-
-          p {
-            font-size: 1rem;
-            line-height: 1.65;
-            opacity: 0.9;
-          }
-        }
-      }
-    }
-
-    .spirit-animal-section {
-      margin-bottom: 8rem;
-
-      .spirit-container-box {
-        background: #0D1310;
-        color: #fff;
-        padding: 6rem 4rem;
-
-        .spirit-badge {
-          display: inline-block;
-          font-family: var(--font-sans);
-          font-size: 0.75rem;
-          font-weight: 700;
-          letter-spacing: 0.15em;
-          background: rgba(183, 240, 69, 0.15);
-          color: var(--color-lime);
-          padding: 0.4rem 0.9rem;
-          border-radius: 999px;
-          margin-bottom: 1.5rem;
-        }
-
-        .spirit-title {
-          font-family: var(--font-sans);
-          font-weight: 900;
-          letter-spacing: -0.02em;
-          font-size: clamp(2.5rem, 5vw, 4.5rem);
-          color: #fff;
-          margin-bottom: 2rem;
-        }
-
-        .spirit-text-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2.5rem;
-
-          @media (max-width: 860px) {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-          }
-
-          p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            opacity: 0.85;
-          }
-        }
-      }
-    }
-
-    .conduct-section {
-      .rules-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-
-        @media (max-width: 860px) {
-          grid-template-columns: 1fr;
-        }
-
-        .rule-card {
-          background: transparent;
-          border-top: 1px solid rgba(0, 0, 0, 0.15);
-          padding: 2.5rem 0;
-          display: flex;
-          flex-direction: column;
-
-          .num {
-            font-family: var(--font-sans);
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--color-accent);
-            margin-bottom: 1.5rem;
-          }
-
-          h3 {
-            font-family: var(--font-sans);
-            font-weight: 800;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
             color: var(--color-dark);
           }
+        }
+      }
+    }
+  }
 
-          p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #444;
+  /* 04 FESTIVAL EXP */
+  .about-festival-exp {
+    padding: 8rem 0;
+    background-color: var(--color-dark);
+    color: var(--color-bg);
+
+    .festival-header {
+      text-align: center;
+      margin-bottom: 5rem;
+      max-width: 800px;
+      margin-inline: auto;
+
+      .festival-title {
+        font-family: var(--font-sans);
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 900;
+        color: var(--color-lime);
+        margin-bottom: 1.5rem;
+      }
+
+      .festival-desc {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+    }
+
+    .exp-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 5rem;
+
+      @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-card {
+        background: transparent;
+        border: 2px solid var(--color-lime);
+        padding: 2.5rem;
+        transition: all 0.3s ease;
+
+        h3 {
+          font-family: var(--font-sans);
+          font-size: 1.5rem;
+          font-weight: 900;
+          color: var(--color-lime);
+          margin-bottom: 1rem;
+        }
+
+        p {
+          font-size: 1rem;
+          line-height: 1.5;
+          opacity: 0.8;
+        }
+
+        &:hover {
+          background: var(--color-lime);
+          transform: translateY(-5px);
+          h3 { color: var(--color-dark); }
+          p { color: var(--color-dark); opacity: 1; }
+        }
+      }
+    }
+
+    .festival-footer {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  /* 05 CORE TEAM */
+  .about-team {
+    padding: 8rem 0;
+    background-color: var(--color-bg);
+
+    .team-section-title {
+      font-family: var(--font-sans);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--color-dark);
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+
+      @media (max-width: 960px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+      }
+
+      .team-card {
+        text-align: center;
+
+        .team-photo {
+          width: 100%;
+          aspect-ratio: 1/1;
+          background: #EBE5CE;
+          border: 2px solid var(--color-dark);
+          margin-bottom: 1.5rem;
+          overflow: hidden;
+
+          .placeholder-photo {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 76, 77, 0.1);
+            color: var(--color-dark);
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
           }
+        }
+
+        .team-name {
+          font-family: var(--font-display);
+          font-size: 1.5rem;
+          color: var(--color-dark);
+          margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+          font-family: var(--font-sans);
+          font-size: 0.85rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          color: var(--color-card-dark);
+          margin-bottom: 1rem;
+          text-transform: uppercase;
+        }
+
+        .team-bio {
+          font-size: 0.95rem;
+          line-height: 1.5;
+          color: #555;
         }
       }
     }
