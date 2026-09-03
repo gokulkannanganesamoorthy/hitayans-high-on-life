@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     gap: 3rem;
 
-    .footer-brand {
+      .footer-brand {
       max-width: 400px;
       .footer-logo-text {
         font-family: var(--font-sans);
@@ -28,6 +28,7 @@
         color: var(--color-lime);
       }
       .footer-manifesto-text {
+        color: var(--color-bg);
         font-size: 1.05rem;
         line-height: 1.6;
         opacity: 0.8;
@@ -67,6 +68,7 @@
           display: block;
         }
         p {
+          color: var(--color-bg);
           font-size: 0.95rem;
           line-height: 1.6;
           margin-bottom: 0.5rem;
