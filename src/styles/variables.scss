@@ -3,23 +3,23 @@ $font-display: 'Pokinca', sans-serif;
 $font-sans: 'Caliburn-Bold', sans-serif;
 $font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-// BRUTALIST BRAND PALETTE
-$color-bg: #F4F0E6; // Raw organic canvas
-$color-bg-alt: #EAE4D6; // Darker stone
-$color-dark: #0A0E0C; // Deep brutalist obsidian
+// BRUTALIST BRAND PALETTE (Restricted: Cream, Green, Yellow)
+$color-bg: #F4F0E6; // Cream paper background
+$color-bg-alt: #0B4237; // Deep forest green
+$color-dark: #071D18; // Very dark green/almost black for text & borders
 $color-card-dark: #121815;
-$color-text: #0A0E0C; // High contrast dark text
+$color-text: #071D18; // High contrast dark text
 $color-text-light: #F4F0E6; // High contrast light text
-$color-accent: #20553B; // Deep sacred pine
-$color-accent-bright: #3BA368; // Vibrant leaf
-$color-lime: #B4F038; // Brutalist electric lime
-$color-gold: #DDA15E; // Festival harvest gold
+$color-accent: #0B4237; // Use forest green for accents instead of violet
+$color-accent-bright: #DDA15E; // Harvest Gold/Yellow
+$color-lime: #DDA15E; // Yellow/Gold instead of green/orange
+$color-gold: #DDA15E; // Yellow/Gold
 
 // BRUTALIST BORDERS & SHADOWS
-$border-heavy: 2px solid #0A0E0C;
-$border-light: 2px solid rgba(244, 240, 230, 0.2);
-$shadow-brutal: 4px 4px 0px #0A0E0C;
-$shadow-brutal-light: 4px 4px 0px rgba(244, 240, 230, 0.25);
+$border-heavy: 2px solid #071D18;
+$border-light: 2px solid rgba(7, 29, 24, 0.2);
+$shadow-brutal: 4px 4px 0px #071D18;
+$shadow-brutal-light: 4px 4px 0px rgba(7, 29, 24, 0.25);
 
 // GRID
 $grid-margin: 5vw;

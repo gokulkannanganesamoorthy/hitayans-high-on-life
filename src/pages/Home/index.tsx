@@ -1,21 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { content } from '../../data/content';
 import TicketModal from '../../components/TicketModal';
+import { HeroVariant1, HeroVariant2, HeroVariant3, HeroVariant4 } from '../../components/HeroVariants';
 import './Home.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const heroTitleRef = useRef<HTMLHeadingElement>(null);
-  const heroImageRef = useRef<HTMLDivElement>(null);
-
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
   const [activeWorkshopFilter, setActiveWorkshopFilter] = useState<string>('ALL');
+  const [heroVariant, setHeroVariant] = useState<number>(1);
 
   const openTickets = (tierId?: string) => {
     setSelectedTierId(tierId || null);
@@ -29,95 +27,16 @@ export default function Home() {
     : content.workshops.filter((w) => w.tag.toUpperCase() === activeWorkshopFilter);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-      
-      tl.from('.hero-badge-strip', {
-        y: -20,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        delay: 0.1
-      })
-      .from('.hero-line-item', {
-        y: 60,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.1,
-        ease: 'power4.out'
-      }, '-=0.5')
-      .from('.hero-sub-block', {
-        y: 30,
-        opacity: 0,
-        duration: 0.7,
-        ease: 'power3.out'
-      }, '-=0.5')
-      .from(heroImageRef.current, {
-        scale: 1.1,
-        opacity: 0.4,
-        duration: 1.2,
-        ease: 'power2.out'
-      }, '-=1.1');
-
-      gsap.to(heroImageRef.current, {
-        yPercent: 15,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
+    // Other setup logic could go here if needed in the future
   }, []);
 
   return (
     <div className="page-home">
-      {/* 01 HERO SECTION */}
-      <section className="section-hero" ref={heroRef}>
-        <div className="hero-backdrop" ref={heroImageRef} style={{ backgroundImage: `url(${content.hero.imageBg})` }} />
-        <div className="hero-scrim" />
-
-        <div className="hero-inner">
-          <div className="hero-badge-strip">
-            <span className="badge-pill">{content.hero.est}</span>
-            <span className="badge-divider">•</span>
-            <span className="badge-pill">{content.hero.dates}</span>
-            <span className="badge-divider">•</span>
-            <span className="badge-pill">{content.hero.location}</span>
-          </div>
-
-          <div className="hero-main-title-wrap">
-            <h1 className="hero-title" ref={heroTitleRef}>
-              <span className="hero-line-item">ALIVENESS IS</span>
-              <span className="hero-line-item highlight-lime">THE ULTIMATE</span>
-              <span className="hero-line-item">HIGH</span>
-            </h1>
-          </div>
-
-          <div className="hero-sub-block">
-            <p className="hero-tagline">{content.hero.tagline}</p>
-            <div className="hero-cta-group">
-              <button 
-                className="brutal-btn-primary" 
-                onClick={() => openTickets()} 
-                data-cursor-view="BOOK"
-              >
-                RESERVE PASS →
-              </button>
-              <Link to="/spaces" className="brutal-btn-secondary" data-cursor-view="SPACES">
-                ALL 09 SPACES
-              </Link>
-              <Link to="/workshops" className="brutal-btn-secondary" data-cursor-view="WORKSHOPS">
-                25+ WORKSHOPS
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 01 HERO SECTION (DYNAMIC VARIANTS) */}
+      {heroVariant === 1 && <HeroVariant1 onOpenTickets={openTickets} />}
+      {heroVariant === 2 && <HeroVariant2 onOpenTickets={openTickets} />}
+      {heroVariant === 3 && <HeroVariant3 onOpenTickets={openTickets} />}
+      {heroVariant === 4 && <HeroVariant4 onOpenTickets={openTickets} />}
 
       {/* 02 PHILOSOPHY MANIFESTO */}
       <section className="section-philosophy" id="philosophy">
@@ -320,15 +239,32 @@ export default function Home() {
 
           <div className="festival-guarantee-strip">
             <div className="guarantee-item">
-              <span className="g-icon">🌿</span>
+              <span className="g-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                </svg>
+              </span>
               <p><strong>100% Substance Free</strong> — Zero alcohol, drugs, or smoking allowed.</p>
             </div>
             <div className="guarantee-item">
-              <span className="g-icon">🏡</span>
+              <span className="g-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </span>
               <p><strong>CocoNest Eco-Village</strong> — Organic farm sanctuary in Pollachi.</p>
             </div>
             <div className="guarantee-item">
-              <span className="g-icon">🎟️</span>
+              <span className="g-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+                  <path d="M13 5v2"/>
+                  <path d="M13 17v2"/>
+                  <path d="M13 11v2"/>
+                </svg>
+              </span>
               <p><strong>Transferable Passes</strong> — Transferable up to 48 hours prior.</p>
             </div>
           </div>
@@ -383,6 +319,22 @@ export default function Home() {
         onClose={() => setIsTicketModalOpen(false)}
         selectedTierId={selectedTierId}
       />
+
+      {/* HERO VARIANT SWITCHER */}
+      <div className="hero-variant-switcher">
+        <span className="switcher-label">HERO CONCEPT</span>
+        <div className="switcher-buttons">
+          {[1, 2, 3, 4].map(v => (
+            <button 
+              key={v}
+              className={`variant-btn ${heroVariant === v ? 'active' : ''}`}
+              onClick={() => setHeroVariant(v)}
+            >
+              0{v}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

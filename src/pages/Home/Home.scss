@@ -43,6 +43,58 @@
     display: flex;
     justify-content: center;
   }
+
+  .hero-variant-switcher {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 1000;
+    background: var(--color-dark);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 2px solid var(--color-lime);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+
+    .switcher-label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--color-bg);
+      text-transform: uppercase;
+      opacity: 0.8;
+      padding-left: 0.2rem;
+    }
+
+    .switcher-buttons {
+      display: flex;
+      gap: 0.25rem;
+
+      .variant-btn {
+        background: transparent;
+        color: var(--color-text-light);
+        border: 1px solid rgba(240, 232, 208, 0.2);
+        padding: 0.35rem 0.6rem;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        &.active {
+          background: var(--color-lime);
+          color: var(--color-dark);
+          border-color: var(--color-lime);
+        }
+      }
+    }
+  }
 }
 
 /* ==========================================================================

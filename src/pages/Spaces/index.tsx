@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { content } from '../../data/content';
+import { SpacesVariant1, SpacesVariant2, SpacesVariant3, SpacesVariant4 } from '../../components/SpacesVariants';
 import './Spaces.scss';
 
 export default function SpacesPage() {
   const [filter, setFilter] = useState('ALL');
+  const [spacesVariant, setSpacesVariant] = useState<number>(1);
 
   const filteredSpaces = filter === 'ALL'
     ? content.spaces
@@ -40,45 +41,39 @@ export default function SpacesPage() {
       </header>
 
       <main className="spaces-catalog-section">
-        <div className="container">
-          <div className="spaces-brutalist-grid">
-            {filteredSpaces.map((space, idx) => (
-              <article key={space.id} className="space-brutal-card">
-                <div className="card-top-bar">
-                  <span className="space-idx">SPACE // 0{idx + 1}</span>
-                  <span className="energy-pill">{space.energyLevel}</span>
-                </div>
-
-                <div className="card-media">
-                  <img src={space.image} alt={space.name} loading="lazy" />
-                  <div className="card-media-overlay" />
-                </div>
-
-                <div className="card-body">
-                  <h2 className="space-title">{space.name}</h2>
-                  <p className="space-subhead">{space.subtitle}</p>
-                  <p className="space-summary">{space.description}</p>
-
-                  <div className="space-metrics">
-                    <div className="metric">
-                      <span className="lbl">CAPACITY</span>
-                      <span className="val">{space.capacity}</span>
-                    </div>
-                    <div className="metric">
-                      <span className="lbl">ATMOSPHERE</span>
-                      <span className="val">{space.atmosphere}</span>
-                    </div>
-                  </div>
-
-                  <Link to={`/space/${space.id}`} className="brutal-btn-primary enter-btn" data-cursor-view="ENTER">
-                    EXPLORE ARCHITECTURE & SENSORY LAB →
-                  </Link>
-                </div>
-              </article>
-            ))}
+        {spacesVariant === 1 && (
+          <div className="container">
+            <SpacesVariant1 spaces={filteredSpaces} />
           </div>
-        </div>
+        )}
+        {spacesVariant === 2 && <SpacesVariant2 spaces={filteredSpaces} />}
+        {spacesVariant === 3 && (
+          <div className="container">
+            <SpacesVariant3 spaces={filteredSpaces} />
+          </div>
+        )}
+        {spacesVariant === 4 && (
+          <div className="container">
+            <SpacesVariant4 spaces={filteredSpaces} />
+          </div>
+        )}
       </main>
+
+      {/* SPACES VARIANT SWITCHER */}
+      <div className="spaces-variant-switcher">
+        <span className="switcher-label">SPACES CONCEPT</span>
+        <div className="switcher-buttons">
+          {[1, 2, 3, 4].map(v => (
+            <button 
+              key={v}
+              className={`variant-btn ${spacesVariant === v ? 'active' : ''}`}
+              onClick={() => setSpacesVariant(v)}
+            >
+              0{v}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
