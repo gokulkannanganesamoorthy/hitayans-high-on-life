@@ -1,0 +1,263 @@
+@use '../../styles/variables.scss' as *;
+
+.page-tickets {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  padding-top: 7rem;
+
+  .tickets-hero-header {
+    background-color: var(--color-accent);
+    color: #fff;
+    padding: 6rem 0 4.5rem;
+    border-bottom: 3px solid var(--color-dark);
+
+    .meta-pill-strip {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+
+      .dates {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        opacity: 0.8;
+      }
+    }
+
+    .title {
+      font-size: clamp(3rem, 7.5vw, 7.5rem);
+      margin-bottom: 1.5rem;
+      color: var(--color-lime);
+    }
+
+    .lead {
+      font-size: 1.2rem;
+      max-width: 720px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+  }
+
+  .tickets-main-body {
+    padding: 8vh 0 12vh;
+
+    .phases-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+      margin-bottom: 8rem;
+
+      .phase-master-card {
+        background: #fff;
+        border: 3px solid var(--color-dark);
+        box-shadow: 6px 6px 0px var(--color-dark);
+        padding: 3rem;
+
+        @media (max-width: 768px) {
+          padding: 2rem 1.5rem;
+        }
+
+        .phase-header-bar {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          border-bottom: 3px solid var(--color-dark);
+          padding-bottom: 1.5rem;
+          margin-bottom: 2.5rem;
+          flex-wrap: wrap;
+          gap: 1rem;
+
+          .left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            .badge {
+              background: var(--color-dark);
+              color: var(--color-lime);
+              font-family: var(--font-sans);
+              font-size: 0.75rem;
+              font-weight: 700;
+              letter-spacing: 0.12em;
+              padding: 0.35rem 0.8rem;
+            }
+
+            .name {
+              font-size: 2.5rem;
+              color: var(--color-dark);
+            }
+          }
+
+          .note {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: #555;
+          }
+        }
+
+        .tiers-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+
+          @media (max-width: 1100px) {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          @media (max-width: 650px) {
+            grid-template-columns: 1fr;
+          }
+
+          .tier-box {
+            background: var(--color-bg);
+            border: 2px solid var(--color-dark);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            transition: transform 0.2s ease;
+
+            &:hover {
+              transform: translateY(-4px);
+              border-color: var(--color-accent);
+            }
+
+            .tier-head {
+              display: flex;
+              flex-direction: column;
+              gap: 0.3rem;
+
+              .stay-type {
+                font-family: var(--font-sans);
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: var(--color-dark);
+              }
+
+              .limit-tag {
+                font-size: 0.75rem;
+                color: #666;
+              }
+            }
+
+            .tier-price-row {
+              display: flex;
+              align-items: baseline;
+              gap: 0.5rem;
+
+              .currency {
+                font-family: var(--font-sans);
+                font-size: 0.75rem;
+                font-weight: 700;
+                color: var(--color-accent);
+              }
+
+              .amount {
+                font-family: var(--font-display);
+                font-size: 2.2rem;
+                color: var(--color-dark);
+              }
+            }
+
+            .perks-list {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+              flex: 1;
+              border-top: 1px dashed rgba(10, 14, 12, 0.2);
+              padding-top: 1rem;
+
+              li {
+                font-size: 0.85rem;
+                color: #444;
+              }
+            }
+
+            .reserve-action {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .included-perks-section {
+      margin-bottom: 8rem;
+
+      .section-heading {
+        font-size: 2.8rem;
+        margin-bottom: 3rem;
+        color: var(--color-dark);
+      }
+
+      .perks-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+
+        @media (max-width: 960px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: 600px) {
+          grid-template-columns: 1fr;
+        }
+
+        .perk-card {
+          background: #fff;
+          border: 3px solid var(--color-dark);
+          box-shadow: 5px 5px 0px var(--color-dark);
+          padding: 2.2rem 1.8rem;
+
+          .icon {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+          }
+
+          h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--color-dark);
+          }
+
+          p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #555;
+          }
+        }
+      }
+    }
+
+    .faq-section {
+      .section-heading {
+        font-size: 2.8rem;
+        margin-bottom: 3rem;
+        color: var(--color-dark);
+      }
+
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .faq-item {
+          background: #fff;
+          border: 2px solid var(--color-dark);
+          padding: 2rem;
+
+          h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.6rem;
+            color: var(--color-dark);
+          }
+
+          p {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: #555;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navigation.scss';
 
 const navLinks = [
-  { name: 'Philosophy', href: '/#philosophy' },
-  { name: 'Spaces', href: '/#spaces' },
-  { name: 'Workshops', href: '/#workshops' },
-  { name: 'Origin', href: '/#about' },
-  { name: 'Tickets', href: '/#tickets' }
+  { name: 'HOME', href: '/' },
+  { name: '09 SPACES', href: '/spaces' },
+  { name: '25+ WORKSHOPS', href: '/workshops' },
+  { name: 'ORIGIN STORY', href: '/about' },
+  { name: 'PASSES & STAY', href: '/tickets' }
 ];
 
 export default function Navigation() {
@@ -16,7 +17,7 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      setIsScrolled(window.scrollY > 60);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -28,14 +29,14 @@ export default function Navigation() {
     closed: {
       y: '-100%',
       transition: {
-        duration: 0.8,
+        duration: 0.7,
         ease: [0.76, 0, 0.24, 1] as const
       }
     },
     open: {
       y: '0%',
       transition: {
-        duration: 0.8,
+        duration: 0.7,
         ease: [0.76, 0, 0.24, 1] as const
       }
     }
@@ -47,9 +48,9 @@ export default function Navigation() {
       y: '0%',
       opacity: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: [0.76, 0, 0.24, 1] as const,
-        delay: 0.08 * i + 0.2
+        delay: 0.07 * i + 0.15
       }
     })
   };
@@ -57,7 +58,7 @@ export default function Navigation() {
   return (
     <>
       <header className={`main-header ${isScrolled ? 'scrolled' : ''} ${isOpen ? 'menu-open' : ''}`}>
-        <a href="/" className="logo-link" data-cursor-view="HOL">
+        <Link to="/" className="logo-link" data-cursor-view="HOL">
           <div className="brand-mark">
             <svg className="dragonfly-svg" viewBox="0 0 40 40" fill="currentColor">
               <ellipse cx="20" cy="18" rx="1.2" ry="12" />
@@ -72,12 +73,12 @@ export default function Navigation() {
               <span className="brand-subtitle">POLLACHI 2026</span>
             </div>
           </div>
-        </a>
+        </Link>
 
         <div className="header-right">
-          <a href="/#tickets" className="header-pass-btn" data-cursor-view="PASS">
-            RESERVE PASS
-          </a>
+          <Link to="/tickets" className="header-pass-btn" data-cursor-view="PASS">
+            RESERVE PASS →
+          </Link>
           <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Menu" data-cursor-view="MENU">
             <span className="menu-burger" />
             <span className="menu-text">{isOpen ? 'CLOSE' : 'INDEX'}</span>
@@ -99,15 +100,15 @@ export default function Navigation() {
             </div>
 
             <nav className="nav-container">
-              <span className="menu-label">DIRECTORY</span>
+              <span className="menu-label">FESTIVAL DIRECTORY</span>
               <ul className="nav-links">
                 {navLinks.map((link, i) => (
                   <li key={link.name} className="nav-item">
                     <motion.div custom={i} variants={linkVariants}>
-                      <a href={link.href} onClick={toggleMenu} data-cursor-view="OPEN">
+                      <Link to={link.href} onClick={toggleMenu} data-cursor-view="OPEN">
                         <span className="link-num">0{i + 1}</span>
                         <span className="link-name">{link.name}</span>
-                      </a>
+                      </Link>
                     </motion.div>
                   </li>
                 ))}
@@ -116,16 +117,16 @@ export default function Navigation() {
 
             <div className="menu-footer">
               <div className="footer-col">
-                <span className="col-label">DATES</span>
-                <p>23 — 25 OCTOBER 2026</p>
-              </div>
-              <div className="footer-col">
                 <span className="col-label">SANCTUARY</span>
                 <p>COCONEST ECO VILLAGE, POLLACHI</p>
               </div>
               <div className="footer-col">
-                <span className="col-label">MANIFESTO</span>
-                <p>ZERO SUBSTANCE • PURE ALIVENESS</p>
+                <span className="col-label">TIMING</span>
+                <p>23 — 25 OCTOBER 2026</p>
+              </div>
+              <div className="footer-col">
+                <span className="col-label">ETHOS</span>
+                <p>ZERO SUBSTANCES • PURE ALIVENESS</p>
               </div>
             </div>
           </motion.div>

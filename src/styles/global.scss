@@ -1,18 +1,39 @@
 @use './variables.scss' as *;
 
+@font-face {
+  font-family: 'Pokinca';
+  src: url('/fonts/Pokinca.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caliburn-Bold';
+  src: url('/fonts/Caliburn-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-bg: #{$color-bg};
-  --color-bg-dark: #{$color-bg-dark};
+  --color-bg-alt: #{$color-bg-alt};
+  --color-dark: #{$color-dark};
   --color-card-dark: #{$color-card-dark};
   --color-text: #{$color-text};
-  --color-text-muted: #{$color-text-muted};
   --color-text-light: #{$color-text-light};
   --color-accent: #{$color-accent};
-  --color-accent-vibrant: #{$color-accent-vibrant};
+  --color-accent-bright: #{$color-accent-bright};
+  --color-lime: #{$color-lime};
   --color-gold: #{$color-gold};
   --font-display: #{$font-display};
-  --font-serif: #{$font-serif};
   --font-sans: #{$font-sans};
+  --font-mono: #{$font-mono};
+  --border-heavy: #{$border-heavy};
+  --border-light: #{$border-light};
+  --shadow-brutal: #{$shadow-brutal};
+  --shadow-brutal-light: #{$shadow-brutal-light};
   --grid-margin: #{$grid-margin};
 }
 
@@ -23,8 +44,9 @@
 }
 
 html {
-  font-size: 16px;
   background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
 }
 
 body {
@@ -35,25 +57,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   cursor: none;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-h1, h2, h3, h4 {
+/* BRAND BRUTALIST HEADINGS */
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: inherit;
-}
-
-.serif-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-weight: normal;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 p {
   font-family: var(--font-sans);
+  font-size: 1rem;
 }
 
 a {
@@ -69,18 +87,74 @@ button {
   font-family: var(--font-sans);
 }
 
-.lenis {
-  &.lenis-smooth {
-    scroll-behavior: auto !important;
+/* BRUTALIST UI UTILITIES */
+.brutal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-dark);
+  color: var(--color-lime);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-dark);
+}
+
+.brutal-btn-primary {
+  background: var(--color-lime);
+  color: var(--color-dark);
+  border: 2px solid var(--color-dark);
+  box-shadow: 3px 3px 0px var(--color-dark);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.8rem;
+  cursor: none;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--color-dark);
+    background: #fff;
   }
-  &.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
+
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px var(--color-dark);
   }
-  &.lenis-stopped {
-    overflow: hidden;
-  }
-  &.lenis-scrolling iframe {
-    pointer-events: none;
+}
+
+.brutal-btn-secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 2px solid currentColor;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.8rem;
+  cursor: none;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  &:hover {
+    background: var(--color-dark);
+    color: var(--color-lime);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--color-lime);
   }
 }
 
@@ -92,6 +166,6 @@ button {
   height: 100vh;
   pointer-events: none;
   z-index: 9990;
-  opacity: 0.025;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }

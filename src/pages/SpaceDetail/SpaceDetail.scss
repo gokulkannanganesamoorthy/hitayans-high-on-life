@@ -1,3 +1,5 @@
+@use '../../styles/variables.scss' as *;
+
 .page-space-detail {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -9,9 +11,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem var(--grid-margin);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid var(--color-dark);
     font-family: var(--font-sans);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 700;
     letter-spacing: 0.1em;
 
     .back-link {
@@ -19,19 +22,21 @@
       border: none;
       font-family: inherit;
       font-size: inherit;
-      cursor: pointer;
+      font-weight: inherit;
+      cursor: none;
       color: inherit;
-      opacity: 0.8;
-      transition: opacity 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s ease;
 
       &:hover {
-        opacity: 1;
         color: var(--color-accent);
       }
     }
 
     .space-indexer {
-      opacity: 0.5;
+      color: var(--color-accent);
     }
   }
 
@@ -43,25 +48,26 @@
       justify-content: space-between;
       font-family: var(--font-sans);
       font-size: 0.75rem;
+      font-weight: 700;
       letter-spacing: 0.15em;
-      opacity: 0.6;
-      margin-bottom: 2rem;
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
     }
 
     .space-headline {
       font-family: var(--font-display);
-      font-weight: 800;
       font-size: clamp(3rem, 7.5vw, 7.5rem);
-      line-height: 1;
-      letter-spacing: -0.03em;
+      line-height: 0.95;
       margin-bottom: 1rem;
+      color: var(--color-dark);
     }
 
     .space-subhead {
       font-family: var(--font-sans);
       font-size: 1.25rem;
-      opacity: 0.75;
-      max-width: 600px;
+      font-weight: 700;
+      color: var(--color-accent);
+      max-width: 650px;
       margin-bottom: 3.5rem;
     }
 
@@ -69,7 +75,9 @@
       width: 100%;
       height: 70vh;
       overflow: hidden;
-      background: var(--color-bg-dark);
+      background: var(--color-dark);
+      border: 3px solid var(--color-dark);
+      box-shadow: 8px 8px 0px var(--color-dark);
 
       img {
         width: 100%;
@@ -98,28 +106,30 @@
           display: block;
           font-family: var(--font-sans);
           font-size: 0.75rem;
+          font-weight: 700;
           letter-spacing: 0.15em;
           color: var(--color-accent);
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.2rem;
         }
 
         h2 {
           font-size: 2.8rem;
           margin-bottom: 1.5rem;
+          color: var(--color-dark);
         }
 
         .lead-paragraph {
-          font-size: 1.5rem;
-          line-height: 1.35;
+          font-size: 1.35rem;
+          line-height: 1.5;
           margin-bottom: 1.5rem;
-          color: var(--color-text);
+          font-weight: 700;
+          color: var(--color-accent);
         }
 
         .body-text {
-          font-family: var(--font-sans);
           font-size: 1.05rem;
           line-height: 1.7;
-          opacity: 0.8;
+          opacity: 0.9;
         }
 
         .experience-list {
@@ -132,16 +142,16 @@
             gap: 1.5rem;
             align-items: baseline;
             padding-bottom: 1.2rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 2px dashed rgba(10, 14, 12, 0.15);
 
             .item-bullet {
-              font-family: var(--font-display);
-              font-size: 1.2rem;
+              font-family: var(--font-sans);
+              font-size: 1.1rem;
+              font-weight: 800;
               color: var(--color-accent);
             }
 
             .item-text {
-              font-family: var(--font-sans);
               font-size: 1.05rem;
               line-height: 1.5;
             }
@@ -151,14 +161,17 @@
     }
 
     .space-spec-sheet {
-      border-top: 1px solid rgba(0, 0, 0, 0.12);
-      padding-top: 4rem;
+      border: 3px solid var(--color-dark);
+      box-shadow: 6px 6px 0px var(--color-dark);
+      background: #fff;
+      padding: 3.5rem;
 
       .spec-heading {
         font-family: var(--font-sans);
-        font-size: 0.8rem;
+        font-size: 0.85rem;
+        font-weight: 800;
         letter-spacing: 0.15em;
-        opacity: 0.6;
+        color: var(--color-accent);
         margin-bottom: 2.5rem;
       }
 
@@ -181,13 +194,15 @@
 
           .spec-label {
             font-family: var(--font-sans);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 700;
             letter-spacing: 0.1em;
             opacity: 0.5;
           }
 
           .spec-val {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
+            font-weight: 700;
             line-height: 1.4;
           }
         }
@@ -196,24 +211,24 @@
   }
 
   .next-space-link-block {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: var(--color-bg-dark);
-    color: var(--color-bg);
+    border-top: 3px solid var(--color-dark);
+    background-color: var(--color-dark);
+    color: var(--color-text-light);
 
     .next-space-card {
       display: block;
       padding: 6rem var(--grid-margin);
-      transition: background-color 0.4s ease;
+      transition: background-color 0.2s ease;
 
       &:hover {
-        background-color: #1a1a1a;
+        background-color: #141B18;
 
         .arrow-icon {
           transform: translateX(15px);
         }
 
         .next-title {
-          color: var(--color-accent);
+          color: var(--color-lime);
         }
       }
 
@@ -222,33 +237,35 @@
         justify-content: space-between;
         font-family: var(--font-sans);
         font-size: 0.85rem;
+        font-weight: 700;
         letter-spacing: 0.15em;
         margin-bottom: 2rem;
-        opacity: 0.7;
+        color: var(--color-lime);
 
         .arrow-icon {
-          font-size: 1.5rem;
-          transition: transform 0.3s ease;
+          font-size: 1.8rem;
+          transition: transform 0.2s ease;
         }
       }
 
       .next-title {
         font-size: clamp(3rem, 7vw, 7rem);
         margin-bottom: 3rem;
-        transition: color 0.3s ease;
+        transition: color 0.2s ease;
       }
 
       .next-image-thumbnail {
         width: 100%;
         height: 35vh;
         overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.2);
 
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          opacity: 0.7;
-          transition: opacity 0.4s ease, transform 0.6s ease;
+          opacity: 0.8;
+          transition: transform 0.4s ease;
         }
       }
 

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { content, type WorkshopItem } from '../../data/content';
+import { content } from '../../data/content';
 import TicketModal from '../../components/TicketModal';
 import './Home.scss';
 
@@ -15,54 +15,52 @@ export default function Home() {
 
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
-  const [activeWorkshopFilter, setActiveWorkshopFilter] = useState<string>('All');
+  const [activeWorkshopFilter, setActiveWorkshopFilter] = useState<string>('ALL');
 
   const openTickets = (tierId?: string) => {
     setSelectedTierId(tierId || null);
     setIsTicketModalOpen(true);
   };
 
-  const workshopFilters = ['All', 'Movement', 'Strength', 'Play', 'Craft', 'Sound', 'Community'];
+  const workshopFilters = ['ALL', 'MOVEMENT', 'STRENGTH', 'PLAY', 'CRAFT', 'SOUND', 'COMMUNITY'];
 
-  const filteredWorkshops = activeWorkshopFilter === 'All'
+  const filteredWorkshops = activeWorkshopFilter === 'ALL'
     ? content.workshops
-    : content.workshops.filter((w: WorkshopItem) => w.tag.toLowerCase() === activeWorkshopFilter.toLowerCase());
+    : content.workshops.filter((w) => w.tag.toUpperCase() === activeWorkshopFilter);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero entrance
       const tl = gsap.timeline();
       
       tl.from('.hero-badge-strip', {
         y: -20,
         opacity: 0,
-        duration: 0.9,
+        duration: 0.8,
         ease: 'power3.out',
         delay: 0.1
       })
       .from('.hero-line-item', {
         y: 60,
         opacity: 0,
-        duration: 1,
-        stagger: 0.12,
+        duration: 0.9,
+        stagger: 0.1,
         ease: 'power4.out'
-      }, '-=0.6')
+      }, '-=0.5')
       .from('.hero-sub-block', {
         y: 30,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.7,
         ease: 'power3.out'
-      }, '-=0.6')
+      }, '-=0.5')
       .from(heroImageRef.current, {
-        scale: 1.12,
-        opacity: 0.3,
-        duration: 1.4,
+        scale: 1.1,
+        opacity: 0.4,
+        duration: 1.2,
         ease: 'power2.out'
-      }, '-=1.2');
+      }, '-=1.1');
 
-      // Parallax scroll on hero image
       gsap.to(heroImageRef.current, {
-        yPercent: 20,
+        yPercent: 15,
         ease: 'none',
         scrollTrigger: {
           trigger: heroRef.current,
@@ -95,7 +93,7 @@ export default function Home() {
           <div className="hero-main-title-wrap">
             <h1 className="hero-title" ref={heroTitleRef}>
               <span className="hero-line-item">ALIVENESS IS</span>
-              <span className="hero-line-item text-accent">THE ULTIMATE</span>
+              <span className="hero-line-item highlight-lime">THE ULTIMATE</span>
               <span className="hero-line-item">HIGH</span>
             </h1>
           </div>
@@ -104,26 +102,29 @@ export default function Home() {
             <p className="hero-tagline">{content.hero.tagline}</p>
             <div className="hero-cta-group">
               <button 
-                className="hero-primary-btn" 
+                className="brutal-btn-primary" 
                 onClick={() => openTickets()} 
                 data-cursor-view="BOOK"
               >
-                RESERVE FESTIVAL PASS →
+                RESERVE PASS →
               </button>
-              <a href="#spaces" className="hero-secondary-btn" data-cursor-view="EXPLORE">
-                EXPLORE 09 SPACES ↓
-              </a>
+              <Link to="/spaces" className="brutal-btn-secondary" data-cursor-view="SPACES">
+                ALL 09 SPACES
+              </Link>
+              <Link to="/workshops" className="brutal-btn-secondary" data-cursor-view="WORKSHOPS">
+                25+ WORKSHOPS
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 02 PHILOSOPHY / MANIFESTO */}
+      {/* 02 PHILOSOPHY MANIFESTO */}
       <section className="section-philosophy" id="philosophy">
         <div className="container">
           <div className="philosophy-header">
-            <span className="section-kicker">{content.philosophy.lead}</span>
-            <h2 className="manifesto-statement serif-title">
+            <span className="brutal-badge">THE MANIFESTO</span>
+            <h2 className="manifesto-statement">
               "{content.philosophy.statement}"
             </h2>
           </div>
@@ -131,7 +132,7 @@ export default function Home() {
           <div className="philosophy-pillars-grid">
             {content.philosophy.points.map((pt, i) => (
               <div key={i} className="pillar-card">
-                <div className="pillar-num">{pt.number}</div>
+                <div className="pillar-num">PILLAR // {pt.number}</div>
                 <h3 className="pillar-title">{pt.title}</h3>
                 <p className="pillar-desc">{pt.description}</p>
               </div>
@@ -140,26 +141,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 03 09 EXPERIENCE SPACES */}
+      {/* 03 09 EXPERIENCE SPACES PREVIEW */}
       <section className="section-spaces" id="spaces">
         <div className="container">
           <div className="section-title-row">
             <div>
-              <span className="section-kicker">CURATED SANCTUARIES</span>
+              <span className="brutal-badge">SANCTUARIES</span>
               <h2 className="section-main-title">09 EXPERIENCE SPACES</h2>
             </div>
-            <p className="section-lead-note">
-              Designed as sensory chambers across CocoNest Eco Village. Tap any space for full architectural details and activations.
-            </p>
+            <Link to="/spaces" className="brutal-btn-secondary" data-cursor-view="ALL">
+              VIEW ALL 09 SPACES →
+            </Link>
           </div>
 
           <div className="spaces-directory">
-            {content.spaces.map((space, idx) => (
+            {content.spaces.slice(0, 6).map((space, idx) => (
               <Link 
                 to={`/space/${space.id}`} 
                 key={space.id} 
                 className="space-row"
-                data-cursor-view="VIEW"
+                data-cursor-view="EXPLORE"
               >
                 <div className="row-col-num">0{idx + 1}</div>
                 <div className="row-col-main">
@@ -170,7 +171,7 @@ export default function Home() {
                   <span className="tag-pill">{space.energyLevel}</span>
                 </div>
                 <div className="row-col-action">
-                  <span className="action-text">EXPLORE SPACE</span>
+                  <span className="action-text">EXPLORE LAB</span>
                   <span className="action-arrow">→</span>
                 </div>
                 <div className="space-hover-thumb">
@@ -179,15 +180,21 @@ export default function Home() {
               </Link>
             ))}
           </div>
+
+          <div className="section-bottom-action">
+            <Link to="/spaces" className="brutal-btn-primary" data-cursor-view="ALL">
+              VIEW ALL 09 EXPERIENCE SPACES →
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 04 WORKSHOPS & ACTIVITIES */}
+      {/* 04 WORKSHOPS HIGHLIGHT */}
       <section className="section-workshops" id="workshops">
         <div className="container">
           <div className="section-title-row">
             <div>
-              <span className="section-kicker">DAILY IMMERSION</span>
+              <span className="brutal-badge">ACTIVATIONS</span>
               <h2 className="section-main-title">25+ CONSCIOUS WORKSHOPS</h2>
             </div>
             <div className="workshop-filter-pills">
@@ -204,7 +211,7 @@ export default function Home() {
           </div>
 
           <div className="workshops-grid">
-            {filteredWorkshops.map((workshop: WorkshopItem, idx: number) => (
+            {filteredWorkshops.slice(0, 6).map((workshop, idx: number) => (
               <div key={idx} className="workshop-card" data-cursor-view="WORKSHOP">
                 <div className="workshop-image-box">
                   <img src={workshop.image} alt={workshop.name} loading="lazy" />
@@ -217,17 +224,23 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          <div className="section-bottom-action">
+            <Link to="/workshops" className="brutal-btn-primary" data-cursor-view="CATALOG">
+              VIEW FULL WORKSHOPS CATALOG →
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 05 ABOUT / FOUNDER & SPIRIT ANIMAL */}
+      {/* 05 ABOUT SUMMARY */}
       <section className="section-about" id="about">
         <div className="container">
           <div className="about-editorial-wrap">
             <div className="about-narrative-col">
-              <span className="section-kicker">THE ORIGIN & FOUNDER</span>
-              <h2 className="about-heading serif-title">
-                The Genesis of a Substance-Free Festival
+              <span className="brutal-badge">GENESIS</span>
+              <h2 className="about-heading">
+                HOW HIGH ON LIFE WAS BORN
               </h2>
               
               <div className="quote-box">
@@ -240,23 +253,16 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="spirit-animal-card">
-                <div className="spirit-header">
-                  <span className="spirit-icon">🦋</span>
-                  <div>
-                    <h4>{content.about.spiritAnimal.name}</h4>
-                    <span className="spirit-sub">{content.about.spiritAnimal.tagline}</span>
-                  </div>
-                </div>
-                <p className="spirit-story">{content.about.spiritAnimal.story}</p>
-              </div>
+              <Link to="/about" className="brutal-btn-secondary" data-cursor-view="ORIGIN">
+                READ FULL STORY & DRAGONFLY MYTHOLOGY →
+              </Link>
             </div>
 
             <div className="about-portrait-col">
               <div className="portrait-frame">
                 <img src={content.about.founder.image} alt={content.about.founder.name} />
                 <div className="portrait-caption">
-                  <span>JIJO — CO-CREATOR & MOVEMENT ARTIST</span>
+                  <span>JIJO // MOVEMENT ARTIST & CO-CREATOR</span>
                 </div>
               </div>
             </div>
@@ -264,24 +270,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 06 TICKETS & ACCOMMODATION */}
+      {/* 06 TICKETS BREAKDOWN */}
       <section className="section-tickets" id="tickets">
         <div className="container">
           <div className="tickets-intro-row">
             <div>
-              <span className="section-kicker light">JOIN THE SANCTUARY</span>
+              <span className="brutal-badge">SANCTUARY PASSES</span>
               <h2 className="section-main-title light">PASSES & ACCOMMODATION</h2>
               <p className="tickets-subtitle">
                 3 Full Days in Pollachi • All 25+ Workshops • Organic Village Meals • Sacred Spaces Access
               </p>
             </div>
-            <button 
-              className="quick-reserve-btn"
-              onClick={() => openTickets()}
-              data-cursor-view="RESERVE"
-            >
-              CUSTOM ALLOCATION PASS →
-            </button>
+            <Link to="/tickets" className="brutal-btn-primary" data-cursor-view="PASSES">
+              FULL TIER GUIDE →
+            </Link>
           </div>
 
           <div className="phases-columns-grid">
@@ -319,15 +321,15 @@ export default function Home() {
           <div className="festival-guarantee-strip">
             <div className="guarantee-item">
               <span className="g-icon">🌿</span>
-              <p><strong>100% Substance Free</strong> — No alcohol, recreational drugs, or smoking.</p>
+              <p><strong>100% Substance Free</strong> — Zero alcohol, drugs, or smoking allowed.</p>
             </div>
             <div className="guarantee-item">
               <span className="g-icon">🏡</span>
-              <p><strong>Eco-Village Stay</strong> — Nestled inside lush palm groves of Pollachi.</p>
+              <p><strong>CocoNest Eco-Village</strong> — Organic farm sanctuary in Pollachi.</p>
             </div>
             <div className="guarantee-item">
               <span className="g-icon">🎟️</span>
-              <p><strong>Transferable Passes</strong> — Passes can be transferred if plans shift.</p>
+              <p><strong>Transferable Passes</strong> — Transferable up to 48 hours prior.</p>
             </div>
           </div>
         </div>
@@ -342,6 +344,13 @@ export default function Home() {
               <p className="footer-manifesto-text">
                 A conscious 3-day festival celebrating movement, vocal release, creative craft, and human connection without substances.
               </p>
+              <div className="footer-nav-links">
+                <Link to="/">Home</Link>
+                <Link to="/spaces">Spaces</Link>
+                <Link to="/workshops">Workshops</Link>
+                <Link to="/about">About</Link>
+                <Link to="/tickets">Tickets</Link>
+              </div>
             </div>
 
             <div className="footer-details-grid">
@@ -354,7 +363,7 @@ export default function Home() {
                 <p>23 — 25 October 2026<br />Friday Dawn — Sunday Twilight</p>
               </div>
               <div className="footer-detail-col">
-                <span className="detail-label">COMMUNICATION</span>
+                <span className="detail-label">CONTACT</span>
                 <p><a href="tel:+917338821898">+91 733-8821898</a></p>
                 <p><a href="https://instagram.com/highonlifefest" target="_blank" rel="noopener noreferrer">@highonlifefest</a></p>
               </div>

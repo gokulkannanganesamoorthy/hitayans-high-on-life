@@ -1,24 +1,26 @@
-// typography
-$font-display: 'Syne', sans-serif;
-$font-serif: 'Italiana', Georgia, serif;
-$font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+// BRAND FONTS
+$font-display: 'Pokinca', sans-serif;
+$font-sans: 'Caliburn-Bold', sans-serif;
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-// colors
-$color-bg: #F8F6F0; // Warm pristine paper / stone
-$color-bg-dark: #0E1210; // Rich architectural obsidian
-$color-card-dark: #161C19;
-$color-text: #121513; // Deep charcoal for light mode
-$color-text-muted: #5E6460;
-$color-text-light: #F8F9F8; // Crisp white-stone for dark mode
-$color-accent: #23533E; // Sacred grove pine green
-$color-accent-vibrant: #3CA56E; // Living leaf green
-$color-gold: #C5A265; // Refined festival gold
+// BRUTALIST BRAND PALETTE
+$color-bg: #F4F0E6; // Raw organic canvas
+$color-bg-alt: #EAE4D6; // Darker stone
+$color-dark: #0A0E0C; // Deep brutalist obsidian
+$color-card-dark: #121815;
+$color-text: #0A0E0C; // High contrast dark text
+$color-text-light: #F4F0E6; // High contrast light text
+$color-accent: #20553B; // Deep sacred pine
+$color-accent-bright: #3BA368; // Vibrant leaf
+$color-lime: #B4F038; // Brutalist electric lime
+$color-gold: #DDA15E; // Festival harvest gold
 
-// grid & layout
-$grid-columns: 12;
-$grid-gap: 2rem;
-$grid-margin: 6vw;
+// BRUTALIST BORDERS & SHADOWS
+$border-heavy: 2px solid #0A0E0C;
+$border-light: 2px solid rgba(244, 240, 230, 0.2);
+$shadow-brutal: 4px 4px 0px #0A0E0C;
+$shadow-brutal-light: 4px 4px 0px rgba(244, 240, 230, 0.25);
 
-// transitions
-$transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-$transition-fast: 0.25s ease;
+// GRID
+$grid-margin: 5vw;
+$transition-snappy: 0.2s cubic-bezier(0.16, 1, 0.3, 1);

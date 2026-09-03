@@ -1,0 +1,259 @@
+@use '../../styles/variables.scss' as *;
+
+.page-about {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  padding-top: 7rem;
+
+  .about-hero-header {
+    background-color: var(--color-dark);
+    color: var(--color-text-light);
+    padding: 6rem 0 4.5rem;
+    border-bottom: 3px solid var(--color-dark);
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+
+      .meta {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        opacity: 0.7;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 7rem);
+      margin-bottom: 1.5rem;
+      color: var(--color-lime);
+    }
+
+    .hero-lead {
+      font-size: 1.2rem;
+      max-width: 720px;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+  }
+
+  .about-content-body {
+    padding: 8vh 0 12vh;
+
+    .chapter {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .subhead {
+      font-size: 2.8rem;
+      margin-bottom: 2.5rem;
+      color: var(--color-dark);
+    }
+
+    .founder-story-split {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 5rem;
+      margin-bottom: 8rem;
+
+      @media (max-width: 960px) {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+
+      .letter-card {
+        background: #fff;
+        border: 3px solid var(--color-dark);
+        box-shadow: 6px 6px 0px var(--color-dark);
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+
+        .closing {
+          font-weight: 700;
+          color: var(--color-accent);
+        }
+
+        .signature-block {
+          border-top: 2px dashed rgba(10, 14, 12, 0.2);
+          padding-top: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+
+          strong {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+          }
+
+          span {
+            font-size: 0.85rem;
+            color: #555;
+          }
+
+          .social-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            font-weight: 700;
+            margin-top: 0.4rem;
+          }
+        }
+      }
+
+      .visual-col {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        .founder-portrait-box {
+          border: 3px solid var(--color-dark);
+          box-shadow: 6px 6px 0px var(--color-dark);
+          background: #000;
+          position: relative;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: auto;
+            display: block;
+          }
+
+          .frame-tag {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--color-dark);
+            color: var(--color-lime);
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 0.8rem 1.2rem;
+          }
+        }
+
+        .aanmaa-box {
+          background: var(--color-accent);
+          color: #fff;
+          border: 3px solid var(--color-dark);
+          box-shadow: 5px 5px 0px var(--color-dark);
+          padding: 2.5rem;
+
+          h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-lime);
+          }
+
+          p {
+            font-size: 1rem;
+            line-height: 1.65;
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+
+    .spirit-animal-section {
+      margin-bottom: 8rem;
+
+      .spirit-container-box {
+        background: #0D1310;
+        color: #fff;
+        border: 3px solid var(--color-dark);
+        box-shadow: 6px 6px 0px var(--color-dark);
+        padding: 4rem;
+
+        .spirit-badge {
+          display: inline-block;
+          font-family: var(--font-sans);
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: 0.15em;
+          background: rgba(183, 240, 69, 0.15);
+          color: var(--color-lime);
+          padding: 0.4rem 0.9rem;
+          border-radius: 999px;
+          margin-bottom: 1.5rem;
+        }
+
+        .spirit-title {
+          font-size: clamp(2.5rem, 5vw, 4.5rem);
+          color: #fff;
+          margin-bottom: 2rem;
+        }
+
+        .spirit-text-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2.5rem;
+
+          @media (max-width: 860px) {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+
+          p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            opacity: 0.85;
+          }
+        }
+      }
+    }
+
+    .conduct-section {
+      .rules-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+
+        @media (max-width: 860px) {
+          grid-template-columns: 1fr;
+        }
+
+        .rule-card {
+          background: #fff;
+          border: 3px solid var(--color-dark);
+          box-shadow: 5px 5px 0px var(--color-dark);
+          padding: 2.5rem 2rem;
+          display: flex;
+          flex-direction: column;
+
+          .num {
+            font-family: var(--font-sans);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+          }
+
+          h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+          }
+
+          p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #444;
+          }
+        }
+      }
+    }
+  }
+}
