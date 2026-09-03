@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { content } from '../../data/content';
 import TicketModal from '../../components/TicketModal';
-import { HeroVariant1, HeroVariant2, HeroVariant3, HeroVariant4 } from '../../components/HeroVariants';
+import { HeroVariant4 } from '../../components/HeroVariants';
 import './Home.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,7 +13,6 @@ export default function Home() {
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
   const [activeWorkshopFilter, setActiveWorkshopFilter] = useState<string>('ALL');
-  const [heroVariant, setHeroVariant] = useState<number>(1);
 
   const openTickets = (tierId?: string) => {
     setSelectedTierId(tierId || null);
@@ -32,11 +31,8 @@ export default function Home() {
 
   return (
     <div className="page-home">
-      {/* 01 HERO SECTION (DYNAMIC VARIANTS) */}
-      {heroVariant === 1 && <HeroVariant1 onOpenTickets={openTickets} />}
-      {heroVariant === 2 && <HeroVariant2 onOpenTickets={openTickets} />}
-      {heroVariant === 3 && <HeroVariant3 onOpenTickets={openTickets} />}
-      {heroVariant === 4 && <HeroVariant4 onOpenTickets={openTickets} />}
+      {/* 01 HERO SECTION */}
+      <HeroVariant4 onOpenTickets={openTickets} />
 
       {/* 02 PHILOSOPHY MANIFESTO */}
       <section className="section-philosophy" id="philosophy">
@@ -319,22 +315,6 @@ export default function Home() {
         onClose={() => setIsTicketModalOpen(false)}
         selectedTierId={selectedTierId}
       />
-
-      {/* HERO VARIANT SWITCHER */}
-      <div className="hero-variant-switcher">
-        <span className="switcher-label">HERO CONCEPT</span>
-        <div className="switcher-buttons">
-          {[1, 2, 3, 4].map(v => (
-            <button 
-              key={v}
-              className={`variant-btn ${heroVariant === v ? 'active' : ''}`}
-              onClick={() => setHeroVariant(v)}
-            >
-              0{v}
-            </button>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

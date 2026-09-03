@@ -91,7 +91,7 @@ export default function SpaceDetail() {
           <h3 className="spec-heading">SPACE ARCHITECTURE & SPECIFICATIONS</h3>
           <div className="spec-grid">
             <div className="spec-item">
-              <span className="spec-label">ATMOSPHERE</span>
+              <span className="spec-label">SENSORY</span>
               <span className="spec-val">{space.atmosphere}</span>
             </div>
             <div className="spec-item">

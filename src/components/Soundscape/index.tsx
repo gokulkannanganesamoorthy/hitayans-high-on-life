@@ -103,7 +103,7 @@ export default function Soundscape() {
       >
         <span className="sound-pulse" />
         <span className="sound-text">
-          ATMOSPHERE: {isPlaying ? '432Hz ON' : 'OFF'}
+          SENSORY: {isPlaying ? '432Hz ON' : 'OFF'}
         </span>
       </button>
     </div>

@@ -376,47 +376,45 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0; /* Animated by GSAP */
     z-index: 1;
+  }
+
+  .v4-svg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+
+    .v4-svg-text {
+      font-family: var(--font-display);
+      font-size: 180px;
+      letter-spacing: 0.05em;
+      transform-origin: center center;
+      will-change: transform;
+    }
   }
 
   .v4-content-wrap {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 8rem var(--grid-margin) 4rem;
+    pointer-events: none; // let clicks pass through center
+  }
+
+  .v4-header, .v4-footer {
+    pointer-events: auto;
   }
 
   .v4-header {
     display: flex;
     justify-content: center;
-  }
-
-  .v4-center {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .v4-mask-text {
-      font-family: var(--font-display);
-      font-size: clamp(4rem, 16vw, 18rem);
-      line-height: 0.8;
-      text-transform: uppercase;
-      text-align: center;
-      
-      background-position: center;
-      background-size: 100%;
-      background-repeat: no-repeat;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: var(--color-accent); // Fallback
-      
-      filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.3));
-    }
   }
 
   .v4-footer {

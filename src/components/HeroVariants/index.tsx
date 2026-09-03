@@ -142,22 +142,22 @@ export function HeroVariant4({ onOpenTickets }: HeroProps) {
         scrollTrigger: {
           trigger: heroRef.current,
           start: 'top top',
-          end: '+=150%',
+          end: '+=200%',
           scrub: 1,
           pin: true
         }
       });
       
-      tl.to('.v4-mask-text', {
-        scale: 60,
-        opacity: 0,
-        transformOrigin: 'center center',
+      tl.to('.v4-svg-text', {
+        scale: 100,
+        transformOrigin: '50% 50%',
+        ease: 'power2.inOut',
         duration: 1
       }, 0)
-      .to('.v4-bg-reveal', {
-        opacity: 1,
-        duration: 0.5
-      }, 0.5)
+      .to('.v4-svg-overlay', {
+        opacity: 0,
+        duration: 0.2
+      }, 0.8)
       .to('.v4-footer', {
         opacity: 0,
         duration: 0.2
@@ -169,17 +169,30 @@ export function HeroVariant4({ onOpenTickets }: HeroProps) {
   return (
     <section className="hero-v4" ref={heroRef}>
       <div className="v4-bg-reveal" style={{ backgroundImage: `url(${content.hero.imageBg})` }} />
+      
+      {/* Performant SVG Mask Layer */}
+      <svg className="v4-svg-overlay" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 1000">
+        <defs>
+          <mask id="hero-text-mask">
+            <rect width="100%" height="100%" fill="white" />
+            <text 
+              x="500" 
+              y="500" 
+              className="v4-svg-text" 
+              textAnchor="middle" 
+              dominantBaseline="middle" 
+              fill="black"
+            >
+              ALIVENESS
+            </text>
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="#F4F0E6" mask="url(#hero-text-mask)" />
+      </svg>
+
       <div className="v4-content-wrap">
         <div className="v4-header">
           <span className="brutal-badge">2ND EDITION</span>
-        </div>
-        <div className="v4-center">
-          <div 
-            className="v4-mask-text" 
-            style={{ backgroundImage: `url(${content.hero.imageBg})` }}
-          >
-            ALIVENESS
-          </div>
         </div>
         <div className="v4-footer">
           <p>{content.hero.tagline}</p>
