@@ -3,7 +3,7 @@ import './Contact.scss';
 export default function ContactPage() {
   return (
     <div className="page-contact">
-      <header className="contact-hero-organic">
+      <header className="contact-hero-organic dark-hero">
         <div className="container">
           <div className="meta-pill-strip">
             <span className="premium-label">GET IN TOUCH</span>

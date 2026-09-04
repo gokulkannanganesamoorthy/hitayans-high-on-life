@@ -14,7 +14,7 @@ export default function WorkshopsPage() {
 
   return (
     <div className="page-workshops">
-      <header className="workshops-hero-organic" style={{ position: 'relative', overflow: 'hidden' }}>
+      <header className="workshops-hero-organic dark-hero" style={{ position: 'relative', overflow: 'hidden' }}>
         <MicroElement asset="Asset 6ldpi.svg" top="20%" right="5%" width="200px" rotation="-15deg" delay="0s" />
         <MicroElement asset="butterfly.svg" bottom="20%" left="10%" width="120px" rotation="25deg" delay="1s" />
         <div className="marquee-elegant">

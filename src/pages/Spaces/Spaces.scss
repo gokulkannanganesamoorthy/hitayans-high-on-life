@@ -85,68 +85,63 @@
 
     .spaces-organic-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-
-      @media (max-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      @media (max-width: 640px) {
-        grid-template-columns: 1fr;
-      }
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.5rem;
 
       .space-organic-card {
-        background: #fff;
-        border-radius: 20px;
+        background: var(--color-bg);
+        border: 3px solid var(--color-dark);
+        border-radius: 0;
         overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+        box-shadow: 8px 8px 0 rgba(0, 76, 77, 1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
         display: flex;
         flex-direction: column;
 
         &:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-
-          .card-media img {
-            transform: scale(1.05);
-          }
+          transform: translate(-4px, -4px);
+          box-shadow: 12px 12px 0 rgba(0, 76, 77, 1);
         }
 
         .card-media {
           position: relative;
-          height: 280px;
+          height: 240px;
           overflow: hidden;
+          border-bottom: 3px solid var(--color-dark);
 
           img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.6s ease;
+          }
+
+          &:hover img {
+            transform: scale(1.05);
           }
 
           .media-overlay {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
+            top: 1rem;
+            right: 1rem;
             
             .energy-pill {
-              background: rgba(255,255,255,0.9);
-              backdrop-filter: blur(4px);
+              background: var(--color-lime);
               color: var(--color-dark);
               font-family: var(--font-sans);
-              font-size: 0.7rem;
-              font-weight: 700;
+              font-size: 0.65rem;
+              font-weight: 800;
               letter-spacing: 0.1em;
+              text-transform: uppercase;
               padding: 0.4rem 0.8rem;
-              border-radius: 20px;
+              border: 2px solid var(--color-dark);
+              box-shadow: 2px 2px 0 var(--color-dark);
             }
           }
         }
 
         .card-body {
-          padding: 2.5rem;
+          padding: 1.5rem;
           display: flex;
           flex-direction: column;
           flex-grow: 1;
@@ -159,39 +154,40 @@
 
             .space-idx {
               font-family: var(--font-display);
-              font-size: 2rem;
-              color: var(--color-terracotta);
-              opacity: 0.5;
+              font-size: 1.8rem;
+              color: var(--color-dark);
+              opacity: 0.3;
             }
 
             .space-title {
               font-family: var(--font-sans);
-              font-size: 1.5rem;
+              font-size: 1.3rem;
               font-weight: 800;
+              line-height: 1.2;
               color: var(--color-dark);
             }
           }
 
           .space-subhead {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--color-accent);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             letter-spacing: 0.05em;
           }
 
           .space-summary {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: rgba(0,0,0,0.6);
-            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: rgba(0,0,0,0.8);
+            margin-bottom: 1.5rem;
             flex-grow: 1;
           }
 
           .space-metrics {
-            margin-bottom: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 2px dashed rgba(0,0,0,0.1);
 
             .metric {
               display: flex;
@@ -200,15 +196,16 @@
 
               .lbl {
                 font-family: var(--font-sans);
-                font-size: 0.75rem;
-                font-weight: 700;
-                letter-spacing: 0.1em;
-                color: rgba(0,0,0,0.4);
+                font-size: 0.7rem;
+                font-weight: 800;
+                letter-spacing: 0.15em;
+                color: rgba(0,0,0,0.5);
+                text-transform: uppercase;
               }
 
               .val {
-                font-size: 0.95rem;
-                font-weight: 600;
+                font-size: 0.9rem;
+                font-weight: 800;
                 color: var(--color-dark);
               }
             }
@@ -219,22 +216,24 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            background: var(--color-bg);
+            background: var(--color-lime);
             color: var(--color-dark);
-            border: 1px solid rgba(0,0,0,0.1);
-            padding: 1rem;
-            border-radius: 8px;
+            border: 2px solid var(--color-dark);
+            box-shadow: 4px 4px 0 var(--color-dark);
+            padding: 0.8rem;
             font-family: var(--font-sans);
             font-size: 0.85rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 0.1em;
+            text-transform: uppercase;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
 
             &:hover {
               background: var(--color-dark);
               color: var(--color-lime);
-              border-color: var(--color-dark);
+              transform: translate(2px, 2px);
+              box-shadow: 2px 2px 0 var(--color-dark);
             }
           }
         }

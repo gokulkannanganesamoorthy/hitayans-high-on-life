@@ -5,7 +5,7 @@ import './About.scss';
 export default function AboutPage() {
   return (
     <div className="page-about">
-      <header className="about-hero-header" style={{ position: 'relative', overflow: 'hidden' }}>
+      <header className="about-hero-header dark-hero" style={{ position: 'relative', overflow: 'hidden' }}>
         <MicroElement asset="butterfly.svg" top="20%" right="10%" width="120px" rotation="-20deg" delay="0s" className="blend-screen" />
         <MicroElement asset="Asset 8ldpi.svg" bottom="15%" left="5%" width="180px" rotation="10deg" delay="1s" className="blend-screen" />
         <div className="container">

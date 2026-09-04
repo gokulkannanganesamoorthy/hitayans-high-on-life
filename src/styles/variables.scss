@@ -25,3 +25,29 @@ $shadow-brutal-light: 4px 4px 0px rgba(7, 29, 24, 0.25);
 // GRID
 $grid-margin: 5vw;
 $transition-snappy: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+// Global Dark Hero Override for inner pages
+.dark-hero {
+  background-color: var(--color-dark) !important;
+  color: var(--color-bg) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  
+  .page-title, .hero-title, h1, p, .page-desc, .hero-lead, .meta-text {
+    color: var(--color-bg) !important;
+  }
+  
+  .premium-label, .filter-pill, .badge {
+    color: var(--color-lime) !important;
+    border-color: var(--color-lime) !important;
+    
+    &.active, &:hover {
+      background: var(--color-lime) !important;
+      color: var(--color-dark) !important;
+    }
+  }
+  
+  .passes-hero-section {
+    background-color: transparent !important;
+    color: var(--color-bg) !important;
+  }
+}

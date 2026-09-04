@@ -31,7 +31,7 @@ export default function SpaceDetail() {
       </nav>
 
       {/* Hero Header */}
-      <header className="space-hero-section">
+      <header className="space-hero-section dark-hero">
         <div className="space-meta-strip">
           <span>COCONEST ECO VILLAGE</span>
           <span>EST. OCT 2026</span>

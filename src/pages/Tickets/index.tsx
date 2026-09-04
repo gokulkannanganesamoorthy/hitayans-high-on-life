@@ -15,7 +15,7 @@ export default function TicketsPage() {
 
   return (
     <div className="page-tickets">
-      <header className="tickets-hero-header">
+      <header className="tickets-hero-header dark-hero">
         {/* We moved the header content into tickets-main-body to share the green background as shown in the screenshot */}
       </header>
 

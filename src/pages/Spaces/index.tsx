@@ -12,7 +12,7 @@ export default function SpacesPage() {
 
   return (
     <div className="page-spaces">
-      <header className="spaces-hero-elegant" style={{ position: 'relative', overflow: 'hidden' }}>
+      <header className="spaces-hero-elegant dark-hero" style={{ position: 'relative', overflow: 'hidden' }}>
         <MicroElement asset="Asset 2ldpi.svg" top="10%" right="10%" width="180px" rotation="10deg" className="blend-screen" />
         <MicroElement asset="Asset 7ldpi.svg" bottom="10%" left="5%" width="220px" rotation="-5deg" className="blend-screen" />
         <div className="container">
