@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: sans-serif; display: flex; flex-wrap: wrap; gap: 20px; }
+    .card { width: 300px; border: 1px solid #ccc; padding: 10px; }
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <h1>Image Catalog</h1>
+  <div id="catalog"></div>
+  <script>
+    const images = ['img101.jpg', 'img103.jpg', 'img112.jpg', 'img113.jpg', 'img114.jpg', 'img116.jpg', 'img131.jpg', 'img133.jpg', 'img134.jpg', 'img135.jpg', 'img14.jpg', 'img140.jpg', 'img141.jpg', 'img142.jpg', 'img143.jpg', 'img147.jpg', 'img149.jpg', 'img150.jpg', 'img151.jpg', 'img155.jpg', 'img156.jpg', 'img157.jpg', 'img158.jpg', 'img163.jpg', 'img165.jpg', 'img166.jpg', 'img168.jpg', 'img181.jpg', 'img187.jpg', 'img188.jpg', 'img189.jpg', 'img190.jpg', 'img191.jpg', 'img228.jpg', 'img229.jpg', 'img248.jpg', 'img26.jpg', 'img28.jpg', 'img29.jpg', 'img30.jpg', 'img47.jpg', 'img48.jpg', 'img552.jpg', 'img562.jpg', 'img57.jpg', 'img82.jpg', 'img97.jpg', 'img98.jpg', 'img99.jpg'];
+    const catalog = document.getElementById('catalog');
+    images.forEach(img => {
+      catalog.innerHTML += `<div class="card"><h3>${img}</h3><img src="/assets/${img}" /></div>`;
+    });
+  </script>
+</body>
+</html>

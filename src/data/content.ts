@@ -26,7 +26,7 @@ export const content = {
     tagline: "A Zero Substance Celebration of Life, Movement & Art",
     dates: "23 — 25 OCTOBER 2026",
     location: "CocoNest Eco Village, Pollachi, Tamil Nadu",
-    imageBg: "/assets/audience-hero-DaZlGUU3.jpg"
+    imageBg: "/assets/img181.jpg"
   },
   philosophy: {
     lead: "A CONSCIOUS SANCTUARY",
@@ -66,7 +66,7 @@ export const content = {
       atmosphere: "Sacred silence, dappled shade, earth resonance",
       capacity: "35 seekers",
       whatToBring: "Bare feet and an open chest",
-      image: "/assets/space-breathing-Dg8FaHTI.jpg"
+      image: "/assets/img97.jpg"
     },
     {
       id: "screaming-zone",
@@ -84,7 +84,7 @@ export const content = {
       atmosphere: "Raw, uninhibited, fierce, forgiving",
       capacity: "Open clearing (20-40 participants)",
       whatToBring: "Zero inhibitions and pent-up emotion",
-      image: "/assets/space-screaming-Bwoq68yf.jpg"
+      image: "/assets/img98.jpg"
     },
     {
       id: "rage-circle",
@@ -102,7 +102,7 @@ export const content = {
       atmosphere: "Fierce, supportive, grounded, electrifying",
       capacity: "15 in circle at a time",
       whatToBring: "Comfortable movement clothes",
-      image: "/assets/exp-animalflow-7CqLw_ag.jpg"
+      image: "/assets/img155.jpg"
     },
     {
       id: "connection-bench",
@@ -120,7 +120,7 @@ export const content = {
       atmosphere: "Warm, unhurried, curious, gentle",
       capacity: "Pairs throughout the grove",
       whatToBring: "Willingness to listen without fixing",
-      image: "/assets/exp-love-feels-safe-CIMGKwXK.jpg"
+      image: "/assets/img168.jpg"
     },
     {
       id: "slackline",
@@ -138,7 +138,7 @@ export const content = {
       atmosphere: "Focus, encouragement, resilience",
       capacity: "12 lines active simultaneously",
       whatToBring: "Grippy soles or bare feet",
-      image: "/assets/exp-slackline-DvEqpsdf.jpg"
+      image: "/assets/img103.jpg"
     },
     {
       id: "combat-zone",
@@ -156,7 +156,7 @@ export const content = {
       atmosphere: "Electrifying, respectful, grounded discipline",
       capacity: "30 participants",
       whatToBring: "Flexible clothing, water bottle",
-      image: "/assets/exp-kalaripayattu-C7Qe6AxD.jpg"
+      image: "/assets/img141.jpg"
     },
     {
       id: "painting-zone",
@@ -174,7 +174,7 @@ export const content = {
       atmosphere: "Vibrant, messy, liberated, collaborative",
       capacity: "40 artists simultaneously",
       whatToBring: "Clothes that love getting stained",
-      image: "/assets/space-poem-DDk02g7q.jpg"
+      image: "/assets/img165.jpg"
     },
     {
       id: "balance-board",
@@ -192,7 +192,7 @@ export const content = {
       atmosphere: "Laughter, cheering, deep neuromuscular focus",
       capacity: "20 stations",
       whatToBring: "Athletic agility and patience",
-      image: "/assets/exp-parkour-D8q-XmT6.jpg"
+      image: "/assets/img112.jpg"
     },
     {
       id: "skimboard",
@@ -210,7 +210,7 @@ export const content = {
       atmosphere: "Splashing, exhilarating, fast-paced",
       capacity: "Continuous flow queue",
       whatToBring: "Swimwear or quick-dry shorts, towel",
-      image: "/assets/space-playground-C8CHyBpq.jpg"
+      image: "/assets/img112.jpg"
     }
   ] as SpaceDetail[],
 
@@ -218,97 +218,97 @@ export const content = {
     {
       name: "Bachata Sensual & Flow",
       tag: "Movement",
-      image: "/assets/activities-hero-DIU5kdcR.jpg",
+      image: "/assets/img131.jpg",
       description: "Rhythm, partner connection, and hip motion without performance anxiety."
     },
     {
       name: "Natural Body Calisthenics",
       tag: "Strength",
-      image: "/assets/activities-bg-C6GXll-p.jpg",
+      image: "/assets/img133.jpg",
       description: "Explore strength, suspension, and mobility using your body as the sole apparatus."
     },
     {
       name: "Expressive Somatic Movement",
       tag: "Movement",
-      image: "/assets/exp-expressive-movement-DzXY4kLX.jpg",
+      image: "/assets/img135.jpg",
       description: "Listen to spontaneous muscle impulses and express emotion through uncensored form."
     },
     {
       name: "Play & Movement Lab",
       tag: "Play",
-      image: "/assets/exp-movement-games-D8fA85pM.jpg",
+      image: "/assets/img134.jpg",
       description: "Childlike agility games, animal crawls, and spatial awareness challenges."
     },
     {
       name: "Kalaripayattu Basics",
       tag: "Martial Arts",
-      image: "/assets/exp-kalaripayattu-C7Qe6AxD.jpg",
+      image: "/assets/img141.jpg",
       description: "Ancient Kerala warrior training, animal stances, and sacred salutations."
     },
     {
       name: "Instinctive Archery",
       tag: "Focus",
-      image: "/assets/exp-archery2-0hoNlSIX.jpg",
+      image: "/assets/img103.jpg",
       description: "Aiming with somatic intuition and breath instead of mechanical sights."
     },
     {
       name: "Botanical Fabric Dyeing",
       tag: "Craft",
-      image: "/assets/exp-nature-dyeing-DfH3LHgu.jpg",
+      image: "/assets/img147.jpg",
       description: "Extracting pigments from marigold petals, madder roots, and indigo leaves."
     },
     {
       name: "Haiku & Forest Writing",
       tag: "Expression",
-      image: "/assets/exp-poetry2-BV8X__Dd.jpg",
+      image: "/assets/img163.jpg",
       description: "Capturing fleeting natural phenomena in three precise, observant lines."
     },
     {
       name: "Organic Soap Crafting",
       tag: "Craft",
-      image: "/assets/exp-soap2-D9Vp9Q7O.jpg",
+      image: "/assets/img158.jpg",
       description: "Cold-pressed coconut oils, essential eucalyptus, and raw botanical botanics."
     },
     {
       name: "Flow Arts & Poi Spinning",
       tag: "Flow",
-      image: "/assets/exp-poi-Bptx27wk.jpg",
+      image: "/assets/img150.jpg",
       description: "Geometric momentum patterns and bilateral brain integration."
     },
     {
       name: "Physical Theatre & Mask",
       tag: "Play",
-      image: "/assets/exp-theatre-BilO6iDM.jpg",
+      image: "/assets/img116.jpg",
       description: "Exploring hidden archetypes through wooden masks and exaggerated physicality."
     },
     {
       name: "Acoustic Sound Bathing",
       tag: "Sound",
-      image: "/assets/exp-soundhealing-bh_dbDly.jpg",
+      image: "/assets/img142.jpg",
       description: "Deep frequency entrainment using Tibetan gongs, chimes, and tribal flutes."
     },
     {
       name: "Women's Sacred Circle",
       tag: "Community",
-      image: "/assets/exp-womenscircle2-C34OYNr0.jpg",
+      image: "/assets/img166.jpg",
       description: "Unfiltered storytelling, womb resonance, and mutual sisterhood support."
     },
     {
       name: "Men's Fire Council",
       tag: "Community",
-      image: "/assets/lineup-bg-DjELvPCs.jpg",
+      image: "/assets/img188.jpg",
       description: "Vulnerability without bravado. Honest accountability around the midnight embers."
     },
     {
       name: "Parkour & Natural Agility",
       tag: "Movement",
-      image: "/assets/exp-parkour-D8q-XmT6.jpg",
+      image: "/assets/img101.jpg",
       description: "Vaulting boulders, balancing on trunks, and fluent locomotion across earth."
     },
     {
       name: "Heart-to-Heart Inquiry",
       tag: "Community",
-      image: "/assets/exp-love-feels-safe-CIMGKwXK.jpg",
+      image: "/assets/img135.jpg",
       description: "Deep structured dyad inquiries that reveal our shared human condition."
     }
   ] as WorkshopItem[],

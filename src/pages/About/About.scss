@@ -6,16 +6,26 @@
   padding-top: 7rem;
 
   .about-hero-header {
-    background-color: var(--color-dark);
-    color: var(--color-text-light);
-    padding: 6rem 0 4.5rem;
-    border-bottom: 3px solid var(--color-dark);
+    background-color: var(--color-bg);
+    color: var(--color-dark);
+    padding: 6rem 0;
 
     .badge-row {
       display: flex;
       align-items: center;
       gap: 1.5rem;
       margin-bottom: 2rem;
+
+      .premium-label {
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: var(--color-terracotta);
+        border: 1px solid var(--color-terracotta);
+        padding: 0.4rem 0.9rem;
+        border-radius: 4px;
+      }
 
       .meta {
         font-family: var(--font-sans);
@@ -26,234 +36,209 @@
     }
 
     .hero-title {
-      font-family: var(--font-sans);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      font-size: clamp(2.5rem, 6vw, 6rem);
-      margin-bottom: 1.5rem;
-      color: var(--color-lime);
-      line-height: 1.1;
+      font-family: var(--font-display);
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      color: var(--color-dark);
+      margin-bottom: 2rem;
+      line-height: 0.95;
     }
 
     .hero-lead {
-      font-size: 1.2rem;
-      max-width: 720px;
-      line-height: 1.6;
-      opacity: 0.85;
+      font-size: 1.25rem;
+      max-width: 800px;
+      line-height: 1.8;
+      font-weight: 500;
+      color: rgba(0, 76, 77, 0.85);
     }
   }
 
   .about-content-body {
-    padding: 8vh 0 12vh;
-
-    .chapter {
-      display: block;
-      font-family: var(--font-sans);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: var(--color-accent);
-      margin-bottom: 0.8rem;
-    }
-
-    .subhead {
-      font-size: 2.8rem;
-      margin-bottom: 2.5rem;
-      color: var(--color-dark);
-    }
-
-    .founder-story-split {
+    padding: 4rem 0 12rem;
+    
+    .founder-story-organic {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 5rem;
-      margin-bottom: 8rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      margin-bottom: 10rem;
+      align-items: center;
 
       @media (max-width: 960px) {
         grid-template-columns: 1fr;
-        gap: 3.5rem;
+        gap: 4rem;
       }
 
-      .letter-card {
-        background: transparent;
-        border-right: 1px solid rgba(0,0,0,0.1);
-        padding: 0 4rem 0 0;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        font-size: 1.05rem;
-        line-height: 1.7;
-
-        .closing {
-          font-weight: 700;
-          color: var(--color-accent);
-        }
-
-        .signature-block {
-          border-top: 2px dashed rgba(10, 14, 12, 0.2);
-          padding-top: 1.5rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.3rem;
-
-          strong {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-          }
-
-          span {
-            font-size: 0.85rem;
-            color: #555;
-          }
-
-          .social-tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--color-accent);
-            font-weight: 700;
-            margin-top: 0.4rem;
-          }
-        }
-      }
-
-      .visual-col {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-
-        .founder-portrait-box {
-          position: relative;
-          overflow: hidden;
-          background: rgba(0,0,0,0.05);
-
-          img {
-            width: 100%;
-            height: auto;
-            display: block;
-          }
-
-          .frame-tag {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--color-dark);
-            color: var(--color-lime);
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            padding: 0.8rem 1.2rem;
-          }
-        }
-
-        .aanmaa-box {
-          background: var(--color-dark);
-          color: #fff;
-          padding: 3.5rem;
-
-          h3 {
-            font-family: var(--font-sans);
-            font-weight: 800;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--color-lime);
-          }
-
-          p {
-            font-size: 1rem;
-            line-height: 1.65;
-            opacity: 0.9;
-          }
-        }
-      }
-    }
-
-    .spirit-animal-section {
-      margin-bottom: 8rem;
-
-      .spirit-container-box {
-        background: #0D1310;
-        color: #fff;
-        padding: 6rem 4rem;
-
-        .spirit-badge {
-          display: inline-block;
+      .story-content {
+        .chapter-marker {
+          display: block;
           font-family: var(--font-sans);
           font-size: 0.75rem;
           font-weight: 700;
-          letter-spacing: 0.15em;
-          background: rgba(183, 240, 69, 0.15);
-          color: var(--color-lime);
-          padding: 0.4rem 0.9rem;
-          border-radius: 999px;
-          margin-bottom: 1.5rem;
+          letter-spacing: 0.2em;
+          color: var(--color-terracotta);
+          margin-bottom: 1rem;
         }
 
-        .spirit-title {
-          font-family: var(--font-sans);
-          font-weight: 900;
-          letter-spacing: -0.02em;
-          font-size: clamp(2.5rem, 5vw, 4.5rem);
-          color: #fff;
-          margin-bottom: 2rem;
+        .elegant-heading {
+          font-family: var(--font-display);
+          font-size: 3rem;
+          color: var(--color-dark);
+          margin-bottom: 2.5rem;
+          line-height: 1.1;
         }
 
-        .spirit-text-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2.5rem;
+        .letter-body {
+          font-size: 1.1rem;
+          line-height: 1.8;
+          color: rgba(0, 76, 77, 0.9);
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
 
-          @media (max-width: 860px) {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+          .closing {
+            font-weight: 600;
+            color: var(--color-terracotta);
+            margin-top: 1rem;
           }
 
-          p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            opacity: 0.85;
+          .signature-elegant {
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            .sign-line {
+              width: 50px;
+              height: 2px;
+              background-color: var(--color-terracotta);
+            }
+
+            .sign-details {
+              display: flex;
+              flex-direction: column;
+              
+              strong {
+                font-family: var(--font-sans);
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--color-dark);
+                letter-spacing: 0.05em;
+              }
+
+              .role {
+                font-size: 0.85rem;
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+      }
+
+      .story-visuals {
+        .image-stack {
+          position: relative;
+          
+          .main-portrait {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 76, 77, 0.15);
+            display: block;
+          }
+
+          .floating-card {
+            position: absolute;
+            bottom: -3rem;
+            left: -3rem;
+            background: var(--color-dark);
+            color: var(--color-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 350px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+
+            @media (max-width: 768px) {
+              position: relative;
+              bottom: 0;
+              left: 0;
+              max-width: 100%;
+              margin-top: -2rem;
+              z-index: 10;
+            }
+
+            h3 {
+              font-family: var(--font-sans);
+              font-size: 1.1rem;
+              font-weight: 700;
+              color: var(--color-lime);
+              margin-bottom: 1rem;
+              letter-spacing: 0.1em;
+            }
+
+            p {
+              font-size: 0.95rem;
+              line-height: 1.6;
+              opacity: 0.9;
+            }
           }
         }
       }
     }
 
-    .conduct-section {
-      .rules-grid {
+    .spirit-animal-elegant {
+      background: rgba(0, 76, 77, 0.03);
+      border-radius: 24px;
+      padding: 6rem 4rem;
+
+      @media (max-width: 768px) {
+        padding: 4rem 2rem;
+      }
+
+      .spirit-content {
+        max-width: 900px;
+        margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 4rem;
 
         @media (max-width: 860px) {
           grid-template-columns: 1fr;
+          gap: 2rem;
         }
 
-        .rule-card {
-          background: transparent;
-          border-top: 1px solid rgba(0, 0, 0, 0.15);
-          padding: 2.5rem 0;
-          display: flex;
-          flex-direction: column;
-
-          .num {
+        .spirit-header {
+          .premium-label {
+            display: inline-block;
             font-family: var(--font-sans);
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--color-accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--color-terracotta);
             margin-bottom: 1.5rem;
           }
 
-          h3 {
-            font-family: var(--font-sans);
-            font-weight: 800;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+          .elegant-heading {
+            font-family: var(--font-display);
+            font-size: 3rem;
             color: var(--color-dark);
+            line-height: 1.1;
           }
+        }
 
-          p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #444;
+        .spirit-text {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: rgba(0, 76, 77, 0.85);
+
+          .highlight-para {
+            font-weight: 600;
+            color: var(--color-dark);
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--color-terracotta);
+            margin-top: 1rem;
           }
         }
       }

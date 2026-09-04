@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { content } from '../../data/content';
+import MicroElement from '../../components/MicroElement';
 import './Workshops.scss';
 
 export default function WorkshopsPage() {
@@ -13,13 +14,22 @@ export default function WorkshopsPage() {
 
   return (
     <div className="page-workshops">
-      <header className="workshops-hero-banner">
-        <div className="container">
-          <div className="header-meta">
-            <span className="brutal-badge">CURRICULUM</span>
-            <span className="meta-text">OCTOBER 23 — 25, 2026</span>
+      <header className="workshops-hero-organic" style={{ position: 'relative', overflow: 'hidden' }}>
+        <MicroElement asset="Asset 6ldpi.svg" top="20%" right="5%" width="200px" rotation="-15deg" delay="0s" />
+        <MicroElement asset="butterfly.svg" bottom="20%" left="10%" width="120px" rotation="25deg" delay="1s" />
+        <div className="marquee-elegant">
+          <div className="marquee-track">
+            <span>25+ CONSCIOUS WORKSHOPS</span>
+            <span className="dot">•</span>
+            <span>OCTOBER 23 — 25, 2026</span>
+            <span className="dot">•</span>
+            <span>25+ CONSCIOUS WORKSHOPS</span>
+            <span className="dot">•</span>
+            <span>OCTOBER 23 — 25, 2026</span>
+            <span className="dot">•</span>
           </div>
-          <h1 className="page-title">25+ CONSCIOUS WORKSHOPS</h1>
+        </div>
+        <div className="container">
           <p className="page-desc">
             Led by master movement artists, traditional martial artists, somatic therapists, and botanical craftsmen.
             Zero prior experience required. Come as you are.
@@ -40,22 +50,23 @@ export default function WorkshopsPage() {
         </div>
       </header>
 
-      <main className="workshops-body-section">
+      <main className="workshops-body-organic">
         <div className="container">
-          <div className="workshops-editorial-grid">
+          <div className="workshops-masonry-grid">
             {filtered.map((item, idx) => (
-              <article key={idx} className="workshop-editorial-tile">
-                <div className="tile-thumb">
+              <article key={idx} className="workshop-elegant-card">
+                <div className="card-media">
                   <img src={item.image} alt={item.name} loading="lazy" />
-                  <div className="hover-overlay"></div>
-                </div>
-
-                <div className="tile-content">
-                  <div className="tile-meta">
-                    <span className="num">0{idx + 1}</span>
+                  <div className="overlay-badge">
                     <span className="badge">{item.tag}</span>
                   </div>
-                  <h2 className="title">{item.name}</h2>
+                </div>
+
+                <div className="card-content">
+                  <div className="content-header">
+                    <span className="num">0{idx + 1}</span>
+                    <h2 className="title">{item.name}</h2>
+                  </div>
                   <p className="description">{item.description}</p>
                 </div>
               </article>

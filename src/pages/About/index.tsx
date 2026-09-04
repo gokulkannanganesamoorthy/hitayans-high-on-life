@@ -1,18 +1,22 @@
 import { content } from '../../data/content';
+import MicroElement from '../../components/MicroElement';
 import './About.scss';
 
 export default function AboutPage() {
   return (
     <div className="page-about">
-      <header className="about-hero-header">
+      <header className="about-hero-header" style={{ position: 'relative', overflow: 'hidden' }}>
+        <MicroElement asset="butterfly.svg" top="20%" right="10%" width="120px" rotation="-20deg" delay="0s" className="blend-screen" />
+        <MicroElement asset="Asset 8ldpi.svg" bottom="15%" left="5%" width="180px" rotation="10deg" delay="1s" className="blend-screen" />
         <div className="container">
           <div className="badge-row">
-            <span className="brutal-badge">FOUNDATION</span>
+            <span className="premium-label">FOUNDATION</span>
             <span className="meta">A CONSCIOUS MOVEMENT COLLECTIVE</span>
           </div>
-          <h1 className="hero-title">Imagine if mainstream party culture got a deeply healthy makeover...</h1>
+          <h1 className="hero-title">HIGH ON LIFE</h1>
           <p className="hero-lead">
-            ...and a serious meditation retreat finally found its wild side!
+            Imagine a raging music festival without the hangovers, a profound healing circle that doesn't take itself too seriously,
+            and a serious meditation retreat finally found its wild side!
             That's us! A conscious, zero-substance celebration of life where you are awake, alive, and euphoric.
           </p>
         </div>
@@ -20,12 +24,12 @@ export default function AboutPage() {
 
       <main className="about-content-body">
         <div className="container">
-          {/* Split founder narrative */}
-          <section className="founder-story-split">
-            <div className="story-col">
-              <span className="chapter">01 // THE SPARK</span>
-              <h2 className="subhead">A LETTER FROM JIJO</h2>
-              <div className="letter-card">
+          
+          <section className="founder-story-organic">
+            <div className="story-content">
+              <span className="chapter-marker">THE SPARK</span>
+              <h2 className="elegant-heading">A LETTER FROM JIJO</h2>
+              <div className="letter-body">
                 <p>Hello, beautiful people!</p>
                 <p>
                   I’m Jijo, a movement artist and the founder of HIGH on Life and the AANMAA Movement Collective.
@@ -44,36 +48,38 @@ export default function AboutPage() {
                 <p className="closing">
                   That’s how the idea of HIGH on Life was born. And it is brought to life through the AANMAA Movement Collective.
                 </p>
-                <div className="signature-block">
-                  <strong>— Jijo</strong>
-                  <span>Founder, HIGH on Life & AANMAA Movement Collective</span>
-                  <span className="social-tag">@movementwithjijo | @theaanmaacollective</span>
+                
+                <div className="signature-elegant">
+                  <div className="sign-line"></div>
+                  <div className="sign-details">
+                    <strong>— Jijo</strong>
+                    <span className="role">Founder, HIGH on Life & AANMAA Movement Collective</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="visual-col">
-              <div className="founder-portrait-box">
-                <img src={content.about.founder.image} alt="Jijo Founder" />
-                <div className="frame-tag">JIJO // FOUNDER & MOVEMENT FACILITATOR</div>
-              </div>
-
-              <div className="aanmaa-box">
-                <h3>THE AANMAA COLLECTIVE</h3>
-                <p>
-                  A close-knit circle of friends, artists, and somatic practitioners who share an unwavering belief
-                  that human aliveness is meant to be felt, explored, and radically celebrated.
-                </p>
+            <div className="story-visuals">
+              <div className="image-stack">
+                <img src={content.about.founder.image} alt="Jijo Founder" className="main-portrait" />
+                <div className="floating-card">
+                  <h3>THE AANMAA COLLECTIVE</h3>
+                  <p>
+                    A close-knit circle of friends, artists, and somatic practitioners who share an unwavering belief
+                    that human aliveness is meant to be felt, explored, and radically celebrated.
+                  </p>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* Spirit animal section */}
-          <section className="spirit-animal-section">
-            <div className="spirit-container-box">
-              <div className="spirit-badge">OFFICIAL SPIRIT ANIMAL</div>
-              <h2 className="spirit-title">THE MAGICAL DRAGONFLY</h2>
-              <div className="spirit-text-grid">
+          <section className="spirit-animal-elegant">
+            <div className="spirit-content">
+              <div className="spirit-header">
+                <span className="premium-label">OFFICIAL SPIRIT ANIMAL</span>
+                <h2 className="elegant-heading">THE MAGICAL DRAGONFLY</h2>
+              </div>
+              <div className="spirit-text">
                 <p>
                   A dragonfly begins its life underwater, as a nymph, spending months growing in a world completely different
                   from the one it is destined to enter. Then, one day, it slowly crawls out of the water and encounters the sun
@@ -83,7 +89,7 @@ export default function AboutPage() {
                   Exposed to its warmth and intensity, it endures hours of transformation as its body slowly changes and its wings
                   begin to emerge. And then, magically, it takes flight.
                 </p>
-                <p>
+                <p className="highlight-para">
                   Just like the dragonfly’s four wings work together in an infinite rhythm to create its magical flight without ever
                   needing to learn how—when Movement, Nature, Art, and Playfulness come together, they create the ALIVENESS we need
                   to live life at its highest.
@@ -92,68 +98,6 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* What to expect */}
-          <section className="conduct-section">
-            <span className="chapter">02 // THE EXPERIENCE</span>
-            <h2 className="subhead">WHAT TO EXPECT AT HIGH ON LIFE</h2>
-            <p style={{ fontFamily: 'var(--font-sans)', marginBottom: '3rem', fontSize: '1.2rem', maxWidth: '800px', lineHeight: '1.6' }}>
-              We’ve designed a playground for the human spirit. Dive into immersive experiences and moments curated to make you feel free, awake, and fiercely alive.
-            </p>
-            <div className="rules-grid">
-              <div className="rule-card">
-                <div className="num">P</div>
-                <h3>PLAY</h3>
-                <p>Step into moments that surprise you and wake you up.</p>
-              </div>
-              <div className="rule-card">
-                <div className="num">C</div>
-                <h3>CREATE</h3>
-                <p>Move, build, and learn alongside artists and makers.</p>
-              </div>
-              <div className="rule-card">
-                <div className="num">C</div>
-                <h3>CONNECT</h3>
-                <p>Meet strangers who instantly feel like old friends.</p>
-              </div>
-              <div className="rule-card">
-                <div className="num">L</div>
-                <h3>LET GO</h3>
-                <p>Drop the mask and be exactly who you are.</p>
-              </div>
-            </div>
-          </section>
-
-          {/* Core team */}
-          <section className="conduct-section" style={{ borderTop: 'none', paddingTop: '0' }}>
-            <span className="chapter">03 // THE HUMANS</span>
-            <h2 className="subhead">MEET THE CORE TEAM</h2>
-            <div className="rules-grid">
-              <div className="rule-card" style={{ padding: '2rem' }}>
-                <div style={{ width: '100%', aspectRatio: '1/1', background: '#000', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-lime)' }}>
-                  PHOTO PENDING
-                </div>
-                <h3>Name Pending</h3>
-                <p style={{ textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.1em', marginBottom: '1rem', color: 'var(--color-dark)', opacity: 0.7 }}>Role Pending</p>
-                <p>Short bio placeholder text. Waiting for official details from Jijo.</p>
-              </div>
-              <div className="rule-card" style={{ padding: '2rem' }}>
-                <div style={{ width: '100%', aspectRatio: '1/1', background: '#000', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-lime)' }}>
-                  PHOTO PENDING
-                </div>
-                <h3>Name Pending</h3>
-                <p style={{ textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.1em', marginBottom: '1rem', color: 'var(--color-dark)', opacity: 0.7 }}>Role Pending</p>
-                <p>Short bio placeholder text. Waiting for official details from Jijo.</p>
-              </div>
-              <div className="rule-card" style={{ padding: '2rem' }}>
-                <div style={{ width: '100%', aspectRatio: '1/1', background: '#000', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-lime)' }}>
-                  PHOTO PENDING
-                </div>
-                <h3>Name Pending</h3>
-                <p style={{ textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.1em', marginBottom: '1rem', color: 'var(--color-dark)', opacity: 0.7 }}>Role Pending</p>
-                <p>Short bio placeholder text. Waiting for official details from Jijo.</p>
-              </div>
-            </div>
-          </section>
         </div>
       </main>
     </div>

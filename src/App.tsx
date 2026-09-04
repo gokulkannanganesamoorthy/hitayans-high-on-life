@@ -10,6 +10,7 @@ import SpaceDetail from './pages/SpaceDetail';
 import WorkshopsPage from './pages/Workshops';
 import AboutPage from './pages/About';
 import TicketsPage from './pages/Tickets';
+import ContactPage from './pages/Contact';
 
 import Cursor from './components/Cursor';
 import Navigation from './components/Navigation';
@@ -59,6 +60,7 @@ function App() {
           <Route path="/workshops" element={<WorkshopsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/tickets" element={<TicketsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
       <Footer />

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { content } from '../../data/content';
 import TicketModal from '../../components/TicketModal';
+import MicroElement from '../../components/MicroElement';
 import './Tickets.scss';
 
 export default function TicketsPage() {
@@ -15,63 +16,54 @@ export default function TicketsPage() {
   return (
     <div className="page-tickets">
       <header className="tickets-hero-header">
-        <div className="container">
-          <div className="meta-pill-strip">
-            <span className="brutal-badge">RESERVATIONS</span>
-            <span className="dates">23 — 25 OCTOBER 2026 // POLLACHI</span>
-          </div>
-          <h1 className="title">PASSES & ACCOMMODATION</h1>
-          <p className="lead">
-            Every pass grants full unrestricted access to all 3 festival days, all 25+ workshops, 
-            9 sensory spaces, organic communal feasts, and eco-village accommodations.
-          </p>
-        </div>
+        {/* We moved the header content into tickets-main-body to share the green background as shown in the screenshot */}
       </header>
 
-      <main className="tickets-main-body">
+      <main className="tickets-main-body" style={{ position: 'relative', overflow: 'hidden' }}>
+        <MicroElement asset="Asset 4ldpi.svg" top="2%" right="5%" width="120px" rotation="-15deg" delay="0s" className="blend-screen" />
+        <MicroElement asset="Asset 5ldpi.svg" bottom="15%" left="5%" width="150px" rotation="20deg" delay="2s" />
+        <MicroElement asset="butterfly.svg" top="40%" right="10%" width="80px" rotation="45deg" delay="1s" />
         <div className="container">
-          {/* Phase breakdown */}
-          <div className="phases-container">
+          {/* Hero Section inside the green body */}
+          <div className="passes-hero-section">
+            <h1 className="title">PASSES & ACCOMMODATION</h1>
+            <div className="subtitle-row">
+              <p>3 Full Days in Pollachi • All 25+ Workshops • Organic Village Meals • Sacred Spaces Access</p>
+              <button className="full-tier-guide-btn">FULL TIER GUIDE →</button>
+            </div>
+          </div>
+
+          {/* Phase breakdown in Columns */}
+          <div className="phases-columns-container">
             {content.tickets.phases.map(phase => (
-              <section key={phase.id} className="phase-master-card">
-                <div className="phase-header-bar">
-                  <div className="left">
-                    <span className="badge">{phase.badge}</span>
-                    <h2 className="name">{phase.name}</h2>
-                  </div>
-                  <p className="note">{phase.note}</p>
-                </div>
+              <div key={phase.id} className="phase-column-card">
+                <div className="phase-badge">{phase.badge}</div>
+                <h2 className="phase-name">{phase.name}</h2>
+                <p className="phase-desc">{phase.note}</p>
+                <div className="dashed-divider"></div>
 
-                <div className="tiers-grid">
+                <div className="tiers-vertical-list">
                   {phase.items.map(tier => (
-                    <div key={tier.id} className="tier-box">
-                      <div className="tier-head">
-                        <span className="stay-type">{tier.type}</span>
-                        <span className="limit-tag">{tier.limit}</span>
+                    <div key={tier.id} className="tier-row-card">
+                      <div className="tier-info">
+                        <h4 className="tier-name">{tier.type}</h4>
+                        <p className="tier-limit">{tier.limit}</p>
                       </div>
 
-                      <div className="tier-price-row">
-                        <span className="currency">INR</span>
-                        <span className="amount">{tier.price}</span>
+                      <div className="tier-price-action">
+                        <div className="tier-price">₹{tier.price}</div>
+                        <button 
+                          className="reserve-btn"
+                          onClick={() => openReserve(tier.id)}
+                          data-cursor-view="RESERVE"
+                        >
+                          RESERVE →
+                        </button>
                       </div>
-
-                      <ul className="perks-list">
-                        {tier.features?.map((f, i) => (
-                          <li key={i}>✓ {f}</li>
-                        ))}
-                      </ul>
-
-                      <button 
-                        className="brutal-btn-primary reserve-action"
-                        onClick={() => openReserve(tier.id)}
-                        data-cursor-view="RESERVE"
-                      >
-                        RESERVE PASS →
-                      </button>
                     </div>
                   ))}
                 </div>
-              </section>
+              </div>
             ))}
           </div>
 

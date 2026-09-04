@@ -44,143 +44,173 @@
   }
 
   .tickets-main-body {
+    background-color: var(--color-accent);
     padding: 8vh 0 12vh;
 
-    .phases-container {
-      display: flex;
-      flex-direction: column;
-      gap: 5rem;
-      margin-bottom: 8rem;
+    .passes-hero-section {
+      text-align: center;
+      margin-bottom: 3rem;
 
-      .phase-master-card {
-        background: transparent;
-        padding: 0;
-        margin-bottom: 4rem;
+      .title {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 6vw, 5.5rem);
+        color: #fff;
+        margin-bottom: 1rem;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        text-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+      }
 
-        .phase-header-bar {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-          padding-bottom: 1.5rem;
-          margin-bottom: 2.5rem;
-          flex-wrap: wrap;
-          gap: 1rem;
+      .subtitle-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
 
-          .left {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-
-            .badge {
-              background: var(--color-dark);
-              color: var(--color-lime);
-              font-family: var(--font-sans);
-              font-size: 0.75rem;
-              font-weight: 700;
-              letter-spacing: 0.12em;
-              padding: 0.35rem 0.8rem;
-            }
-
-            .name {
-              font-family: var(--font-sans);
-              font-weight: 800;
-              font-size: 2rem;
-              color: var(--color-dark);
-              letter-spacing: -0.01em;
-            }
-          }
-
-          .note {
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            color: #555;
-          }
+        p {
+          font-size: 1.1rem;
+          color: #fff;
+          font-weight: 700;
+          letter-spacing: 0.05em;
         }
 
-        .tiers-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 2rem;
+        .full-tier-guide-btn {
+          background: var(--color-lime);
+          color: var(--color-dark);
+          font-family: var(--font-sans);
+          font-weight: 800;
+          padding: 0.8rem 1.5rem;
+          border: 2px solid var(--color-dark);
+          box-shadow: 4px 4px 0px var(--color-dark);
+          cursor: pointer;
+          letter-spacing: 0.05em;
+          transition: all 0.2s;
 
-          @media (max-width: 1100px) {
-            grid-template-columns: repeat(2, 1fr);
+          &:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--color-dark);
           }
-          @media (max-width: 650px) {
-            grid-template-columns: 1fr;
+          &:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--color-dark);
           }
+        }
+      }
+    }
 
-          .tier-box {
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 4px;
-            padding: 2.5rem 2rem;
+    .phases-columns-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 8rem;
+
+      @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+
+      .phase-column-card {
+        background: var(--color-bg);
+        border: 3px solid var(--color-dark);
+        box-shadow: 8px 8px 0px var(--color-lime);
+        padding: 2.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+
+        .phase-badge {
+          align-self: flex-start;
+          background: var(--color-lime);
+          color: var(--color-dark);
+          font-family: var(--font-sans);
+          font-size: 0.75rem;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          padding: 0.4rem 0.8rem;
+          border: 1px solid var(--color-dark);
+          margin-bottom: 1.5rem;
+        }
+
+        .phase-name {
+          font-family: var(--font-display);
+          font-size: 2.5rem;
+          color: var(--color-dark);
+          margin-bottom: 0.5rem;
+          line-height: 1;
+        }
+
+        .phase-desc {
+          font-family: var(--font-sans);
+          font-size: 0.95rem;
+          color: var(--color-dark);
+          font-weight: 700;
+          opacity: 0.8;
+          margin-bottom: 1.5rem;
+        }
+
+        .dashed-divider {
+          border-top: 2px dashed rgba(0, 76, 77, 0.2);
+          margin-bottom: 1.5rem;
+        }
+
+        .tiers-vertical-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          flex: 1;
+
+          .tier-row-card {
+            background: rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            transition: all 0.3s ease;
+            gap: 1rem;
 
-            &:hover {
-              transform: translateY(-4px);
-              box-shadow: 0 12px 30px rgba(0,0,0,0.04);
-              border-color: rgba(0,0,0,0.15);
-            }
-
-            .tier-head {
-              display: flex;
-              flex-direction: column;
-              gap: 0.3rem;
-
-              .stay-type {
+            .tier-info {
+              .tier-name {
                 font-family: var(--font-sans);
                 font-size: 1.1rem;
-                font-weight: 700;
+                font-weight: 800;
                 color: var(--color-dark);
+                margin-bottom: 0.25rem;
               }
-
-              .limit-tag {
-                font-size: 0.75rem;
-                color: #666;
+              .tier-limit {
+                font-size: 0.8rem;
+                font-weight: 700;
+                color: rgba(0, 76, 77, 0.7);
               }
             }
 
-            .tier-price-row {
+            .tier-price-action {
               display: flex;
-              align-items: baseline;
-              gap: 0.5rem;
+              justify-content: space-between;
+              align-items: flex-end;
 
-              .currency {
-                font-family: var(--font-sans);
-                font-size: 0.75rem;
-                font-weight: 700;
-                color: var(--color-accent);
+              .tier-price {
+                font-family: var(--font-display);
+                font-size: 1.8rem;
+                color: var(--color-dark);
+                line-height: 1;
               }
 
-              .amount {
+              .reserve-btn {
+                background: transparent;
+                border: none;
+                color: var(--color-dark);
                 font-family: var(--font-sans);
                 font-weight: 800;
-                font-size: 2.2rem;
-                color: var(--color-dark);
-                letter-spacing: -0.02em;
+                font-size: 0.8rem;
+                letter-spacing: 0.1em;
+                cursor: pointer;
+                padding: 0;
+
+                &:hover {
+                  text-decoration: underline;
+                }
               }
-            }
-
-            .perks-list {
-              display: flex;
-              flex-direction: column;
-              gap: 0.8rem;
-              flex: 1;
-              border-top: 1px solid rgba(0, 0, 0, 0.08);
-              padding-top: 1.5rem;
-
-              li {
-                font-size: 0.85rem;
-                color: #444;
-              }
-            }
-
-            .reserve-action {
-              width: 100%;
             }
           }
         }

@@ -9,6 +9,7 @@ const navLinks = [
   { name: '25+ WORKSHOPS', href: '/workshops' },
   { name: 'ORIGIN STORY', href: '/about' },
   { name: 'PASSES & STAY', href: '/tickets' },
+  { name: 'CONTACT', href: '/contact' },
 ];
 
 export default function Navigation() {
