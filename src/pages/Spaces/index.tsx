@@ -41,8 +41,11 @@ export default function SpacesPage() {
         </div>
       </header>
 
-      <main className="spaces-catalog-elegant">
-        <div className="container">
+      <main className="spaces-catalog-elegant" style={{ position: 'relative' }}>
+        <MicroElement asset="Asset 4ldpi.svg" top="10%" left="2%" width="120px" rotation="-15deg" className="blend-multiply" zIndex={0} />
+        <MicroElement asset="Asset 8ldpi.svg" top="40%" right="1%" width="180px" rotation="20deg" className="blend-multiply" zIndex={0} />
+        <MicroElement asset="butterfly.svg" bottom="15%" left="5%" width="80px" rotation="45deg" className="blend-multiply" zIndex={0} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="spaces-organic-grid">
             {filteredSpaces.map((space, i) => (
               <div key={space.id} className="space-organic-card">

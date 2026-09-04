@@ -43,6 +43,14 @@
   padding: 0;
 }
 
+.container {
+  width: 100%;
+  max-width: 1800px; /* or a nice wide layout */
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+}
+
+
 html {
   background-color: var(--color-bg);
   color: var(--color-text);

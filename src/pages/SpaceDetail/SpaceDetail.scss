@@ -4,44 +4,45 @@
   background-color: var(--color-bg);
   color: var(--color-text);
   min-height: 100vh;
-  padding-top: 6rem;
-
-  .detail-top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem var(--grid-margin);
-    border-bottom: 2px solid var(--color-dark);
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-
-    .back-link {
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: inherit;
-      font-weight: inherit;
-      cursor: none;
-      color: inherit;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: color 0.2s ease;
-
-      &:hover {
-        color: var(--color-accent);
-      }
-    }
-
-    .space-indexer {
-      color: var(--color-accent);
-    }
-  }
+  padding-top: 0; // Removed so hero touches top
 
   .space-hero-section {
-    padding: 4rem var(--grid-margin) 0;
+    padding: 7rem var(--grid-margin) 0;
+
+    .detail-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0 1.5rem 0;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+
+      .back-link {
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        cursor: none;
+        color: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--color-lime);
+        }
+      }
+
+      .space-indexer {
+        color: var(--color-lime);
+      }
+    }
 
     .space-meta-strip {
       display: flex;
@@ -212,8 +213,8 @@
 
   .next-space-link-block {
     border-top: 3px solid var(--color-dark);
-    background-color: var(--color-dark);
-    color: var(--color-text-light);
+    background-color: var(--color-bg);
+    color: var(--color-dark);
 
     .next-space-card {
       display: block;
@@ -221,14 +222,14 @@
       transition: background-color 0.2s ease;
 
       &:hover {
-        background-color: #141B18;
+        background-color: #e5dfc5;
 
         .arrow-icon {
           transform: translateX(15px);
         }
 
         .next-title {
-          color: var(--color-lime);
+          color: var(--color-accent);
         }
       }
 
@@ -237,10 +238,10 @@
         justify-content: space-between;
         font-family: var(--font-sans);
         font-size: 0.85rem;
-        font-weight: 700;
+        font-weight: 800;
         letter-spacing: 0.15em;
         margin-bottom: 2rem;
-        color: var(--color-lime);
+        color: var(--color-accent);
 
         .arrow-icon {
           font-size: 1.8rem;

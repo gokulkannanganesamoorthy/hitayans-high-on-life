@@ -25,10 +25,12 @@ export default function AboutPage() {
       <main className="about-content-body">
         <div className="container">
           
-          <section className="founder-story-organic">
+          <section className="founder-story-brutal">
+            <MicroElement asset="Asset 2ldpi.svg" top="-30px" right="10%" width="120px" rotation="15deg" />
+            
             <div className="story-content">
               <span className="chapter-marker">THE SPARK</span>
-              <h2 className="elegant-heading">A LETTER FROM JIJO</h2>
+              <h2 className="brutal-heading">A LETTER FROM JIJO</h2>
               <div className="letter-body">
                 <p>Hello, beautiful people!</p>
                 <p>
@@ -49,8 +51,7 @@ export default function AboutPage() {
                   That’s how the idea of HIGH on Life was born. And it is brought to life through the AANMAA Movement Collective.
                 </p>
                 
-                <div className="signature-elegant">
-                  <div className="sign-line"></div>
+                <div className="signature-brutal">
                   <div className="sign-details">
                     <strong>— Jijo</strong>
                     <span className="role">Founder, HIGH on Life & AANMAA Movement Collective</span>
@@ -73,11 +74,14 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="spirit-animal-elegant">
+          <section className="spirit-animal-brutal">
+            <MicroElement asset="Asset 4ldpi.svg" bottom="-40px" left="5%" width="140px" rotation="-15deg" />
+            <MicroElement asset="Asset 7ldpi.svg" top="20%" right="10%" width="100px" rotation="45deg" />
+            
             <div className="spirit-content">
               <div className="spirit-header">
                 <span className="premium-label">OFFICIAL SPIRIT ANIMAL</span>
-                <h2 className="elegant-heading">THE MAGICAL DRAGONFLY</h2>
+                <h2 className="brutal-heading">THE MAGICAL DRAGONFLY</h2>
               </div>
               <div className="spirit-text">
                 <p>

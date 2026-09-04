@@ -20,18 +20,18 @@ export default function SpaceDetail() {
 
   return (
     <div className="page-space-detail">
-      {/* Top Header bar */}
-      <nav className="detail-top-bar">
-        <button className="back-link" onClick={() => navigate('/#spaces')} data-cursor-view="BACK">
-          ← ALL SPACES
-        </button>
-        <div className="space-indexer">
-          SPACE 0{spaceIndex + 1} / 0{content.spaces.length}
-        </div>
-      </nav>
-
       {/* Hero Header */}
       <header className="space-hero-section dark-hero">
+        {/* Top Header bar */}
+        <nav className="detail-top-bar">
+          <button className="back-link" onClick={() => navigate('/#spaces')} data-cursor-view="BACK">
+            ← ALL SPACES
+          </button>
+          <div className="space-indexer">
+            SPACE 0{spaceIndex + 1} / 0{content.spaces.length}
+          </div>
+        </nav>
+
         <div className="space-meta-strip">
           <span>COCONEST ECO VILLAGE</span>
           <span>EST. OCT 2026</span>

@@ -1,20 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navigation.scss';
 
 const navLinks = [
   { name: 'HOME', href: '/' },
+  { name: 'ORIGIN STORY', href: '/about' },
   { name: '09 SPACES', href: '/spaces' },
   { name: '25+ WORKSHOPS', href: '/workshops' },
-  { name: 'ORIGIN STORY', href: '/about' },
   { name: 'PASSES & STAY', href: '/tickets' },
   { name: 'CONTACT', href: '/contact' },
 ];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  // Get current location
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  // Force oval (scrolled) shape on inner pages right from start
+  const isScrolled = !isHomePage || scrollY > 60;
 
   // Soundscape logic
   const [isPlaying, setIsPlaying] = useState(false);
@@ -33,9 +40,10 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
+      setScrollY(window.scrollY);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -151,8 +159,29 @@ export default function Navigation() {
             animate="open"
             exit="closed"
           >
-            <div className="menu-background-graphic" aria-hidden="true" style={{ position: 'absolute', bottom: '5%', right: '5%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', zIndex: 1 }}>
-              <img src="/svg/butterfly.svg" alt="" style={{ opacity: 0.15, width: '35vw', maxWidth: '400px', objectFit: 'contain' }} />
+            <div
+              className="menu-background-graphic"
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                bottom: '5%',
+                right: '5%',
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignItems: 'flex-end',
+                zIndex: 1,
+              }}
+            >
+              <img
+                src="/svg/butterfly.svg"
+                alt=""
+                style={{
+                  opacity: 0.15,
+                  width: '35vw',
+                  maxWidth: '400px',
+                  objectFit: 'contain',
+                }}
+              />
             </div>
 
             <nav className="nav-container">
